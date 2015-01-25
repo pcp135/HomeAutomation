@@ -24,7 +24,7 @@
 require 'Milight.php';
 
 $milight = new Milight('192.168.1.7');
-
+   echo $_GET["action"];
    if ($_GET["action"]="all_on") {
    $milight->rgbwAllOn();
 $milight->rgbwAllSetToWhite();
