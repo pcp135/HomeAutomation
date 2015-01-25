@@ -25,19 +25,22 @@ require 'Milight.php';
 
 $milight = new Milight('192.168.1.7');
 
-
-$milight->rgbwAllOn();
+   if ($_GET["action"]="all_on") {
+   $milight->rgbwAllOn();
 $milight->rgbwAllSetToWhite();
-$milight->rgbwAllBrightnessMax();
-$milight->rgbwAllOff();
+    $milight->rgbwAllBrightnessMax();
+    }
+
+    if ($_GET["action"]="all_off") {
+   $milight->rgbwAllOff();
+
 
 ?>
 
 <h1>Hello, world!</h1>
 
-<?php echo $_GET["action"] ?>
-
-<a href="index.php?action=on" class="btn btn-primary">Lights on</a>
+<a href="index.php?action=all_on" class="btn btn-primary">Lights on</a>
+<a href="index.php?action=all_off" class="btn btn-primary">Lights off</a>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
