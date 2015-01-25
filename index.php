@@ -33,7 +33,7 @@ $milight->rgbwAllSetToWhite();
 
     if ($_GET["action"]="all_off") {
    $milight->rgbwAllOff();
-
+}
 
 ?>
 
