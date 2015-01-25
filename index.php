@@ -31,6 +31,7 @@ $milight = new Milight('192.168.1.7');
 $milight->rgbwAllOn();
 $milight->rgbwAllSetToWhite();
 $milight->rgbwAllBrightnessMax();
+$milight->rgbwAllOff();
 
 ?>
 
