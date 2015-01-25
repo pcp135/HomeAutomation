@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap 101 Template</title>
+    <title>Lights dashboard</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -26,8 +26,6 @@ require 'Milight.php';
 $milight = new Milight('192.168.1.7');
 
 
-
-
 $milight->rgbwAllOn();
 $milight->rgbwAllSetToWhite();
 $milight->rgbwAllBrightnessMax();
@@ -36,6 +34,10 @@ $milight->rgbwAllOff();
 ?>
 
 <h1>Hello, world!</h1>
+
+<?php echo $_GET["action"] >?
+
+<a href="index.php?action=on" class="btn btn-primary">Lights on</a>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
