@@ -32,7 +32,7 @@ $milight->rgbwAllOn();
 $milight->rgbwAllSetToWhite();
 $milight->rgbwAllBrightnessMax();
 
-
+?>
 
 <h1>Hello, world!</h1>
 
