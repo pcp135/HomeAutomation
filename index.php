@@ -25,14 +25,14 @@
 
    $milight = new Milight('192.168.1.7');
    echo $_GET["action"];
-   if ($_GET["action"]="all_on") {
+   if ($_GET["action"]=="all_on") {
    $milight->rgbwAllOn();
 $milight->rgbwAllSetToWhite();
     $milight->rgbwAllBrightnessMax();
     echo "clause 1";
     }
     
-    if ($_GET["action"]="all_off") {
+    if ($_GET["action"]=="all_off") {
     $milight->rgbwAllOff();
     echo "clause 2";
     }
