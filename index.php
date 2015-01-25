@@ -35,7 +35,7 @@ $milight->rgbwAllOff();
 
 <h1>Hello, world!</h1>
 
-<?php echo $_GET["action"] >?
+<?php echo $_GET["action"] ?>
 
 <a href="index.php?action=on" class="btn btn-primary">Lights on</a>
 
