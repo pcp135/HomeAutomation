@@ -37,7 +37,7 @@
       }
       elseif ($_GET["action"]=="all_random") {
       $milight->rgbwSetActiveGroup(0);
-      echo array(rand(0,255),rand(0,255),rand(0,255));
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
       elseif ($_GET["action"]=="all_25") {
       $milight->rgbwSetActiveGroup(0);
