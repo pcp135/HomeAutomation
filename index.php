@@ -24,6 +24,8 @@
        require 'Milight.php';
        
        $milight = new Milight('192.168.1.7');
+
+
        if ($_GET["action"]=="all_on") {
        $milight->rgbwAllOn();
       }
@@ -40,7 +42,16 @@
       $milight->rgbwSetActiveGroup(0);
       $milight->rgbwBrightnessPercent(25);
       }
+      elseif ($_GET["action"]=="all_50") {
+      $milight->rgbwSetActiveGroup(0);
+      $milight->rgbwBrightnessPercent(50);
+      }
+      elseif ($_GET["action"]=="all_75") {
+      $milight->rgbwSetActiveGroup(0);
+      $milight->rgbwBrightnessPercent(75);
+      }
       elseif ($_GET["action"]=="all_100") {
+      $milight->rgbwSetActiveGroup(0);
       $milight->rgbwBrightnessPercent(100);
       }
       
