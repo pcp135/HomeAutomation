@@ -36,7 +36,8 @@
     $milight->rgbwAllSetToWhite();
       }
       elseif ($_GET["action"]=="all_random") {
-      $milight->rgbwSetColorToRed();
+      $milight->rgbwSetActiveGroup(0);
+      $milight->rgbwSetColorHsv([rand(0,255),rand(0,255),rand(0,255)]);
       }
       elseif ($_GET["action"]=="all_25") {
       $milight->rgbwSetActiveGroup(0);
