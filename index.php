@@ -37,7 +37,8 @@
       $milight->rgbwSetColorToRed();
       }
       elseif ($_GET["action"]=="all_25") {
-      $milight->command('rgbwBrightnessPercent(25)');
+      $milight->rgbwSetActiveGroup(0);
+      $milight->rgbwBrightnessPercent(25);
       }
       elseif ($_GET["action"]=="all_100") {
       $milight->rgbwBrightnessPercent(100);
