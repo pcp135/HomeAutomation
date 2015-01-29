@@ -65,7 +65,7 @@
       $milight->rgbwGroup1Off();
       }
       elseif ($_GET["action"]=="sofa_white") {
-       $milight->rgbwAllOn();
+       $milight->rgbwGroup1On();
     $milight->rgbwGroup1SetToWhite();
       }
       elseif ($_GET["action"]=="sofa_random") {
@@ -87,6 +87,70 @@
       }
       elseif ($_GET["action"]=="sofa_100") {
       $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwBrightnessPercent(100);
+      }
+
+      if ($_GET["action"]=="side_on") {
+       $milight->rgbwGroup2On();
+      }
+      elseif ($_GET["action"]=="side_off") {
+      $milight->rgbwGroup2Off();
+      }
+      elseif ($_GET["action"]=="side_white") {
+       $milight->rgbwGroup2On();
+    $milight->rgbwGroup2SetToWhite();
+      }
+      elseif ($_GET["action"]=="side_random") {
+       $milight->rgbwGroup2On();
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      }
+      elseif ($_GET["action"]=="side_25") {
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwBrightnessPercent(25);
+      }
+      elseif ($_GET["action"]=="side_50") {
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwBrightnessPercent(50);
+      }
+      elseif ($_GET["action"]=="side_75") {
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwBrightnessPercent(75);
+      }
+      elseif ($_GET["action"]=="side_100") {
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwBrightnessPercent(100);
+      }
+
+      if ($_GET["action"]=="desk_on") {
+       $milight->rgbwGroup3On();
+      }
+      elseif ($_GET["action"]=="desk_off") {
+      $milight->rgbwGroup3Off();
+      }
+      elseif ($_GET["action"]=="desk_white") {
+       $milight->rgbwGroup3On();
+    $milight->rgbwGroup3SetToWhite();
+      }
+      elseif ($_GET["action"]=="desk_random") {
+       $milight->rgbwGroup3On();
+      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      }
+      elseif ($_GET["action"]=="desk_25") {
+      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwBrightnessPercent(25);
+      }
+      elseif ($_GET["action"]=="desk_50") {
+      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwBrightnessPercent(50);
+      }
+      elseif ($_GET["action"]=="desk_75") {
+      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwBrightnessPercent(75);
+      }
+      elseif ($_GET["action"]=="desk_100") {
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(100);
       }
 
@@ -116,6 +180,28 @@
     <a href="index.php?action=sofa_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=sofa_75" class="btn btn-primary">75%</a>
     <a href="index.php?action=sofa_100" class="btn btn-primary">100%</a>
+
+    <h1>Side light</h1>
+    
+    <a href="index.php?action=side_on" class="btn btn-primary">On</a>
+    <a href="index.php?action=side_off" class="btn btn-primary">Off</a>
+    <a href="index.php?action=side_white" class="btn btn-primary">White</a>
+    <a href="index.php?action=side_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=side_25" class="btn btn-primary">25%</a>
+    <a href="index.php?action=side_50" class="btn btn-primary">50%</a>
+    <a href="index.php?action=side_75" class="btn btn-primary">75%</a>
+    <a href="index.php?action=side_100" class="btn btn-primary">100%</a>
+
+    <h1>Desk light</h1>
+    
+    <a href="index.php?action=desk_on" class="btn btn-primary">On</a>
+    <a href="index.php?action=desk_off" class="btn btn-primary">Off</a>
+    <a href="index.php?action=desk_white" class="btn btn-primary">White</a>
+    <a href="index.php?action=desk_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=desk_25" class="btn btn-primary">25%</a>
+    <a href="index.php?action=desk_50" class="btn btn-primary">50%</a>
+    <a href="index.php?action=desk_75" class="btn btn-primary">75%</a>
+    <a href="index.php?action=desk_100" class="btn btn-primary">100%</a>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
