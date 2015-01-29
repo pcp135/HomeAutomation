@@ -34,6 +34,7 @@
       }
       elseif ($_GET["action"]=="all_white") {
       $milight->rgbwAllSetToWhite();
+      $milight->rgbwAllSetToWhite();
       }
       elseif ($_GET["action"]=="all_random") {
       $milight->rgbwSetActiveGroup(1);
@@ -68,6 +69,7 @@
       }
       elseif ($_GET["action"]=="sofa_white") {
       $milight->rgbwGroup1SetToWhite();
+      $milight->rgbwGroup1SetToWhite();
       }
       elseif ($_GET["action"]=="sofa_random") {
       $milight->rgbwSetActiveGroup(1);
@@ -98,6 +100,7 @@
       }
       elseif ($_GET["action"]=="side_white") {
       $milight->rgbwGroup3SetToWhite();
+      $milight->rgbwGroup3SetToWhite();
       }
       elseif ($_GET["action"]=="side_random") {
       $milight->rgbwSetActiveGroup(3);
@@ -127,6 +130,7 @@
       $milight->rgbwGroup2Off();
       }
       elseif ($_GET["action"]=="desk_white") {
+      $milight->rgbwGroup2SetToWhite();
       $milight->rgbwGroup2SetToWhite();
       }
       elseif ($_GET["action"]=="desk_random") {
