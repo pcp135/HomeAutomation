@@ -173,25 +173,25 @@
 
       
       ?>
-    
-    <h1>General modes</h1>
-    
-    <a href="index.php?action=tv" class="btn btn-primary">TV</a>
-    <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
-    <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
+    <div class="container">
+      <h3>General modes</h3>
+      
+      <a href="index.php?action=tv" class="btn btn-primary">TV</a>
+      <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
+      <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
 
-    <h1>All lights</h1>
-    
-    <a href="index.php?action=all_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=all_white" class="btn btn-primary">White</a>
-    <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
+      <h3>All lights</h3>
+      
+      <a href="index.php?action=all_on" class="btn btn-primary">On</a>
+      <a href="index.php?action=all_white" class="btn btn-primary">White</a>
+      <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=all_25" class="btn btn-primary">25%</a>
     <a href="index.php?action=all_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=all_75" class="btn btn-primary">75%</a>
     <a href="index.php?action=all_100" class="btn btn-primary">100%</a>
 
-        <h1>Sofa light</h1>
+	<h3>Sofa light</h3>
     
     <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
     <a href="index.php?action=sofa_white" class="btn btn-primary">White</a>
@@ -202,7 +202,7 @@
     <a href="index.php?action=sofa_75" class="btn btn-primary">75%</a>
     <a href="index.php?action=sofa_100" class="btn btn-primary">100%</a>
 
-    <h1>Side light</h1>
+    <h3>Side light</h3>
     
     <a href="index.php?action=side_on" class="btn btn-primary">On</a>
     <a href="index.php?action=side_white" class="btn btn-primary">White</a>
@@ -213,7 +213,7 @@
     <a href="index.php?action=side_75" class="btn btn-primary">75%</a>
     <a href="index.php?action=side_100" class="btn btn-primary">100%</a>
 
-    <h1>Desk light</h1>
+    <h3>Desk light</h3>
     
     <a href="index.php?action=desk_on" class="btn btn-primary">On</a>
     <a href="index.php?action=desk_white" class="btn btn-primary">White</a>
@@ -223,7 +223,7 @@
     <a href="index.php?action=desk_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=desk_75" class="btn btn-primary">75%</a>
     <a href="index.php?action=desk_100" class="btn btn-primary">100%</a>
-
+    </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
