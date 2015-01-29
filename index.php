@@ -204,10 +204,17 @@
     <a href="index.php?action=sofa_white" class="btn btn-primary">White</a>
     <a href="index.php?action=sofa_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=sofa_off" class="btn btn-primary">Off</a>
-    <a href="index.php?action=sofa_25" class="btn btn-primary">25%</a>
-    <a href="index.php?action=sofa_50" class="btn btn-primary">50%</a>
-    <a href="index.php?action=sofa_75" class="btn btn-primary">75%</a>
-    <a href="index.php?action=sofa_100" class="btn btn-primary">100%</a>
+      <div class="btn-group">
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	  Brightness <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+	  <li><a href="index.php?action=sofa_25">25%</a></li>
+	  <li><a href="index.php?action=sofa_50">50%</a></li>
+	  <li><a href="index.php?action=sofa_75">75%</a></li>
+	  <li><a href="index.php?action=sofa_100">100%</a></li>
+	</ul>
+      </div>
 
     <h3>Side light</h3>
     
@@ -215,10 +222,17 @@
     <a href="index.php?action=side_white" class="btn btn-primary">White</a>
     <a href="index.php?action=side_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=side_off" class="btn btn-primary">Off</a>
-    <a href="index.php?action=side_25" class="btn btn-primary">25%</a>
-    <a href="index.php?action=side_50" class="btn btn-primary">50%</a>
-    <a href="index.php?action=side_75" class="btn btn-primary">75%</a>
-    <a href="index.php?action=side_100" class="btn btn-primary">100%</a>
+      <div class="btn-group">
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	  Brightness <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+	  <li><a href="index.php?action=side_25">25%</a></li>
+	  <li><a href="index.php?action=side_50">50%</a></li>
+	  <li><a href="index.php?action=side_75">75%</a></li>
+	  <li><a href="index.php?action=side_100">100%</a></li>
+	</ul>
+      </div>
 
     <h3>Desk light</h3>
     
@@ -226,10 +240,17 @@
     <a href="index.php?action=desk_white" class="btn btn-primary">White</a>
     <a href="index.php?action=desk_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=desk_off" class="btn btn-primary">Off</a>
-    <a href="index.php?action=desk_25" class="btn btn-primary">25%</a>
-    <a href="index.php?action=desk_50" class="btn btn-primary">50%</a>
-    <a href="index.php?action=desk_75" class="btn btn-primary">75%</a>
-    <a href="index.php?action=desk_100" class="btn btn-primary">100%</a>
+      <div class="btn-group">
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	  Brightness <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+	  <li><a href="index.php?action=desk_25">25%</a></li>
+	  <li><a href="index.php?action=desk_50">50%</a></li>
+	  <li><a href="index.php?action=desk_75">75%</a></li>
+	  <li><a href="index.php?action=desk_100">100%</a></li>
+	</ul>
+      </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
