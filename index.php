@@ -37,7 +37,6 @@
     $milight->rgbwAllSetToWhite();
       }
       elseif ($_GET["action"]=="all_random") {
-       $milight->rgbwAllOn();
       $milight->rgbwSetActiveGroup(1);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       $milight->rgbwSetActiveGroup(2);
