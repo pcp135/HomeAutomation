@@ -33,8 +33,7 @@
       $milight->rgbwAllOff();
       }
       elseif ($_GET["action"]=="all_white") {
-       $milight->rgbwAllOn();
-    $milight->rgbwAllSetToWhite();
+      $milight->rgbwAllSetToWhite();
       }
       elseif ($_GET["action"]=="all_random") {
       $milight->rgbwSetActiveGroup(1);
