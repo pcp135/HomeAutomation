@@ -187,8 +187,8 @@
       <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
       <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	  Action <span class="caret"></span>
+	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	  Brightness <span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" role="menu">
 	  <li><a href="index.php?action=all_25">25%</a></li>
