@@ -26,6 +26,21 @@
        $milight = new Milight('192.168.1.7');
 
 
+       if ($_GET["action"]=="disco") {
+      $milight->rgbwSetActiveGroup(0);
+       $milight->rgbwDiscoMode();
+      }
+       if ($_GET["action"]=="tv") {
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      $milight->rgbwSetActiveGroup(0);
+      $milight->rgbwBrightnessPercent(50);
+      }
+
        if ($_GET["action"]=="all_on") {
        $milight->rgbwAllOn();
       }
@@ -159,6 +174,11 @@
       
       ?>
     
+    <h1>General modes</h1>
+    
+    <a href="index.php?action=tv" class="btn btn-primary">TV</a>
+    <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
+
     <h1>All lights</h1>
     
     <a href="index.php?action=all_on" class="btn btn-primary">On</a>
