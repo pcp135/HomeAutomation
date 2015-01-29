@@ -38,7 +38,11 @@
       }
       elseif ($_GET["action"]=="all_random") {
        $milight->rgbwAllOn();
-      $milight->rgbwSetActiveGroup(0);
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
       elseif ($_GET["action"]=="all_25") {
@@ -91,66 +95,66 @@
       }
 
       if ($_GET["action"]=="side_on") {
-       $milight->rgbwGroup2On();
+       $milight->rgbwGroup3On();
       }
       elseif ($_GET["action"]=="side_off") {
-      $milight->rgbwGroup2Off();
+      $milight->rgbwGroup3Off();
       }
       elseif ($_GET["action"]=="side_white") {
-       $milight->rgbwGroup2On();
-    $milight->rgbwGroup2SetToWhite();
+       $milight->rgbwGroup3On();
+    $milight->rgbwGroup3SetToWhite();
       }
       elseif ($_GET["action"]=="side_random") {
-       $milight->rgbwGroup2On();
-      $milight->rgbwSetActiveGroup(2);
+       $milight->rgbwGroup3On();
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
       elseif ($_GET["action"]=="side_25") {
-      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(25);
       }
       elseif ($_GET["action"]=="side_50") {
-      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(50);
       }
       elseif ($_GET["action"]=="side_75") {
-      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(75);
       }
       elseif ($_GET["action"]=="side_100") {
-      $milight->rgbwSetActiveGroup(2);
+      $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(100);
       }
 
       if ($_GET["action"]=="desk_on") {
-       $milight->rgbwGroup3On();
+       $milight->rgbwGroup2On();
       }
       elseif ($_GET["action"]=="desk_off") {
-      $milight->rgbwGroup3Off();
+      $milight->rgbwGroup2Off();
       }
       elseif ($_GET["action"]=="desk_white") {
-       $milight->rgbwGroup3On();
-    $milight->rgbwGroup3SetToWhite();
+       $milight->rgbwGroup2On();
+    $milight->rgbwGroup2SetToWhite();
       }
       elseif ($_GET["action"]=="desk_random") {
-       $milight->rgbwGroup3On();
-      $milight->rgbwSetActiveGroup(3);
+       $milight->rgbwGroup2On();
+      $milight->rgbwSetActiveGroup(2);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
       elseif ($_GET["action"]=="desk_25") {
-      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwSetActiveGroup(2);
       $milight->rgbwBrightnessPercent(25);
       }
       elseif ($_GET["action"]=="desk_50") {
-      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwSetActiveGroup(2);
       $milight->rgbwBrightnessPercent(50);
       }
       elseif ($_GET["action"]=="desk_75") {
-      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwSetActiveGroup(2);
       $milight->rgbwBrightnessPercent(75);
       }
       elseif ($_GET["action"]=="desk_100") {
-      $milight->rgbwSetActiveGroup(3);
+      $milight->rgbwSetActiveGroup(2);
       $milight->rgbwBrightnessPercent(100);
       }
 
