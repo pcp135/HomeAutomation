@@ -178,13 +178,14 @@
     
     <a href="index.php?action=tv" class="btn btn-primary">TV</a>
     <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
+    <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
 
     <h1>All lights</h1>
     
     <a href="index.php?action=all_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=all_white" class="btn btn-primary">White</a>
     <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=all_25" class="btn btn-primary">25%</a>
     <a href="index.php?action=all_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=all_75" class="btn btn-primary">75%</a>
@@ -193,9 +194,9 @@
         <h1>Sofa light</h1>
     
     <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=sofa_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=sofa_white" class="btn btn-primary">White</a>
     <a href="index.php?action=sofa_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=sofa_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=sofa_25" class="btn btn-primary">25%</a>
     <a href="index.php?action=sofa_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=sofa_75" class="btn btn-primary">75%</a>
@@ -204,9 +205,9 @@
     <h1>Side light</h1>
     
     <a href="index.php?action=side_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=side_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=side_white" class="btn btn-primary">White</a>
     <a href="index.php?action=side_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=side_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=side_25" class="btn btn-primary">25%</a>
     <a href="index.php?action=side_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=side_75" class="btn btn-primary">75%</a>
@@ -215,9 +216,9 @@
     <h1>Desk light</h1>
     
     <a href="index.php?action=desk_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=desk_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=desk_white" class="btn btn-primary">White</a>
     <a href="index.php?action=desk_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=desk_off" class="btn btn-primary">Off</a>
     <a href="index.php?action=desk_25" class="btn btn-primary">25%</a>
     <a href="index.php?action=desk_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=desk_75" class="btn btn-primary">75%</a>
