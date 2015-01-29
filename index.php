@@ -67,11 +67,9 @@
       $milight->rgbwGroup1Off();
       }
       elseif ($_GET["action"]=="sofa_white") {
-       $milight->rgbwGroup1On();
-    $milight->rgbwGroup1SetToWhite();
+      $milight->rgbwGroup1SetToWhite();
       }
       elseif ($_GET["action"]=="sofa_random") {
-       $milight->rgbwGroup1On();
       $milight->rgbwSetActiveGroup(1);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
@@ -99,11 +97,9 @@
       $milight->rgbwGroup3Off();
       }
       elseif ($_GET["action"]=="side_white") {
-       $milight->rgbwGroup3On();
-    $milight->rgbwGroup3SetToWhite();
+      $milight->rgbwGroup3SetToWhite();
       }
       elseif ($_GET["action"]=="side_random") {
-       $milight->rgbwGroup3On();
       $milight->rgbwSetActiveGroup(3);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
@@ -131,11 +127,9 @@
       $milight->rgbwGroup2Off();
       }
       elseif ($_GET["action"]=="desk_white") {
-       $milight->rgbwGroup2On();
-    $milight->rgbwGroup2SetToWhite();
+      $milight->rgbwGroup2SetToWhite();
       }
       elseif ($_GET["action"]=="desk_random") {
-       $milight->rgbwGroup2On();
       $milight->rgbwSetActiveGroup(2);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
