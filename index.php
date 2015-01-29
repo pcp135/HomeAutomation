@@ -185,12 +185,19 @@
       <a href="index.php?action=all_on" class="btn btn-primary">On</a>
       <a href="index.php?action=all_white" class="btn btn-primary">White</a>
       <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
-    <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
-    <a href="index.php?action=all_25" class="btn btn-primary">25%</a>
-    <a href="index.php?action=all_50" class="btn btn-primary">50%</a>
-    <a href="index.php?action=all_75" class="btn btn-primary">75%</a>
-    <a href="index.php?action=all_100" class="btn btn-primary">100%</a>
-
+      <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
+      <div class="btn-group">
+	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+	  Action <span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu">
+	  <li><a href="index.php?action=all_25">25%</a></li>
+	  <li><a href="index.php?action=all_50">50%</a></li>
+	  <li><a href="index.php?action=all_75">75%</a></li>
+	  <li><a href="index.php?action=all_100">100%</a></li>
+	</ul>
+      </div>
+      
 	<h3>Sofa light</h3>
     
     <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
