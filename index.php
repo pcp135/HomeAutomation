@@ -57,6 +57,41 @@
       $milight->rgbwSetActiveGroup(0);
       $milight->rgbwBrightnessPercent(100);
       }
+
+      if ($_GET["action"]=="sofa_on") {
+       $milight->rgbwGroup1On();
+      }
+      elseif ($_GET["action"]=="sofa_off") {
+      $milight->rgbwGroup1Off();
+      }
+      elseif ($_GET["action"]=="sofa_white") {
+       $milight->rgbwAllOn();
+    $milight->rgbwGroup1SetToWhite();
+      }
+      elseif ($_GET["action"]=="sofa_random") {
+       $milight->rgbwGroup1On();
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      }
+      elseif ($_GET["action"]=="sofa_25") {
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwBrightnessPercent(25);
+      }
+      elseif ($_GET["action"]=="sofa_50") {
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwBrightnessPercent(50);
+      }
+      elseif ($_GET["action"]=="sofa_75") {
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwBrightnessPercent(75);
+      }
+      elseif ($_GET["action"]=="sofa_100") {
+      $milight->rgbwSetActiveGroup(1);
+      $milight->rgbwBrightnessPercent(100);
+      }
+
+
+
       
       ?>
     
@@ -70,6 +105,17 @@
     <a href="index.php?action=all_50" class="btn btn-primary">50%</a>
     <a href="index.php?action=all_75" class="btn btn-primary">75%</a>
     <a href="index.php?action=all_100" class="btn btn-primary">100%</a>
+
+        <h1>Sofa light</h1>
+    
+    <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
+    <a href="index.php?action=sofa_off" class="btn btn-primary">Off</a>
+    <a href="index.php?action=sofa_white" class="btn btn-primary">White</a>
+    <a href="index.php?action=sofa_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=sofa_25" class="btn btn-primary">25%</a>
+    <a href="index.php?action=sofa_50" class="btn btn-primary">50%</a>
+    <a href="index.php?action=sofa_75" class="btn btn-primary">75%</a>
+    <a href="index.php?action=sofa_100" class="btn btn-primary">100%</a>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
