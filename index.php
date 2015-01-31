@@ -107,33 +107,33 @@
       $milight->rgbwBrightnessPercent(100);
       }
 
-      if ($_GET["action"]=="side_on") {
+      if ($_GET["action"]=="door_on") {
        $milight->rgbwGroup3On();
       }
-      elseif ($_GET["action"]=="side_off") {
+      elseif ($_GET["action"]=="door_off") {
       $milight->rgbwGroup3Off();
       }
-      elseif ($_GET["action"]=="side_white") {
+      elseif ($_GET["action"]=="door_white") {
       $milight->rgbwGroup3SetToWhite();
       $milight->rgbwGroup3SetToWhite();
       }
-      elseif ($_GET["action"]=="side_random") {
+      elseif ($_GET["action"]=="door_random") {
       $milight->rgbwSetActiveGroup(3);
       $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
       }
-      elseif ($_GET["action"]=="side_25") {
+      elseif ($_GET["action"]=="door_25") {
       $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(25);
       }
-      elseif ($_GET["action"]=="side_50") {
+      elseif ($_GET["action"]=="door_50") {
       $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(50);
       }
-      elseif ($_GET["action"]=="side_75") {
+      elseif ($_GET["action"]=="door_75") {
       $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(75);
       }
-      elseif ($_GET["action"]=="side_100") {
+      elseif ($_GET["action"]=="door_100") {
       $milight->rgbwSetActiveGroup(3);
       $milight->rgbwBrightnessPercent(100);
       }
@@ -216,21 +216,21 @@
 	</ul>
       </div>
 
-    <h3>Side light</h3>
+    <h3>Door light</h3>
     
-    <a href="index.php?action=side_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=side_white" class="btn btn-primary">White</a>
-    <a href="index.php?action=side_random" class="btn btn-primary">Random</a>
-    <a href="index.php?action=side_off" class="btn btn-primary">Off</a>
+    <a href="index.php?action=door_on" class="btn btn-primary">On</a>
+    <a href="index.php?action=door_white" class="btn btn-primary">White</a>
+    <a href="index.php?action=door_random" class="btn btn-primary">Random</a>
+    <a href="index.php?action=door_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
 	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 	  Brightness <span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" role="menu">
-	  <li><a href="index.php?action=side_25">25%</a></li>
-	  <li><a href="index.php?action=side_50">50%</a></li>
-	  <li><a href="index.php?action=side_75">75%</a></li>
-	  <li><a href="index.php?action=side_100">100%</a></li>
+	  <li><a href="index.php?action=door_25">25%</a></li>
+	  <li><a href="index.php?action=door_50">50%</a></li>
+	  <li><a href="index.php?action=door_75">75%</a></li>
+	  <li><a href="index.php?action=door_100">100%</a></li>
 	</ul>
       </div>
 
