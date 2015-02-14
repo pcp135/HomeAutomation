@@ -20,159 +20,126 @@
     
     <?php
 
-       //to keep it simple using require
-       require 'Milight.php';
-       
-       $milight = new Milight('192.168.1.7');
+//to keep it simple using require
+require 'Milight.php';
 
+$milight = new Milight('192.168.1.7');
 
-       if ($_GET["action"]=="disco") {
-      $milight->rgbwSetActiveGroup(0);
-       $milight->rgbwDiscoMode();
-      }
-       if ($_GET["action"]=="tv") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      $milight->rgbwSetActiveGroup(0);
-      $milight->rgbwBrightnessPercent(50);
-      }
+if ($_GET["action"] == "disco") {
+    $milight->rgbwSetActiveGroup(0);
+    $milight->rgbwDiscoMode();
+}
+if ($_GET["action"] == "tv") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $milight->rgbwSetActiveGroup(0);
+    $milight->rgbwBrightnessPercent(50);
+}
 
-       if ($_GET["action"]=="all_on") {
-       $milight->rgbwAllOn();
-      }
-      elseif ($_GET["action"]=="all_off") {
-      $milight->rgbwAllOff();
-      }
-      elseif ($_GET["action"]=="all_white") {
-      $milight->rgbwAllSetToWhite();
-      $milight->rgbwAllSetToWhite();
-      }
-      elseif ($_GET["action"]=="all_random") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      }
-      elseif ($_GET["action"]=="all_25") {
-      $milight->rgbwSetActiveGroup(0);
-      $milight->rgbwBrightnessPercent(25);
-      }
-      elseif ($_GET["action"]=="all_50") {
-      $milight->rgbwSetActiveGroup(0);
-      $milight->rgbwBrightnessPercent(50);
-      }
-      elseif ($_GET["action"]=="all_75") {
-      $milight->rgbwSetActiveGroup(0);
-      $milight->rgbwBrightnessPercent(75);
-      }
-      elseif ($_GET["action"]=="all_100") {
-      $milight->rgbwSetActiveGroup(0);
-      $milight->rgbwBrightnessPercent(100);
-      }
+if ($_GET["action"] == "all_on") {
+    $milight->rgbwAllOn();
+} elseif ($_GET["action"] == "all_off") {
+    $milight->rgbwAllOff();
+} elseif ($_GET["action"] == "all_white") {
+    $milight->rgbwAllSetToWhite();
+    $milight->rgbwAllSetToWhite();
+} elseif ($_GET["action"] == "all_random") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "all_25") {
+    $milight->rgbwSetActiveGroup(0);
+    $milight->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "all_50") {
+    $milight->rgbwSetActiveGroup(0);
+    $milight->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "all_75") {
+    $milight->rgbwSetActiveGroup(0);
+    $milight->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "all_100") {
+    $milight->rgbwSetActiveGroup(0);
+    $milight->rgbwBrightnessPercent(100);
+}
 
-      if ($_GET["action"]=="sofa_on") {
-       $milight->rgbwGroup1On();
-      }
-      elseif ($_GET["action"]=="sofa_off") {
-      $milight->rgbwGroup1Off();
-      }
-      elseif ($_GET["action"]=="sofa_white") {
-      $milight->rgbwGroup1SetToWhite();
-      $milight->rgbwGroup1SetToWhite();
-      }
-      elseif ($_GET["action"]=="sofa_random") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      }
-      elseif ($_GET["action"]=="sofa_25") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwBrightnessPercent(25);
-      }
-      elseif ($_GET["action"]=="sofa_50") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwBrightnessPercent(50);
-      }
-      elseif ($_GET["action"]=="sofa_75") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwBrightnessPercent(75);
-      }
-      elseif ($_GET["action"]=="sofa_100") {
-      $milight->rgbwSetActiveGroup(1);
-      $milight->rgbwBrightnessPercent(100);
-      }
+if ($_GET["action"] == "sofa_on") {
+    $milight->rgbwGroup1On();
+} elseif ($_GET["action"] == "sofa_off") {
+    $milight->rgbwGroup1Off();
+} elseif ($_GET["action"] == "sofa_white") {
+    $milight->rgbwGroup1SetToWhite();
+    $milight->rgbwGroup1SetToWhite();
+} elseif ($_GET["action"] == "sofa_random") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "sofa_25") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "sofa_50") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "sofa_75") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "sofa_100") {
+    $milight->rgbwSetActiveGroup(1);
+    $milight->rgbwBrightnessPercent(100);
+}
 
-      if ($_GET["action"]=="door_on") {
-       $milight->rgbwGroup3On();
-      }
-      elseif ($_GET["action"]=="door_off") {
-      $milight->rgbwGroup3Off();
-      }
-      elseif ($_GET["action"]=="door_white") {
-      $milight->rgbwGroup3SetToWhite();
-      $milight->rgbwGroup3SetToWhite();
-      }
-      elseif ($_GET["action"]=="door_random") {
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      }
-      elseif ($_GET["action"]=="door_25") {
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwBrightnessPercent(25);
-      }
-      elseif ($_GET["action"]=="door_50") {
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwBrightnessPercent(50);
-      }
-      elseif ($_GET["action"]=="door_75") {
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwBrightnessPercent(75);
-      }
-      elseif ($_GET["action"]=="door_100") {
-      $milight->rgbwSetActiveGroup(3);
-      $milight->rgbwBrightnessPercent(100);
-      }
+if ($_GET["action"] == "door_on") {
+    $milight->rgbwGroup3On();
+} elseif ($_GET["action"] == "door_off") {
+    $milight->rgbwGroup3Off();
+} elseif ($_GET["action"] == "door_white") {
+    $milight->rgbwGroup3SetToWhite();
+    $milight->rgbwGroup3SetToWhite();
+} elseif ($_GET["action"] == "door_random") {
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "door_25") {
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "door_50") {
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "door_75") {
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "door_100") {
+    $milight->rgbwSetActiveGroup(3);
+    $milight->rgbwBrightnessPercent(100);
+}
 
-      if ($_GET["action"]=="desk_on") {
-       $milight->rgbwGroup2On();
-      }
-      elseif ($_GET["action"]=="desk_off") {
-      $milight->rgbwGroup2Off();
-      }
-      elseif ($_GET["action"]=="desk_white") {
-      $milight->rgbwGroup2SetToWhite();
-      $milight->rgbwGroup2SetToWhite();
-      }
-      elseif ($_GET["action"]=="desk_random") {
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-      }
-      elseif ($_GET["action"]=="desk_25") {
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwBrightnessPercent(25);
-      }
-      elseif ($_GET["action"]=="desk_50") {
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwBrightnessPercent(50);
-      }
-      elseif ($_GET["action"]=="desk_75") {
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwBrightnessPercent(75);
-      }
-      elseif ($_GET["action"]=="desk_100") {
-      $milight->rgbwSetActiveGroup(2);
-      $milight->rgbwBrightnessPercent(100);
-      }
-
-
-
-      
-      ?>
+if ($_GET["action"] == "desk_on") {
+    $milight->rgbwGroup2On();
+} elseif ($_GET["action"] == "desk_off") {
+    $milight->rgbwGroup2Off();
+} elseif ($_GET["action"] == "desk_white") {
+    $milight->rgbwGroup2SetToWhite();
+    $milight->rgbwGroup2SetToWhite();
+} elseif ($_GET["action"] == "desk_random") {
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "desk_25") {
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "desk_50") {
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "desk_75") {
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "desk_100") {
+    $milight->rgbwSetActiveGroup(2);
+    $milight->rgbwBrightnessPercent(100);
+}
+?>
     <div class="container">
       <h3>General modes</h3>
       
@@ -187,33 +154,33 @@
       <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
       <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	  Brightness <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-	  <li><a href="index.php?action=all_25">25%</a></li>
-	  <li><a href="index.php?action=all_50">50%</a></li>
-	  <li><a href="index.php?action=all_75">75%</a></li>
-	  <li><a href="index.php?action=all_100">100%</a></li>
-	</ul>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=all_25">25%</a></li>
+    <li><a href="index.php?action=all_50">50%</a></li>
+    <li><a href="index.php?action=all_75">75%</a></li>
+    <li><a href="index.php?action=all_100">100%</a></li>
+  </ul>
       </div>
       
-	<h3>Sofa light</h3>
+  <h3>Sofa light</h3>
     
     <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
     <a href="index.php?action=sofa_white" class="btn btn-primary">White</a>
     <a href="index.php?action=sofa_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=sofa_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	  Brightness <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-	  <li><a href="index.php?action=sofa_25">25%</a></li>
-	  <li><a href="index.php?action=sofa_50">50%</a></li>
-	  <li><a href="index.php?action=sofa_75">75%</a></li>
-	  <li><a href="index.php?action=sofa_100">100%</a></li>
-	</ul>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=sofa_25">25%</a></li>
+    <li><a href="index.php?action=sofa_50">50%</a></li>
+    <li><a href="index.php?action=sofa_75">75%</a></li>
+    <li><a href="index.php?action=sofa_100">100%</a></li>
+  </ul>
       </div>
 
     <h3>Door light</h3>
@@ -223,15 +190,15 @@
     <a href="index.php?action=door_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=door_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	  Brightness <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-	  <li><a href="index.php?action=door_25">25%</a></li>
-	  <li><a href="index.php?action=door_50">50%</a></li>
-	  <li><a href="index.php?action=door_75">75%</a></li>
-	  <li><a href="index.php?action=door_100">100%</a></li>
-	</ul>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=door_25">25%</a></li>
+    <li><a href="index.php?action=door_50">50%</a></li>
+    <li><a href="index.php?action=door_75">75%</a></li>
+    <li><a href="index.php?action=door_100">100%</a></li>
+  </ul>
       </div>
 
     <h3>Desk light</h3>
@@ -241,15 +208,15 @@
     <a href="index.php?action=desk_random" class="btn btn-primary">Random</a>
     <a href="index.php?action=desk_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-	<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-	  Brightness <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-	  <li><a href="index.php?action=desk_25">25%</a></li>
-	  <li><a href="index.php?action=desk_50">50%</a></li>
-	  <li><a href="index.php?action=desk_75">75%</a></li>
-	  <li><a href="index.php?action=desk_100">100%</a></li>
-	</ul>
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=desk_25">25%</a></li>
+    <li><a href="index.php?action=desk_50">50%</a></li>
+    <li><a href="index.php?action=desk_75">75%</a></li>
+    <li><a href="index.php?action=desk_100">100%</a></li>
+  </ul>
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
