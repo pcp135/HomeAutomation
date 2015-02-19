@@ -21,11 +21,11 @@
     <?php
 
 //to keep it simple using require
-require 'milight.php';
+require 'Milight.php';
 
-$lounge = new milight('192.168.1.7');
-$hallway = new milight('192.168.1.8');
-$kitchen = new milight('192.168.1.9');
+$lounge = new Milight('192.168.1.7');
+$hallway = new Milight('192.168.1.8');
+$kitchen = new Milight('192.168.1.9');
 
 if ($_GET["action"] == "disco") {
     $lounge->rgbwSetActiveGroup(0);
@@ -35,6 +35,7 @@ if ($_GET["action"] == "disco") {
     $kitchen->rgbwSetActiveGroup(0);
     $kitchen->rgbwDiscoMode();
 }
+
 if ($_GET["action"] == "tv") {
     $lounge->rgbwSetActiveGroup(1);
     $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
