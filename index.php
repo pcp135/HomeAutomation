@@ -322,48 +322,50 @@ if ($_GET["action"] == "desk_on") {
 }
 ?>
     <div class="container">
-      <h3>General modes</h3>
+      <div class="well">
+        <h3>General modes</h3>
+        
+        <a href="index.php?action=tv" class="btn btn-primary">TV</a>
+        <a href="index.php?action=cooking" class="btn btn-primary">Cooking</a>
+        <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
+        <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
+      </div>  
+      <div class="well">
+        <h3>All lights</h3>
+        
+        <a href="index.php?action=all_on" class="btn btn-primary">On</a>
+        <a href="index.php?action=all_white" class="btn btn-primary">White</a>
+        <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
+        <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Brightness <span class="caret"></span>
+          </button> 
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="index.php?action=all_25">25%</a></li>
+            <li><a href="index.php?action=all_50">50%</a></li>
+            <li><a href="index.php?action=all_75">75%</a></li>
+            <li><a href="index.php?action=all_100">100%</a></li>
+          </ul>
+        </div>
       
-      <a href="index.php?action=tv" class="btn btn-primary">TV</a>
-      <a href="index.php?action=cooking" class="btn btn-primary">Cooking</a>
-      <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
-      <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
-
-      <h3>All lights</h3>
-      
-      <a href="index.php?action=all_on" class="btn btn-primary">On</a>
-      <a href="index.php?action=all_white" class="btn btn-primary">White</a>
-      <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
-      <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=all_25">25%</a></li>
-    <li><a href="index.php?action=all_50">50%</a></li>
-    <li><a href="index.php?action=all_75">75%</a></li>
-    <li><a href="index.php?action=all_100">100%</a></li>
-  </ul>
-      </div>
-
-      <h3>Lounge lights</h3>
-      
-      <a href="index.php?action=lounge_on" class="btn btn-primary">On</a>
-      <a href="index.php?action=lounge_white" class="btn btn-primary">White</a>
-      <a href="index.php?action=lounge_random" class="btn btn-primary">Random</a>
-      <a href="index.php?action=lounge_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=lounge_25">25%</a></li>
-    <li><a href="index.php?action=lounge_50">50%</a></li>
-    <li><a href="index.php?action=lounge_75">75%</a></li>
-    <li><a href="index.php?action=lounge_100">100%</a></li>
-  </ul>
-      </div>
+        <h3>Lounge lights</h3>
+        
+        <a href="index.php?action=lounge_on" class="btn btn-primary">On</a>
+        <a href="index.php?action=lounge_white" class="btn btn-primary">White</a>
+        <a href="index.php?action=lounge_random" class="btn btn-primary">Random</a>
+        <a href="index.php?action=lounge_off" class="btn btn-primary">Off</a>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            Brightness <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="index.php?action=lounge_25">25%</a></li>
+            <li><a href="index.php?action=lounge_50">50%</a></li>
+            <li><a href="index.php?action=lounge_75">75%</a></li>
+            <li><a href="index.php?action=lounge_100">100%</a></li>
+          </ul>
+        </div>
 
       <h3>Hallway lights</h3>
       
@@ -372,15 +374,15 @@ if ($_GET["action"] == "desk_on") {
       <a href="index.php?action=hallway_random" class="btn btn-primary">Random</a>
       <a href="index.php?action=hallway_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=hallway_25">25%</a></li>
-    <li><a href="index.php?action=hallway_50">50%</a></li>
-    <li><a href="index.php?action=hallway_75">75%</a></li>
-    <li><a href="index.php?action=hallway_100">100%</a></li>
-  </ul>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Brightness <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="index.php?action=hallway_25">25%</a></li>
+          <li><a href="index.php?action=hallway_50">50%</a></li>
+          <li><a href="index.php?action=hallway_75">75%</a></li>
+          <li><a href="index.php?action=hallway_100">100%</a></li>
+        </ul>
       </div>
 
       <h3>Kitchen lights</h3>
@@ -390,17 +392,18 @@ if ($_GET["action"] == "desk_on") {
       <a href="index.php?action=kitchen_random" class="btn btn-primary">Random</a>
       <a href="index.php?action=kitchen_off" class="btn btn-primary">Off</a>
       <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=kitchen_25">25%</a></li>
-    <li><a href="index.php?action=kitchen_50">50%</a></li>
-    <li><a href="index.php?action=kitchen_75">75%</a></li>
-    <li><a href="index.php?action=kitchen_100">100%</a></li>
-  </ul>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+          Brightness <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="index.php?action=kitchen_25">25%</a></li>
+          <li><a href="index.php?action=kitchen_50">50%</a></li>
+          <li><a href="index.php?action=kitchen_75">75%</a></li>
+          <li><a href="index.php?action=kitchen_100">100%</a></li>
+        </ul>
       </div>
-      
+    </div>
+          
   <h3>Sofa light</h3>
     
     <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
