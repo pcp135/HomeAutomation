@@ -61,7 +61,7 @@ if ($_GET["action"] == "tv") {
     $kitchen->rgbwGroup1SetToWhite();
     $kitchen->rgbwGroup1SetToWhite();
     $kitchen->rgbwSetActiveGroup(1);
-    $kitchen->rgbwBrightnessPercent(40);
+    $kitchen->rgbwBrightnessPercent(25);
 }
 
 if ($_GET["action"] == "cooking") {
