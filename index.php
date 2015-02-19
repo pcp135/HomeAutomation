@@ -58,14 +58,18 @@ if ($_GET["action"] == "tv") {
     $kitchen->rgbwGroup3Off();
     $kitchen->rgbwGroup4Off();
     $kitchen->rgbwGroup1On();
+    $kitchen->rgbwGroup1SetToWhite();
+    $kitchen->rgbwGroup1SetToWhite();
     $kitchen->rgbwSetActiveGroup(1);
-    $kitchen->rgbwBrightnessPercent(40);
-    $kitchen->rgbwGroup1SetToWhite();
-    $kitchen->rgbwGroup1SetToWhite();
     $kitchen->rgbwBrightnessPercent(40);
 }
 
 if ($_GET["action"] == "cooking") {
+    $kitchen->rgbwAllOn();
+    $kitchen->rgbwAllSetToWhite();
+    $kitchen->rgbwAllSetToWhite();
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(100);
     $lounge->rgbwSetActiveGroup(1);
     $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
     $lounge->rgbwSetActiveGroup(2);
@@ -83,11 +87,6 @@ if ($_GET["action"] == "cooking") {
     $hallway->rgbwSetActiveGroup(1);
     $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
     $hallway->rgbwBrightnessPercent(25);
-    $kitchen->rgbwAllOn();
-    $kitchen->rgbwAllSetToWhite();
-    $kitchen->rgbwAllSetToWhite();
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(100);
 }
 
 if ($_GET["action"] == "all_on") {
