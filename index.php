@@ -21,123 +21,272 @@
     <?php
 
 //to keep it simple using require
-require 'Milight.php';
+require 'milight.php';
 
-$milight = new Milight('192.168.1.7');
+$lounge = new milight('192.168.1.7');
+$hallway = new milight('192.168.1.8');
+$kitchen = new milight('192.168.1.9');
 
 if ($_GET["action"] == "disco") {
-    $milight->rgbwSetActiveGroup(0);
-    $milight->rgbwDiscoMode();
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwDiscoMode();
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwDiscoMode();
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwDiscoMode();
 }
 if ($_GET["action"] == "tv") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $milight->rgbwSetActiveGroup(0);
-    $milight->rgbwBrightnessPercent(50);
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(4);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(50);
+    $hallway->rgbwAllOff();
+    $hallway->rgbwGroup1On();
+    $hallway->rgbwSetActiveGroup(1);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwAllOff();
+    $hallway->rgbwGroup1On();
+    $kitchen->rgbwAllOff();
+    $kitchen->rgbwGroup1On();
+    $kitchen->rgbwGroup1SetToWhite();
 }
 
 if ($_GET["action"] == "all_on") {
-    $milight->rgbwAllOn();
+    $lounge->rgbwAllOn();
+    $hallway->rgbwAllOn();
+    $kitchen->rgbwAllOn();
 } elseif ($_GET["action"] == "all_off") {
-    $milight->rgbwAllOff();
+    $lounge->rgbwAllOff();
+    $hallway->rgbwAllOff();
+    $kitchen->rgbwAllOff();
 } elseif ($_GET["action"] == "all_white") {
-    $milight->rgbwAllSetToWhite();
-    $milight->rgbwAllSetToWhite();
+    $lounge->rgbwAllSetToWhite();
+    $lounge->rgbwAllSetToWhite();
+    $hallway->rgbwAllSetToWhite();
+    $hallway->rgbwAllSetToWhite();
+    $kitchen->rgbwAllSetToWhite();
+    $kitchen->rgbwAllSetToWhite();
 } elseif ($_GET["action"] == "all_random") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(4);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(1);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(2);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(3);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(4);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(1);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(2);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(3);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(4);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 } elseif ($_GET["action"] == "all_25") {
-    $milight->rgbwSetActiveGroup(0);
-    $milight->rgbwBrightnessPercent(25);
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(25);
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(25);
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(25);
 } elseif ($_GET["action"] == "all_50") {
-    $milight->rgbwSetActiveGroup(0);
-    $milight->rgbwBrightnessPercent(50);
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(50);
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(50);
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(50);
 } elseif ($_GET["action"] == "all_75") {
-    $milight->rgbwSetActiveGroup(0);
-    $milight->rgbwBrightnessPercent(75);
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(75);
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(75);
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(75);
 } elseif ($_GET["action"] == "all_100") {
-    $milight->rgbwSetActiveGroup(0);
-    $milight->rgbwBrightnessPercent(100);
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(100);
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(100);
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(100);
+}
+
+if ($_GET["action"] == "lounge_on") {
+    $lounge->rgbwAllOn();
+} elseif ($_GET["action"] == "lounge_off") {
+    $lounge->rgbwAllOff();
+} elseif ($_GET["action"] == "lounge_white") {
+    $lounge->rgbwAllSetToWhite();
+    $lounge->rgbwAllSetToWhite();
+} elseif ($_GET["action"] == "lounge_random") {
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(4);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "lounge_25") {
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "lounge_50") {
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "lounge_75") {
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "lounge_100") {
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(100);
+}
+
+if ($_GET["action"] == "hallway_on") {
+    $hallway->rgbwAllOn();
+} elseif ($_GET["action"] == "hallway_off") {
+    $hallway->rgbwAllOff();
+} elseif ($_GET["action"] == "hallway_white") {
+    $hallway->rgbwAllSetToWhite();
+    $hallway->rgbwAllSetToWhite();
+} elseif ($_GET["action"] == "hallway_random") {
+    $hallway->rgbwSetActiveGroup(1);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(2);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(3);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwSetActiveGroup(4);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "hallway_25") {
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "hallway_50") {
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "hallway_75") {
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "hallway_100") {
+    $hallway->rgbwSetActiveGroup(0);
+    $hallway->rgbwBrightnessPercent(100);
+}
+
+if ($_GET["action"] == "kitchen_on") {
+    $kitchen->rgbwAllOn();
+} elseif ($_GET["action"] == "kitchen_off") {
+    $kitchen->rgbwAllOff();
+} elseif ($_GET["action"] == "kitchen_white") {
+    $kitchen->rgbwAllSetToWhite();
+    $kitchen->rgbwAllSetToWhite();
+} elseif ($_GET["action"] == "kitchen_random") {
+    $kitchen->rgbwSetActiveGroup(1);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(2);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(3);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $kitchen->rgbwSetActiveGroup(4);
+    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+} elseif ($_GET["action"] == "kitchen_25") {
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(25);
+} elseif ($_GET["action"] == "kitchen_50") {
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(50);
+} elseif ($_GET["action"] == "kitchen_75") {
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(75);
+} elseif ($_GET["action"] == "kitchen_100") {
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(100);
 }
 
 if ($_GET["action"] == "sofa_on") {
-    $milight->rgbwGroup1On();
+    $lounge->rgbwGroup1On();
 } elseif ($_GET["action"] == "sofa_off") {
-    $milight->rgbwGroup1Off();
+    $lounge->rgbwGroup1Off();
 } elseif ($_GET["action"] == "sofa_white") {
-    $milight->rgbwGroup1SetToWhite();
-    $milight->rgbwGroup1SetToWhite();
+    $lounge->rgbwGroup1SetToWhite();
+    $lounge->rgbwGroup1SetToWhite();
 } elseif ($_GET["action"] == "sofa_random") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 } elseif ($_GET["action"] == "sofa_25") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwBrightnessPercent(25);
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwBrightnessPercent(25);
 } elseif ($_GET["action"] == "sofa_50") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwBrightnessPercent(50);
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwBrightnessPercent(50);
 } elseif ($_GET["action"] == "sofa_75") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwBrightnessPercent(75);
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwBrightnessPercent(75);
 } elseif ($_GET["action"] == "sofa_100") {
-    $milight->rgbwSetActiveGroup(1);
-    $milight->rgbwBrightnessPercent(100);
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwBrightnessPercent(100);
 }
 
 if ($_GET["action"] == "door_on") {
-    $milight->rgbwGroup3On();
+    $lounge->rgbwGroup3On();
 } elseif ($_GET["action"] == "door_off") {
-    $milight->rgbwGroup3Off();
+    $lounge->rgbwGroup3Off();
 } elseif ($_GET["action"] == "door_white") {
-    $milight->rgbwGroup3SetToWhite();
-    $milight->rgbwGroup3SetToWhite();
+    $lounge->rgbwGroup3SetToWhite();
+    $lounge->rgbwGroup3SetToWhite();
 } elseif ($_GET["action"] == "door_random") {
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 } elseif ($_GET["action"] == "door_25") {
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwBrightnessPercent(25);
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwBrightnessPercent(25);
 } elseif ($_GET["action"] == "door_50") {
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwBrightnessPercent(50);
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwBrightnessPercent(50);
 } elseif ($_GET["action"] == "door_75") {
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwBrightnessPercent(75);
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwBrightnessPercent(75);
 } elseif ($_GET["action"] == "door_100") {
-    $milight->rgbwSetActiveGroup(3);
-    $milight->rgbwBrightnessPercent(100);
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwBrightnessPercent(100);
 }
 
 if ($_GET["action"] == "desk_on") {
-    $milight->rgbwGroup2On();
+    $lounge->rgbwGroup2On();
 } elseif ($_GET["action"] == "desk_off") {
-    $milight->rgbwGroup2Off();
+    $lounge->rgbwGroup2Off();
 } elseif ($_GET["action"] == "desk_white") {
-    $milight->rgbwGroup2SetToWhite();
-    $milight->rgbwGroup2SetToWhite();
+    $lounge->rgbwGroup2SetToWhite();
+    $lounge->rgbwGroup2SetToWhite();
 } elseif ($_GET["action"] == "desk_random") {
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 } elseif ($_GET["action"] == "desk_25") {
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwBrightnessPercent(25);
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwBrightnessPercent(25);
 } elseif ($_GET["action"] == "desk_50") {
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwBrightnessPercent(50);
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwBrightnessPercent(50);
 } elseif ($_GET["action"] == "desk_75") {
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwBrightnessPercent(75);
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwBrightnessPercent(75);
 } elseif ($_GET["action"] == "desk_100") {
-    $milight->rgbwSetActiveGroup(2);
-    $milight->rgbwBrightnessPercent(100);
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwBrightnessPercent(100);
 }
 ?>
     <div class="container">
