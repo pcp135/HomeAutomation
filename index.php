@@ -47,15 +47,45 @@ if ($_GET["action"] == "tv") {
     $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
     $lounge->rgbwSetActiveGroup(0);
     $lounge->rgbwBrightnessPercent(50);
-    $hallway->rgbwAllOff();
+    $hallway->rgbwGroup2Off();
+    $hallway->rgbwGroup3Off();
+    $hallway->rgbwGroup4Off();
     $hallway->rgbwGroup1On();
     $hallway->rgbwSetActiveGroup(1);
     $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $hallway->rgbwAllOff();
-    $hallway->rgbwGroup1On();
-    $kitchen->rgbwAllOff();
+    $hallway->rgbwBrightnessPercent(25);
+    $kitchen->rgbwGroup2Off();
+    $kitchen->rgbwGroup3Off();
+    $kitchen->rgbwGroup4Off();
     $kitchen->rgbwGroup1On();
+    $kitchen->rgbwSetActiveGroup(1);
     $kitchen->rgbwGroup1SetToWhite();
+    $kitchen->rgbwBrightnessPercent(50);
+}
+
+if ($_GET["action"] == "cooking") {
+    $lounge->rgbwSetActiveGroup(1);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(2);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(3);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(4);
+    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $lounge->rgbwSetActiveGroup(0);
+    $lounge->rgbwBrightnessPercent(50);
+    $hallway->rgbwGroup2Off();
+    $hallway->rgbwGroup3Off();
+    $hallway->rgbwGroup4Off();
+    $hallway->rgbwGroup1On();
+    $hallway->rgbwSetActiveGroup(1);
+    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+    $hallway->rgbwBrightnessPercent(25);
+    $kitchen->rgbwAllOn();
+    $kitchen->rgbwAllSetToWhite();
+    $kitchen->rgbwAllSetToWhite();
+    $kitchen->rgbwSetActiveGroup(0);
+    $kitchen->rgbwBrightnessPercent(50);
 }
 
 if ($_GET["action"] == "all_on") {
@@ -294,6 +324,7 @@ if ($_GET["action"] == "desk_on") {
       <h3>General modes</h3>
       
       <a href="index.php?action=tv" class="btn btn-primary">TV</a>
+      <a href="index.php?action=cooking" class="btn btn-primary">Cooking</a>
       <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
       <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
 
@@ -312,6 +343,60 @@ if ($_GET["action"] == "desk_on") {
     <li><a href="index.php?action=all_50">50%</a></li>
     <li><a href="index.php?action=all_75">75%</a></li>
     <li><a href="index.php?action=all_100">100%</a></li>
+  </ul>
+      </div>
+
+      <h3>Lounge lights</h3>
+      
+      <a href="index.php?action=lounge_on" class="btn btn-primary">On</a>
+      <a href="index.php?action=lounge_white" class="btn btn-primary">White</a>
+      <a href="index.php?action=lounge_random" class="btn btn-primary">Random</a>
+      <a href="index.php?action=lounge_off" class="btn btn-primary">Off</a>
+      <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=lounge_25">25%</a></li>
+    <li><a href="index.php?action=lounge_50">50%</a></li>
+    <li><a href="index.php?action=lounge_75">75%</a></li>
+    <li><a href="index.php?action=lounge_100">100%</a></li>
+  </ul>
+      </div>
+
+      <h3>Hallway lights</h3>
+      
+      <a href="index.php?action=hallway_on" class="btn btn-primary">On</a>
+      <a href="index.php?action=hallway_white" class="btn btn-primary">White</a>
+      <a href="index.php?action=hallway_random" class="btn btn-primary">Random</a>
+      <a href="index.php?action=hallway_off" class="btn btn-primary">Off</a>
+      <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=hallway_25">25%</a></li>
+    <li><a href="index.php?action=hallway_50">50%</a></li>
+    <li><a href="index.php?action=hallway_75">75%</a></li>
+    <li><a href="index.php?action=hallway_100">100%</a></li>
+  </ul>
+      </div>
+
+      <h3>Kitchen lights</h3>
+      
+      <a href="index.php?action=kitchen_on" class="btn btn-primary">On</a>
+      <a href="index.php?action=kitchen_white" class="btn btn-primary">White</a>
+      <a href="index.php?action=kitchen_random" class="btn btn-primary">Random</a>
+      <a href="index.php?action=kitchen_off" class="btn btn-primary">Off</a>
+      <div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+    Brightness <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="index.php?action=kitchen_25">25%</a></li>
+    <li><a href="index.php?action=kitchen_50">50%</a></li>
+    <li><a href="index.php?action=kitchen_75">75%</a></li>
+    <li><a href="index.php?action=kitchen_100">100%</a></li>
   </ul>
       </div>
       
