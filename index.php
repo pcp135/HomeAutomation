@@ -21,6 +21,7 @@
     <?php
     //to keep it simple using require
     require 'Milight.php';
+    date_default_timezone_set('Europe/Berlin');
     echo date();
     
     $lounge = new Milight('192.168.1.7');
