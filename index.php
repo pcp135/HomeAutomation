@@ -23,6 +23,7 @@
     require 'Milight.php';
     date_default_timezone_set('Europe/Berlin');
     echo date('d/m/Y == H:i:s');
+    echo date("D M d Y"). ', sunset time : ' .date_sunset(time(), SUNFUNCS_RET_STRING, 38.4, -9, 90, 1);
     
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
