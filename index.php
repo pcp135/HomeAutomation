@@ -21,9 +21,9 @@
     <?php
     //to keep it simple using require
     require 'Milight.php';
-    echo time();
-    echo "<BR>".date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1);
-      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
+    echo date("H:i:s",time());
+    echo "<BR>".date("H:i:s",date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1));
+    if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
       echo "<BR>it's dark<BR>";
     }
     else {
