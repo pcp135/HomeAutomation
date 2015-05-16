@@ -20,21 +20,20 @@
     
     <?php
 
-//to keep it simple using require
-require 'Milight.php';
-
-$lounge = new Milight('192.168.1.7');
-$hallway = new Milight('192.168.1.8');
-$kitchen = new Milight('192.168.1.9');
-
-if ($_GET["action"] == "disco") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwDiscoMode();
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwDiscoMode();
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwDiscoMode();
-}
+    //to keep it simple using require
+    require 'Milight.php';
+    
+    $lounge = new Milight('192.168.1.7');
+    $hallway = new Milight('192.168.1.8');
+    $kitchen = new Milight('192.168.1.9');
+    $rooms = array($lounge, $hallway, $kitchen);
+    
+    if ($_GET["action"] == "disco") {
+      foreach ($rooms as &$room) {
+	$room->rgbwSetActiveGroup(0);
+	$room->rgbwDiscoMode();
+      }
+    }
 
 if ($_GET["action"] == "tv") {
     $lounge->rgbwSetActiveGroup(1);
