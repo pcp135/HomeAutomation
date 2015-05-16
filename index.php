@@ -208,83 +208,28 @@
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen");
 	foreach ($rooms as &$room): ?>
-
+	
 	<h3><?php echo $room; ?> lights</h3>
-	<?php echo strtolower($room) ?>
-	<?php endforeach; ?>
-
-	<h3><?php echo "All"; ?> lights</h3>
         
-        <a href="index.php?action=all_on" class="btn btn-primary">On</a>
-        <a href="index.php?action=all_white" class="btn btn-primary">White</a>
-        <a href="index.php?action=all_random" class="btn btn-primary">Random</a>
-        <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
+        <a href="index.php?action=<?php echo strtolower($room) ?>_on" class="btn btn-primary">On</a>
+        <a href="index.php?action=<?php echo strtolower($room) ?>_white" class="btn btn-primary">White</a>
+        <a href="index.php?action=<?php echo strtolower($room) ?>_random" class="btn btn-primary">Random</a>
+        <a href="index.php?action=<?php echo strtolower($room) ?>_off" class="btn btn-primary">Off</a>
         <div class="btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Brightness <span class="caret"></span>
           </button> 
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?action=all_25">25%</a></li>
-            <li><a href="index.php?action=all_50">50%</a></li>
-            <li><a href="index.php?action=all_75">75%</a></li>
-            <li><a href="index.php?action=all_100">100%</a></li>
+            <li><a href="index.php?action=<?php echo strtolower($room) ?>_25">25%</a></li>
+            <li><a href="index.php?action=<?php echo strtolower($room) ?>_50">50%</a></li>
+            <li><a href="index.php?action=<?php echo strtolower($room) ?>_75">75%</a></li>
+            <li><a href="index.php?action=<?php echo strtolower($room) ?>_100">100%</a></li>
           </ul>
         </div>
 	
-        <h3>Lounge lights</h3>
-        
-        <a href="index.php?action=lounge_on" class="btn btn-primary">On</a>
-        <a href="index.php?action=lounge_white" class="btn btn-primary">White</a>
-        <a href="index.php?action=lounge_random" class="btn btn-primary">Random</a>
-        <a href="index.php?action=lounge_off" class="btn btn-primary">Off</a>
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Brightness <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?action=lounge_25">25%</a></li>
-            <li><a href="index.php?action=lounge_50">50%</a></li>
-            <li><a href="index.php?action=lounge_75">75%</a></li>
-            <li><a href="index.php?action=lounge_100">100%</a></li>
-          </ul>
-        </div>
-
-      <h3>Hallway lights</h3>
-      
-      <a href="index.php?action=hallway_on" class="btn btn-primary">On</a>
-      <a href="index.php?action=hallway_white" class="btn btn-primary">White</a>
-      <a href="index.php?action=hallway_random" class="btn btn-primary">Random</a>
-      <a href="index.php?action=hallway_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          Brightness <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="index.php?action=hallway_25">25%</a></li>
-          <li><a href="index.php?action=hallway_50">50%</a></li>
-          <li><a href="index.php?action=hallway_75">75%</a></li>
-          <li><a href="index.php?action=hallway_100">100%</a></li>
-        </ul>
+	<?php endforeach; ?>
+	
       </div>
-
-      <h3>Kitchen lights</h3>
-      
-      <a href="index.php?action=kitchen_on" class="btn btn-primary">On</a>
-      <a href="index.php?action=kitchen_white" class="btn btn-primary">White</a>
-      <a href="index.php?action=kitchen_random" class="btn btn-primary">Random</a>
-      <a href="index.php?action=kitchen_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          Brightness <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="index.php?action=kitchen_25">25%</a></li>
-          <li><a href="index.php?action=kitchen_50">50%</a></li>
-          <li><a href="index.php?action=kitchen_75">75%</a></li>
-          <li><a href="index.php?action=kitchen_100">100%</a></li>
-        </ul>
-      </div>
-    </div>
           
   <h3>Sofa light</h3>
     
