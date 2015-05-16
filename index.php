@@ -65,11 +65,11 @@
       $rooms = array($hallway);
       $group = 1;
     }
-    elseif (strpos($_GET["action"],'picright') !== false) {
+    elseif (strpos($_GET["action"],'pictureright') !== false) {
       $rooms = array($hallway);
       $group = 2;
     }
-    elseif (strpos($_GET["action"],'picleft') !== false) {
+    elseif (strpos($_GET["action"],'pictureleft') !== false) {
       $rooms = array($hallway);
       $group = 3;
     }
@@ -82,7 +82,7 @@
       $rooms = array($lounge);
       $group = 1;
     }
-    elseif (strpos($_GET["action"],'door') !== false) {
+    elseif (strpos($_GET["action"],'loungedoor') !== false) {
       $rooms = array($lounge);
       $group = 2;
     }
@@ -90,7 +90,7 @@
       $rooms = array($lounge);
       $group = 3;
     }
-    elseif (strpos($_GET["action"],'sideboard') !== false) {
+    elseif (strpos($_GET["action"],'sidecupboards') !== false) {
       $rooms = array($lounge);
       $group = 4;
     }
@@ -206,24 +206,24 @@
       </div>  
       <div class="well">
 	<?php
-	$rooms=array("All","Lounge","Hallway","Kitchen");
+	$rooms=array("All","Lounge","Hallway","Kitchen",'Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
 	foreach ($rooms as &$room): ?>
 	
 	<h3><?php echo $room; ?> lights</h3>
         
-        <a href="index.php?action=<?php echo strtolower($room) ?>_on" class="btn btn-primary">On</a>
-        <a href="index.php?action=<?php echo strtolower($room) ?>_white" class="btn btn-primary">White</a>
-        <a href="index.php?action=<?php echo strtolower($room) ?>_random" class="btn btn-primary">Random</a>
-        <a href="index.php?action=<?php echo strtolower($room) ?>_off" class="btn btn-primary">Off</a>
+        <a href="index.php?action=<?php echo str_replace(' ', '',strtolower($room)) ?>_on" class="btn btn-primary">On</a>
+        <a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_white" class="btn btn-primary">White</a>
+        <a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_random" class="btn btn-primary">Random</a>
+        <a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_off" class="btn btn-primary">Off</a>
         <div class="btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Brightness <span class="caret"></span>
           </button> 
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?action=<?php echo strtolower($room) ?>_25">25%</a></li>
-            <li><a href="index.php?action=<?php echo strtolower($room) ?>_50">50%</a></li>
-            <li><a href="index.php?action=<?php echo strtolower($room) ?>_75">75%</a></li>
-            <li><a href="index.php?action=<?php echo strtolower($room) ?>_100">100%</a></li>
+            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_25">25%</a></li>
+            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_50">50%</a></li>
+            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_75">75%</a></li>
+            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_100">100%</a></li>
           </ul>
         </div>
 	
@@ -231,59 +231,6 @@
 	
       </div>
           
-  <h3>Sofa light</h3>
-    
-    <a href="index.php?action=sofa_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=sofa_white" class="btn btn-primary">White</a>
-    <a href="index.php?action=sofa_random" class="btn btn-primary">Random</a>
-    <a href="index.php?action=sofa_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=sofa_25">25%</a></li>
-    <li><a href="index.php?action=sofa_50">50%</a></li>
-    <li><a href="index.php?action=sofa_75">75%</a></li>
-    <li><a href="index.php?action=sofa_100">100%</a></li>
-  </ul>
-      </div>
-
-    <h3>Door light</h3>
-    
-    <a href="index.php?action=door_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=door_white" class="btn btn-primary">White</a>
-    <a href="index.php?action=door_random" class="btn btn-primary">Random</a>
-    <a href="index.php?action=door_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=door_25">25%</a></li>
-    <li><a href="index.php?action=door_50">50%</a></li>
-    <li><a href="index.php?action=door_75">75%</a></li>
-    <li><a href="index.php?action=door_100">100%</a></li>
-  </ul>
-      </div>
-
-    <h3>Desk light</h3>
-    
-    <a href="index.php?action=desk_on" class="btn btn-primary">On</a>
-    <a href="index.php?action=desk_white" class="btn btn-primary">White</a>
-    <a href="index.php?action=desk_random" class="btn btn-primary">Random</a>
-    <a href="index.php?action=desk_off" class="btn btn-primary">Off</a>
-      <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-    Brightness <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="index.php?action=desk_25">25%</a></li>
-    <li><a href="index.php?action=desk_50">50%</a></li>
-    <li><a href="index.php?action=desk_75">75%</a></li>
-    <li><a href="index.php?action=desk_100">100%</a></li>
-  </ul>
-      </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
