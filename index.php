@@ -30,7 +30,6 @@
 
     if (strpos($_GET["action"],'hallway') !== false) {
       $rooms = array($hallway);
-      echo 'hallway';
     }
     elseif (strpos($_GET["action"],'all') !== false) {
       $rooms = $allrooms;
@@ -84,7 +83,6 @@
     if (strpos($_GET["action"],"on") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllOn();
-      echo 'on';
       }
     }
     elseif (strpos($_GET["action"],"off") !== false) {
