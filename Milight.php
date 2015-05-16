@@ -216,6 +216,37 @@ class Milight
         $this->rgbwAllOn();
         return true;
     }
+    public function rgbwSendOnToGroup($group)
+    {
+        if ($group > 0) {
+            $activeGroupOnCommand = 'rgbwGroup' . $group . 'On';
+            $this->command($activeGroupOnCommand);
+            return true;
+        }
+        $this->rgbwAllOn();
+        return true;
+    }
+    public function rgbwSendOffToGroup($group)
+    {
+        if ($group > 0) {
+            $activeGroupOffCommand = 'rgbwGroup' . $group . 'Off';
+            $this->command($activeGroupOffCommand);
+            return true;
+        }
+        $this->rgbwAllOff();
+        return true;
+    }
+
+    public function rgbwSendOffToActiveGroup()
+    {
+        if ($this->getRgbwActiveGroup() > 0) {
+            $activeGroupOffCommand = 'rgbwGroup' . $this->getRgbwActiveGroup() . 'Off';
+            $this->command($activeGroupOffCommand);
+            return true;
+        }
+        $this->rgbwAllOff();
+        return true;
+    }
 
     public function whiteSendOnToActiveGroup()
     {

@@ -29,15 +29,19 @@
 
     if (strpos($_GET["action"],'hallway') !== false) {
       $rooms = array($hallway);
+      $group = 0;
     }
     elseif (strpos($_GET["action"],'all') !== false) {
       $rooms = $allrooms;
+      $group = 0;
     }
     elseif (strpos($_GET["action"],'lounge') !== false) {
       $rooms = array($lounge);
+      $group = 0;
     }
     elseif (strpos($_GET["action"],'kitchen') !== false) {
       $rooms = array($kitchen);
+      $group = 0;
     }
     else {
       
@@ -47,7 +51,7 @@
 	  $room->rgbwDiscoMode();
 	}
       }
-      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)-3600) {
+      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
 	if ($_GET["action"] == "tv") {
 	  for ($bulb=1; $bulb<5; $bulb++) {
 	    $lounge->rgbwSetActiveGroup($bulb);
@@ -85,13 +89,12 @@
     }
     if (strpos($_GET["action"],"on") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwAllOn();
+	$room->rgbwSendOnToGroup($group);
       }
     }
     elseif (strpos($_GET["action"],"off") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwAllOff();
-	$room->rgbwAllOff();
+	$room->rgbwSendOffToGroup($group);
       }
     }
     elseif (strpos($_GET["action"],"white") !== false) {
