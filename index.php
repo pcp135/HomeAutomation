@@ -88,15 +88,16 @@ if ($_GET["action"] == "cooking") {
     $hallway->rgbwBrightnessPercent(25);
 }
 
-if ($_GET["action"] == "all_on") {
-    $lounge->rgbwAllOn();
-    $hallway->rgbwAllOn();
-    $kitchen->rgbwAllOn();
-} elseif ($_GET["action"] == "all_off") {
-    $lounge->rgbwAllOff();
-    $hallway->rgbwAllOff();
-    $kitchen->rgbwAllOff();
-} elseif ($_GET["action"] == "all_white") {
+    if ($_GET["action"] == "all_on") {
+      foreach ($rooms as &$room) {
+	$room->rgbwAllOn();
+      }
+    }
+    elseif ($_GET["action"] == "all_off") {
+      foreach ($rooms as &$room) {
+	$room->rgbwAllOff();
+      }
+    } elseif ($_GET["action"] == "all_white") {
     $lounge->rgbwAllSetToWhite();
     $lounge->rgbwAllSetToWhite();
     $hallway->rgbwAllSetToWhite();
