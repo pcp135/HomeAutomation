@@ -207,7 +207,7 @@
       <div class="well">
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen");
-	foreach ($rooms as &$room); ?>
+	foreach ($rooms as &$room): ?>
 
 	<h3><?php echo $room; ?> lights</h3>
 
