@@ -21,9 +21,9 @@
     <?php
     //to keep it simple using require
     require 'Milight.php';
-    echo "<BR>".time();
-    echo "<BR>".date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2);
-    if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2)) {
+    echo time();
+    echo "<BR>".date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 3);
+      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 3)) {
       echo "<BR>it's dark<BR>";
     }
     else {
@@ -55,38 +55,40 @@
 	  $room->rgbwDiscoMode();
 	}
       }
-      if ($_GET["action"] == "tv") {
-	for ($bulb=1; $bulb<5; $bulb++) {
-	  $lounge->rgbwSetActiveGroup($bulb);
-	  $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	  $lounge->rgbwBrightnessPercent(50);
+      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 3)) {
+	if ($_GET["action"] == "tv") {
+	  for ($bulb=1; $bulb<5; $bulb++) {
+	    $lounge->rgbwSetActiveGroup($bulb);
+	    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	    $lounge->rgbwBrightnessPercent(50);
+	  }
+	  $hallway->rgbwAllOff();
+	  $hallway->rgbwAllOff();
+	  $hallway->rgbwSetActiveGroup(1);
+	  $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	  $hallway->rgbwBrightnessPercent(25);
+	  $kitchen->rgbwAllOff();
+	  $kitchen->rgbwAllOff();
+	  $kitchen->rgbwGroup1SetToWhite();
+	  $kitchen->rgbwSetActiveGroup(1);
+	  $kitchen->rgbwBrightnessPercent(25);
 	}
-	$hallway->rgbwAllOff();
-	$hallway->rgbwAllOff();
-	$hallway->rgbwSetActiveGroup(1);
-	$hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	$hallway->rgbwBrightnessPercent(25);
-	$kitchen->rgbwAllOff();
-	$kitchen->rgbwAllOff();
-	$kitchen->rgbwGroup1SetToWhite();
-	$kitchen->rgbwSetActiveGroup(1);
-	$kitchen->rgbwBrightnessPercent(25);
-      }
-      if ($_GET["action"] == "cooking") {
-	$kitchen->rgbwAllOn();
-	$kitchen->rgbwAllSetToWhite();
-	$kitchen->rgbwSetActiveGroup(0);
-	$kitchen->rgbwBrightnessPercent(100);
-	for ($bulb=1; $bulb<5; $bulb++) {
-	  $lounge->rgbwSetActiveGroup($bulb);
-	  $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	  $lounge->rgbwBrightnessPercent(50);
+	if ($_GET["action"] == "cooking") {
+	  $kitchen->rgbwAllOn();
+	  $kitchen->rgbwAllSetToWhite();
+	  $kitchen->rgbwSetActiveGroup(0);
+	  $kitchen->rgbwBrightnessPercent(100);
+	  for ($bulb=1; $bulb<5; $bulb++) {
+	    $lounge->rgbwSetActiveGroup($bulb);
+	    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	    $lounge->rgbwBrightnessPercent(50);
+	  }
+	  $hallway->rgbwAllOff();
+	  $hallway->rgbwAllOff();
+	  $hallway->rgbwSetActiveGroup(1);
+	  $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	  $hallway->rgbwBrightnessPercent(25);
 	}
-	$hallway->rgbwAllOff();
-	$hallway->rgbwAllOff();
-	$hallway->rgbwSetActiveGroup(1);
-	$hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	$hallway->rgbwBrightnessPercent(25);
       }
     }
     if (strpos($_GET["action"],"on") !== false) {
