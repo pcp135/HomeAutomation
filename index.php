@@ -43,6 +43,41 @@
       $rooms = array($kitchen);
       $group = 0;
     }
+
+    elseif (strpos($_GET["action"],'hightable') !== false) {
+      $rooms = array($kitchen);
+      $group = 1;
+    }
+    elseif (strpos($_GET["action"],'diningtable') !== false) {
+      $rooms = array($kitchen);
+      $group = 2;
+    }
+    elseif (strpos($_GET["action"],'sink') !== false) {
+      $rooms = array($kitchen);
+      $group = 3;
+    }
+    elseif (strpos($_GET["action"],'fridge') !== false) {
+      $rooms = array($kitchen);
+      $group = 4;
+    }
+
+    elseif (strpos($_GET["action"],'frontdoor') !== false) {
+      $rooms = array($hallway);
+      $group = 1;
+    }
+    elseif (strpos($_GET["action"],'picright') !== false) {
+      $rooms = array($hallway);
+      $group = 2;
+    }
+    elseif (strpos($_GET["action"],'picleft') !== false) {
+      $rooms = array($hallway);
+      $group = 3;
+    }
+    elseif (strpos($_GET["action"],'halllights') !== false) {
+      $rooms = array($hallway);
+      $group = 4;
+    }
+
     elseif (strpos($_GET["action"],'sofa') !== false) {
       $rooms = array($lounge);
       $group = 1;
