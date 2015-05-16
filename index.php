@@ -21,14 +21,6 @@
     <?php
     //to keep it simple using require
     require 'Milight.php';
-    echo date("H:i:s",time());
-    echo "<BR>".date("H:i:s",date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)+600);
-    if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)+600) {
-      echo "<BR>it's dark<BR>";
-    }
-    else {
-      echo "<BR>it's still light<BR>";
-    }
     
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
@@ -55,7 +47,7 @@
 	  $room->rgbwDiscoMode();
 	}
       }
-      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)+600) {
+      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)-3600) {
 	if ($_GET["action"] == "tv") {
 	  for ($bulb=1; $bulb<5; $bulb++) {
 	    $lounge->rgbwSetActiveGroup($bulb);
