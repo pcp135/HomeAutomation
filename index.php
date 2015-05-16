@@ -168,22 +168,28 @@
 	} 
       }
     }
-    elseif (strpos($_GET["action"],"25") !== false) {
+    elseif (strpos($_GET["action"],"20") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(25);
+	$room->rgbwBrightnessPercent(20);
       }
     }
-    elseif (strpos($_GET["action"],"50") !== false) {
+    elseif (strpos($_GET["action"],"40") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(50);
+	$room->rgbwBrightnessPercent(40);
       }
     }
-    elseif (strpos($_GET["action"],"75") !== false) {
+    elseif (strpos($_GET["action"],"60") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(75);
+	$room->rgbwBrightnessPercent(60);
+      }
+    }
+    elseif (strpos($_GET["action"],"80") !== false) {
+      foreach ($rooms as &$room) {
+	$room->rgbwSetActiveGroup($group);
+	$room->rgbwBrightnessPercent(80);
       }
     }
     elseif (strpos($_GET["action"],"100") !== false) {
@@ -198,7 +204,6 @@
     <div class="container">
       <div class="well">
         <h3>General modes</h3>
-        
         <a href="index.php?action=tv" class="btn btn-primary">TV</a>
         <a href="index.php?action=cooking" class="btn btn-primary">Cooking</a>
         <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
@@ -208,34 +213,29 @@
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen",'Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
 	foreach ($rooms as &$room): ?>
-	
-	<h3><?php echo $room; ?> lights</h3>
-
+	<h3><?php echo $room; ?></h3>
 	<?php $actions=array('On','White','Random','Off');
 	foreach ($actions as &$action): ?>
-	
-        <a href="index.php?action=<?php echo str_replace(' ', '',strtolower($room)).'_'.strtolower($action) ?>" class="btn btn-primary"><?php echo $action ?></a>
+        <a href="index.php?action=
+	  <?php echo str_replace(' ', '',strtolower($room)).'_'.strtolower($action) ?>"
+	   class="btn btn-primary"><?php echo $action ?></a>
 	<?php endforeach; ?>
-	
         <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Brightness <span class="caret"></span>
+          <button type="button" class="btn btn-primary dropdown-toggle"
+		  data-toggle="dropdown" aria-expanded="false">
+	    Brightness <span class="caret"></span>
           </button> 
           <ul class="dropdown-menu" role="menu">
-
 	    <?php $levels=array('20','40','60','80', '100');
 	    foreach ($levels as &$level): ?>
-	    
-	    <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)).'_'.$level ?>"><?php echo $level ?>%</a></li>
+	    <li><a href="index.php?action=
+	      <?php echo str_replace(' ', '', strtolower($room)).'_'.$level ?>
+		   "><?php echo $level ?>%</a></li>
 	<?php endforeach; ?>
-
           </ul>
         </div>
-	
 	<?php endforeach; ?>
-	
       </div>
-          
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
