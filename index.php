@@ -205,7 +205,9 @@
         <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
       </div>  
       <div class="well">
-	  
+	<?php
+	$rooms=array("All","Lounge","Hallway","Kitchen");
+	?>  
 	<h3><?php echo "All"; ?> lights</h3>
         
         <a href="index.php?action=all_on" class="btn btn-primary">On</a>
