@@ -55,9 +55,11 @@
 	  $lounge->rgbwBrightnessPercent(50);
 	}
 	$hallway->rgbwAllOff();
+	$hallway->rgbwAllOff();
 	$hallway->rgbwSetActiveGroup(1);
 	$hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 	$hallway->rgbwBrightnessPercent(25);
+	$kitchen->rgbwAllOff();
 	$kitchen->rgbwAllOff();
 	$kitchen->rgbwGroup1SetToWhite();
 	$kitchen->rgbwSetActiveGroup(1);
@@ -66,7 +68,6 @@
       if ($_GET["action"] == "cooking") {
 	$kitchen->rgbwAllOn();
 	$kitchen->rgbwAllSetToWhite();
-	$kitchen->rgbwAllSetToWhite();
 	$kitchen->rgbwSetActiveGroup(0);
 	$kitchen->rgbwBrightnessPercent(100);
 	for ($bulb=1; $bulb<5; $bulb++) {
@@ -74,6 +75,7 @@
 	  $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 	  $lounge->rgbwBrightnessPercent(50);
 	}
+	$hallway->rgbwAllOff();
 	$hallway->rgbwAllOff();
 	$hallway->rgbwSetActiveGroup(1);
 	$hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
@@ -87,6 +89,7 @@
     }
     elseif (strpos($_GET["action"],"off") !== false) {
       foreach ($rooms as &$room) {
+	$room->rgbwAllOff();
 	$room->rgbwAllOff();
       }
     }
