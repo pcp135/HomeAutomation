@@ -35,6 +35,10 @@
       $rooms = $allrooms;
       $group = 0;
     }
+    elseif (strpos($_GET["action"],'loungedoor') !== false) {
+      $rooms = array($lounge);
+      $group = 2;
+    }
     elseif (strpos($_GET["action"],'lounge') !== false) {
       $rooms = array($lounge);
       $group = 0;
@@ -81,10 +85,6 @@
     elseif (strpos($_GET["action"],'sofa') !== false) {
       $rooms = array($lounge);
       $group = 1;
-    }
-    elseif (strpos($_GET["action"],'loungedoor') !== false) {
-      $rooms = array($lounge);
-      $group = 2;
     }
     elseif (strpos($_GET["action"],'desk') !== false) {
       $rooms = array($lounge);
