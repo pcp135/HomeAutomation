@@ -188,16 +188,18 @@ class Milight
     }
 
 
-    public function sendCommand(Array $command)
-    {
-        $command[] = 0x55; // last byte is always 0x55, will be appended to all commands
-        $message = vsprintf(str_repeat('%c', count($command)), $command);
-        if ($socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP)) {
-            socket_sendto($socket, $message, strlen($message), 0, $this->host, $this->port);
-            socket_close($socket);
-            usleep($this->getDelay()); //wait 100ms before sending next command
-        }
+  public function sendCommand(Array $command)
+  {
+    $command[] = 0x55; // last byte is always 0x55, will be appended to all commands
+    $message = vsprintf(str_repeat('%c', count($command)), $command);
+    for ($try=0;$try<5;$try++) {
+      if ($socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP)) {
+        socket_sendto($socket, $message, strlen($message), 0, $this->host, $this->port);
+        socket_close($socket);
+        usleep($this->getDelay()); //wait 100ms before sending next command
+      }
     }
+  }
 
     public function command($commandName)
     {
