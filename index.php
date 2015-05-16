@@ -21,16 +21,13 @@
     <?php
     //to keep it simple using require
     require 'Milight.php';
-    date_default_timezone_set('Europe/Berlin');
-    echo date("H:i:s",time());
-    echo date("D M d Y"). ', sunset time : ' .date_sunset(time(), SUNFUNCS_RET_STRING, 48, 11, 90, 2);
     echo "<BR>".time();
     echo "<BR>".date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2);
     if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2)) {
-      echo "it's dark<BR>";
+      echo "<BR>it's dark<BR>";
     }
     else {
-      echo "it's still light";
+      echo "<BR>it's still light<BR>";
     }
     
     $lounge = new Milight('192.168.1.7');
