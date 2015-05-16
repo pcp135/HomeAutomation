@@ -19,7 +19,7 @@
   <body>
     
     <?php
-
+    echo date();
     //to keep it simple using require
     require 'Milight.php';
     
