@@ -22,7 +22,7 @@
     //to keep it simple using require
     require 'Milight.php';
     date_default_timezone_set('Europe/Berlin');
-    echo date();
+    echo date('d/m/Y == H:i:s');
     
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
