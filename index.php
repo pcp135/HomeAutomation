@@ -27,16 +27,16 @@
     $hallway = new Milight('192.168.1.8');
     $kitchen = new Milight('192.168.1.9');
     $allrooms = array($lounge, $hallway, $kitchen);
-    if (strpos($_GET["action"],'all')) {
+    if (strpos($_GET["action"],'all') !== false) {
       $rooms = $allrooms;
     }
-    elseif (strpos($_GET["action"],'lounge')) {
+    elseif (strpos($_GET["action"],'lounge') !== false) {
       $rooms = array($lounge);
     }
-    elseif (strpos($_GET["action"],'hallway')) {
+    elseif (strpos($_GET["action"],'hallway') !== false) {
       $rooms = array($hallway);
     }
-    elseif (strpos($_GET["action"],'kitchen')) {
+    elseif (strpos($_GET["action"],'kitchen') !== false) {
       $rooms = array($kitchen);
     }
     else {
@@ -101,22 +101,22 @@
 	$hallway->rgbwBrightnessPercent(25);
       }
     }
-    if (strpos($_GET["action"],"on")) {
+    if (strpos($_GET["action"],"on") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllOn();
       }
     }
-    elseif (strpos($_GET["action"],"off")) {
+    elseif (strpos($_GET["action"],"off") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllOff();
       }
     }
-    elseif (strpos($_GET["action"],"white")) {
+    elseif (strpos($_GET["action"],"white") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllSetToWhite();
       }
     }
-    elseif (strpos($_GET["action"],"random")) {
+    elseif (strpos($_GET["action"],"random") !== false) {
       foreach ($rooms as &$room) {
 	for ($bulb=1; $bulb<5; $bulb++) {
 	  $room->rgbwSetActiveGroup($bulb);
@@ -124,25 +124,25 @@
 	}
       }
     }
-    elseif (strpos($_GET["action"],"25")) {
+    elseif (strpos($_GET["action"],"25") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(25);
       }
     }
-    elseif (strpos($_GET["action"],"50")) {
+    elseif (strpos($_GET["action"],"50") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(50);
       }
     }
-    elseif (strpos($_GET["action"],"75")) {
+    elseif (strpos($_GET["action"],"75") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(75);
       }
     }
-    elseif (strpos($_GET["action"],"100")) {
+    elseif (strpos($_GET["action"],"100") !== false) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(100);
