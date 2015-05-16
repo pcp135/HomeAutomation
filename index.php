@@ -43,6 +43,23 @@
       $rooms = array($kitchen);
       $group = 0;
     }
+    elseif (strpos($_GET["action"],'sofa') !== false) {
+      $rooms = array($lounge);
+      $group = 1;
+    }
+    elseif (strpos($_GET["action"],'door') !== false) {
+      $rooms = array($lounge);
+      $group = 2;
+    }
+    elseif (strpos($_GET["action"],'desk') !== false) {
+      $rooms = array($lounge);
+      $group = 3;
+    }
+    elseif (strpos($_GET["action"],'sideboard') !== false) {
+      $rooms = array($lounge);
+      $group = 4;
+    }
+
     else {
       
       if ($_GET["action"] == "disco") {
@@ -141,78 +158,8 @@
       }
     }
 
-if ($_GET["action"] == "sofa_on") {
-    $lounge->rgbwGroup1On();
-} elseif ($_GET["action"] == "sofa_off") {
-    $lounge->rgbwGroup1Off();
-} elseif ($_GET["action"] == "sofa_white") {
-    $lounge->rgbwGroup1SetToWhite();
-    $lounge->rgbwGroup1SetToWhite();
-} elseif ($_GET["action"] == "sofa_random") {
-    $lounge->rgbwSetActiveGroup(1);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-} elseif ($_GET["action"] == "sofa_25") {
-    $lounge->rgbwSetActiveGroup(1);
-    $lounge->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "sofa_50") {
-    $lounge->rgbwSetActiveGroup(1);
-    $lounge->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "sofa_75") {
-    $lounge->rgbwSetActiveGroup(1);
-    $lounge->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "sofa_100") {
-    $lounge->rgbwSetActiveGroup(1);
-    $lounge->rgbwBrightnessPercent(100);
-}
-
-if ($_GET["action"] == "door_on") {
-    $lounge->rgbwGroup3On();
-} elseif ($_GET["action"] == "door_off") {
-    $lounge->rgbwGroup3Off();
-} elseif ($_GET["action"] == "door_white") {
-    $lounge->rgbwGroup3SetToWhite();
-    $lounge->rgbwGroup3SetToWhite();
-} elseif ($_GET["action"] == "door_random") {
-    $lounge->rgbwSetActiveGroup(3);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-} elseif ($_GET["action"] == "door_25") {
-    $lounge->rgbwSetActiveGroup(3);
-    $lounge->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "door_50") {
-    $lounge->rgbwSetActiveGroup(3);
-    $lounge->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "door_75") {
-    $lounge->rgbwSetActiveGroup(3);
-    $lounge->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "door_100") {
-    $lounge->rgbwSetActiveGroup(3);
-    $lounge->rgbwBrightnessPercent(100);
-}
-
-if ($_GET["action"] == "desk_on") {
-    $lounge->rgbwGroup2On();
-} elseif ($_GET["action"] == "desk_off") {
-    $lounge->rgbwGroup2Off();
-} elseif ($_GET["action"] == "desk_white") {
-    $lounge->rgbwGroup2SetToWhite();
-    $lounge->rgbwGroup2SetToWhite();
-} elseif ($_GET["action"] == "desk_random") {
-    $lounge->rgbwSetActiveGroup(2);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-} elseif ($_GET["action"] == "desk_25") {
-    $lounge->rgbwSetActiveGroup(2);
-    $lounge->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "desk_50") {
-    $lounge->rgbwSetActiveGroup(2);
-    $lounge->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "desk_75") {
-    $lounge->rgbwSetActiveGroup(2);
-    $lounge->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "desk_100") {
-    $lounge->rgbwSetActiveGroup(2);
-    $lounge->rgbwBrightnessPercent(100);
-}
-?>
+    
+    ?>
     <div class="container">
       <div class="well">
         <h3>General modes</h3>
