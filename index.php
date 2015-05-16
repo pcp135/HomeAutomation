@@ -111,36 +111,19 @@ if ($_GET["action"] == "cooking") {
 	}
       }
     }
-    elseif ($_GET["action"] == "all_25") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(25);
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(25);
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "all_50") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(50);
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(50);
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "all_75") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(75);
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(75);
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "all_100") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(100);
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(100);
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(100);
-}
+    
+    if ($_GET["action"] == "all_25") $brightness = 25;
+    elseif ($_GET["action"] == "all_50") $brightness = 50;
+    elseif ($_GET["action"] == "all_75") $brightness = 75;
+    elseif ($_GET["action"] == "all_100") $brightness = 100;
+    else $brightness = 80;
+    foreach ($rooms as &$room) {
+      $room->rgbwSetActiveGroup(0);
+      $room->rgbwBrightnessPercent($brightness);
+    }
 
+
+    
 if ($_GET["action"] == "lounge_on") {
     $lounge->rgbwAllOn();
 } elseif ($_GET["action"] == "lounge_off") {
