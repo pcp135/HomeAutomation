@@ -214,7 +214,7 @@
 	<?php $actions=array('On','White','Random','Off');
 	foreach ($actions as &$action): ?>
 	
-        <a href="index.php?action=<?php echo str_replace(' ', '',strtolower($room)) ?>_<?php echo strtolower($action) ?>" class="btn btn-primary"><?php echo $action ?></a>
+        <a href="index.php?action=<?php echo str_replace(' ', '',strtolower($room)).'_'.strtolower($action) ?>" class="btn btn-primary"><?php echo $action ?></a>
 	<?php endforeach; ?>
 	
         <div class="btn-group">
@@ -222,10 +222,13 @@
             Brightness <span class="caret"></span>
           </button> 
           <ul class="dropdown-menu" role="menu">
-            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_25">25%</a></li>
-            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_50">50%</a></li>
-            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_75">75%</a></li>
-            <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_100">100%</a></li>
+
+	    <?php $levels=array('20','40','60','80', '100');
+	    foreach ($levels as &$level): ?>
+	    
+	    <li><a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)).'_'.$level ?>"><?php echo $level ?>%</a></li>
+	<?php endforeach; ?>
+
           </ul>
         </div>
 	
