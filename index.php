@@ -99,38 +99,44 @@
     }
     elseif (strpos($_GET["action"],"white") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwAllSetToWhite();
+	$room->rgbwSetGroupToWhite($group);
       }
     }
     elseif (strpos($_GET["action"],"random") !== false) {
       foreach ($rooms as &$room) {
-	for ($bulb=1; $bulb<5; $bulb++) {
-	  $room->rgbwSetActiveGroup($bulb);
-	  $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	if ($group == 0) {
+	  for ($bulb=1; $bulb<5; $bulb++) {
+	    $room->rgbwSetActiveGroup($bulb);
+	    $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	  }
 	}
+	else {
+	  $room->rgbwSetActiveGroup($group);
+	  $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	} 
       }
     }
     elseif (strpos($_GET["action"],"25") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup(0);
+	$room->rgbwSetActiveGroup($group);
 	$room->rgbwBrightnessPercent(25);
       }
     }
     elseif (strpos($_GET["action"],"50") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup(0);
+	$room->rgbwSetActiveGroup($group);
 	$room->rgbwBrightnessPercent(50);
       }
     }
     elseif (strpos($_GET["action"],"75") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup(0);
+	$room->rgbwSetActiveGroup($group);
 	$room->rgbwBrightnessPercent(75);
       }
     }
     elseif (strpos($_GET["action"],"100") !== false) {
       foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup(0);
+	$room->rgbwSetActiveGroup($group);
 	$room->rgbwBrightnessPercent(100);
       }
     }

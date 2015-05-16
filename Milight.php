@@ -237,6 +237,17 @@ class Milight
         return true;
     }
 
+  public function rgbwSetGroupToWhite($group)
+  {
+    if ($group > 0) {
+      $activeCommand = 'rgbwGroup' . $group . 'SetToWhite';
+      $this->command($activeCommand);
+      return true;
+    }
+    $this->rgbwAllSetToWhite();
+    return true;
+  }
+
     public function rgbwSendOffToActiveGroup()
     {
         if ($this->getRgbwActiveGroup() > 0) {
