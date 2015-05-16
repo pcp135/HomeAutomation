@@ -29,7 +29,7 @@ class Milight
 
     private $host;
     private $port;
-    private $delay = 100000; //microseconds
+    private $delay = 10000; //microseconds
     private $rgbwActiveGroup = 0; // 0 means all
     private $whiteActiveGroup = 0; // 0 means all
     private $commandCodes = array(
