@@ -210,7 +210,7 @@
 	foreach ($rooms as &$room): ?>
 
 	<h3><?php echo $room; ?> lights</h3>
-
+	<?php echo strtolower($room) ?>
 	<?php endforeach; ?>
 
 	<h3><?php echo "All"; ?> lights</h3>
