@@ -24,9 +24,14 @@
     date_default_timezone_set('Europe/Berlin');
     echo date("H:i:s",time());
     echo date("D M d Y"). ', sunset time : ' .date_sunset(time(), SUNFUNCS_RET_STRING, 48, 11, 90, 2);
-    echo "/n".time();
-    echo "/n".date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2);
-    echo time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2);
+    echo "<BR>".time();
+    echo "<BR>".date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2);
+    if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 2)) {
+      echo "it's dark<BR>";
+    }
+    else {
+      echo "it's still light";
+    }
     
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
