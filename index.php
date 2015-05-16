@@ -207,7 +207,12 @@
       <div class="well">
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen");
-	?>  
+	foreach ($rooms as &$room); ?>
+
+	<h3><?php echo $room; ?> lights</h3>
+
+	<?php endforeach; ?>
+
 	<h3><?php echo "All"; ?> lights</h3>
         
         <a href="index.php?action=all_on" class="btn btn-primary">On</a>
