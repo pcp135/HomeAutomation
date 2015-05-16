@@ -27,14 +27,15 @@
     $hallway = new Milight('192.168.1.8');
     $kitchen = new Milight('192.168.1.9');
     $allrooms = array($lounge, $hallway, $kitchen);
-    if (strpos($_GET["action"],'all') !== false) {
+    if (strpos($_GET["action"],'hallway') !== false) {
+      $rooms = array($hallway);
+      echo 'hallway';
+    }
+    elseif (strpos($_GET["action"],'all') !== false) {
       $rooms = $allrooms;
     }
     elseif (strpos($_GET["action"],'lounge') !== false) {
       $rooms = array($lounge);
-    }
-    elseif (strpos($_GET["action"],'hallway') !== false) {
-      $rooms = array($hallway);
     }
     elseif (strpos($_GET["action"],'kitchen') !== false) {
       $rooms = array($kitchen);
