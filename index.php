@@ -210,11 +210,13 @@
 	foreach ($rooms as &$room): ?>
 	
 	<h3><?php echo $room; ?> lights</h3>
-        
-        <a href="index.php?action=<?php echo str_replace(' ', '',strtolower($room)) ?>_on" class="btn btn-primary">On</a>
-        <a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_white" class="btn btn-primary">White</a>
-        <a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_random" class="btn btn-primary">Random</a>
-        <a href="index.php?action=<?php echo str_replace(' ', '', strtolower($room)) ?>_off" class="btn btn-primary">Off</a>
+
+	<?php $actions=array('On','White','Random','Off');
+	foreach ($actions as &$action): ?>
+	
+        <a href="index.php?action=<?php echo str_replace(' ', '',strtolower($room)) ?>_<?php echo strtolower($action) ?>" class="btn btn-primary"><?php echo $action ?></a>
+	<?php endforeach; ?>
+	
         <div class="btn-group">
           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             Brightness <span class="caret"></span>
