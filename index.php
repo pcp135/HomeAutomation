@@ -26,7 +26,19 @@
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
     $kitchen = new Milight('192.168.1.9');
-    $rooms = array($lounge, $hallway, $kitchen);
+    if (strpos($_GET["action"],'all')) {
+      $rooms = array($lounge, $hallway, $kitchen);
+    }
+    if (strpos($_GET["action"],'lounge')) {
+      $rooms = array($lounge);
+    }
+    if (strpos($_GET["action"],'hallway')) {
+      $rooms = array($hallway);
+    }
+    if (strpos($_GET["action"],'kitchen')) {
+      $rooms = array($kitchen);
+    }
+
     
     if ($_GET["action"] == "disco") {
       foreach ($rooms as &$room) {
@@ -88,22 +100,22 @@ if ($_GET["action"] == "cooking") {
     $hallway->rgbwBrightnessPercent(25);
 }
 
-    if ($_GET["action"] == "all_on") {
+    if (strpos($_GET["action"],"on")) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllOn();
       }
     }
-    elseif ($_GET["action"] == "all_off") {
+    elseif (strpos($_GET["action"],"off")) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllOff();
       }
     }
-    elseif ($_GET["action"] == "all_white") {
+    elseif (strpos($_GET["action"],"white")) {
       foreach ($rooms as &$room) {
 	$room->rgbwAllSetToWhite();
       }
     }
-    elseif ($_GET["action"] == "all_random") {
+    elseif (strpos($_GET["action"],"random")) {
       foreach ($rooms as &$room) {
 	for ($bulb=1; $bulb<5; $bulb++) {
 	  $room->rgbwSetActiveGroup($bulb);
@@ -111,123 +123,30 @@ if ($_GET["action"] == "cooking") {
 	}
       }
     }
-    
-    elseif ($_GET["action"] == "all_25") {
+    elseif (strpos($_GET["action"],"25")) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(25);
       }
     }
-    elseif ($_GET["action"] == "all_50") {
+    elseif (strpos($_GET["action"],"50")) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(50);
       }
     }
-    elseif ($_GET["action"] == "all_75") {
+    elseif (strpos($_GET["action"],"75")) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(75);
       }
     }
-    elseif ($_GET["action"] == "all_100") {
+    elseif (strpos($_GET["action"],"100")) {
       foreach ($rooms as &$room) {
 	$room->rgbwSetActiveGroup(0);
 	$room->rgbwBrightnessPercent(100);
       }
     }
-
-
-    
-if ($_GET["action"] == "lounge_on") {
-    $lounge->rgbwAllOn();
-} elseif ($_GET["action"] == "lounge_off") {
-    $lounge->rgbwAllOff();
-} elseif ($_GET["action"] == "lounge_white") {
-    $lounge->rgbwAllSetToWhite();
-    $lounge->rgbwAllSetToWhite();
-} elseif ($_GET["action"] == "lounge_random") {
-    $lounge->rgbwSetActiveGroup(1);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $lounge->rgbwSetActiveGroup(2);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $lounge->rgbwSetActiveGroup(3);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $lounge->rgbwSetActiveGroup(4);
-    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-} elseif ($_GET["action"] == "lounge_25") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "lounge_50") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "lounge_75") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "lounge_100") {
-    $lounge->rgbwSetActiveGroup(0);
-    $lounge->rgbwBrightnessPercent(100);
-}
-
-if ($_GET["action"] == "hallway_on") {
-    $hallway->rgbwAllOn();
-} elseif ($_GET["action"] == "hallway_off") {
-    $hallway->rgbwAllOff();
-} elseif ($_GET["action"] == "hallway_white") {
-    $hallway->rgbwAllSetToWhite();
-    $hallway->rgbwAllSetToWhite();
-} elseif ($_GET["action"] == "hallway_random") {
-    $hallway->rgbwSetActiveGroup(1);
-    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $hallway->rgbwSetActiveGroup(2);
-    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $hallway->rgbwSetActiveGroup(3);
-    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $hallway->rgbwSetActiveGroup(4);
-    $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-} elseif ($_GET["action"] == "hallway_25") {
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "hallway_50") {
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "hallway_75") {
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "hallway_100") {
-    $hallway->rgbwSetActiveGroup(0);
-    $hallway->rgbwBrightnessPercent(100);
-}
-
-if ($_GET["action"] == "kitchen_on") {
-    $kitchen->rgbwAllOn();
-} elseif ($_GET["action"] == "kitchen_off") {
-    $kitchen->rgbwAllOff();
-} elseif ($_GET["action"] == "kitchen_white") {
-    $kitchen->rgbwAllSetToWhite();
-    $kitchen->rgbwAllSetToWhite();
-} elseif ($_GET["action"] == "kitchen_random") {
-    $kitchen->rgbwSetActiveGroup(1);
-    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $kitchen->rgbwSetActiveGroup(2);
-    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $kitchen->rgbwSetActiveGroup(3);
-    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-    $kitchen->rgbwSetActiveGroup(4);
-    $kitchen->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-} elseif ($_GET["action"] == "kitchen_25") {
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(25);
-} elseif ($_GET["action"] == "kitchen_50") {
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(50);
-} elseif ($_GET["action"] == "kitchen_75") {
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(75);
-} elseif ($_GET["action"] == "kitchen_100") {
-    $kitchen->rgbwSetActiveGroup(0);
-    $kitchen->rgbwBrightnessPercent(100);
-}
 
 if ($_GET["action"] == "sofa_on") {
     $lounge->rgbwGroup1On();
