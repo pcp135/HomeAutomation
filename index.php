@@ -112,14 +112,29 @@ if ($_GET["action"] == "cooking") {
       }
     }
     
-    if ($_GET["action"] == "all_25") $brightness = 25;
-    elseif ($_GET["action"] == "all_50") $brightness = 50;
-    elseif ($_GET["action"] == "all_75") $brightness = 75;
-    elseif ($_GET["action"] == "all_100") $brightness = 100;
-    else $brightness = 80;
-    foreach ($rooms as &$room) {
-      $room->rgbwSetActiveGroup(0);
-      $room->rgbwBrightnessPercent($brightness);
+    elseif ($_GET["action"] == "all_25") {
+      foreach ($rooms as &$room) {
+	$room->rgbwSetActiveGroup(0);
+	$room->rgbwBrightnessPercent(25);
+      }
+    }
+    elseif ($_GET["action"] == "all_50") {
+      foreach ($rooms as &$room) {
+	$room->rgbwSetActiveGroup(0);
+	$room->rgbwBrightnessPercent(50);
+      }
+    }
+    elseif ($_GET["action"] == "all_75") {
+      foreach ($rooms as &$room) {
+	$room->rgbwSetActiveGroup(0);
+	$room->rgbwBrightnessPercent(75);
+      }
+    }
+    elseif ($_GET["action"] == "all_100") {
+      foreach ($rooms as &$room) {
+	$room->rgbwSetActiveGroup(0);
+	$room->rgbwBrightnessPercent(100);
+      }
     }
 
 
