@@ -25,8 +25,13 @@
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
     $kitchen = new Milight('192.168.1.9');
+    $balcony = new Orvibo('192.168.1.10','10000',array(0xAC,0xCF,0x23,0x4F,0x09,0x0C));   
     $allrooms = array($lounge, $hallway, $kitchen);
 
+    if ($_GET["action"] == "Orvibo") {
+      $balcony->on();
+    }
+    
     if (strpos($_GET["action"],'hallway') !== false) {
       $rooms = array($hallway);
       $group = 0;
