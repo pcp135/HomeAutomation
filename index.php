@@ -30,10 +30,14 @@
     echo "Made it here";
     $allrooms = array($lounge, $hallway, $kitchen);
 
-    if ($_GET["action"] == "Orvibo") {
+    if ($_GET["action"] == "balconyon") {
       $balcony->on();
     }
-    
+
+    if ($_GET["action"] == "balconyoff") {
+      $balcony->off();
+    }
+
     if (strpos($_GET["action"],'hallway') !== false) {
       $rooms = array($hallway);
       $group = 0;
@@ -127,6 +131,7 @@
 	  $kitchen->rgbwGroup1SetToWhite();
 	  $kitchen->rgbwSetActiveGroup(1);
 	  $kitchen->rgbwBrightnessPercent(25);
+	  $balcony->on();
 	}
 	if ($_GET["action"] == "cooking") {
 	  $kitchen->rgbwAllOn();
@@ -143,6 +148,7 @@
 	  $hallway->rgbwSetActiveGroup(1);
 	  $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 	  $hallway->rgbwBrightnessPercent(25);
+	  $balcony->on();
 	}
       }
     }
