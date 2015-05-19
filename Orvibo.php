@@ -1,6 +1,6 @@
 <?php
 
-class Milight
+class Orvibo
 {
   
   private $host;
