@@ -181,13 +181,13 @@ class Milight
         return $this->whiteActiveGroup;
     }
 
-    public function __construct($host = '10.10.100.254', $port = 8899)
-    {
-        $this->host = $host;
-        $this->port = $port;
-    }
+  public function __construct($host = '10.10.100.254', $port = 8899)
+  {
+    $this->host = $host;
+    $this->port = $port;
+  }
 
-
+  
   public function sendCommand(Array $command)
   {
     $command[] = 0x55; // last byte is always 0x55, will be appended to all commands
