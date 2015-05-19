@@ -21,7 +21,7 @@
     <?php
     //to keep it simple using require
     require 'Milight.php';
-    require 'Orvibo.php';
+   // require 'Orvibo.php';
     
     $lounge = new Milight('192.168.1.7');
     $hallway = new Milight('192.168.1.8');
