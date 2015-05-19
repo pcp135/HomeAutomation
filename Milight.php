@@ -900,10 +900,10 @@ class Milight
         return array($h, $s, $l);
     }
 
-    public function hslToMilightColor($hsl)
-    {
-        $color = (256 + 176 - (int)($hsl[0] / 360.0 * 255.0)) % 256;
-        return $color + 0xfa;
-    }
-
+  public function hslToMilightColor($hsl)
+  {
+    $color = (256 + 176 - (int)($hsl[0] / 360.0 * 255.0)) % 256;
+    return $color + 0xfa;
+  }
+  
 }

@@ -17,7 +17,7 @@ class Milight
    $this->port = $port;
    $this->mac = $mac;
    if ($this->subscribed === false) {
-      $this->subscribe()
+      $this->subscribe();
     }
    }
 
@@ -36,7 +36,7 @@ class Milight
 
   public function on() {
    if ($this->subscribed === false) {
-      $this->subscribe()
+      $this->subscribe();
     }
     $command = array(0x68,0x64,0x00,0x17,0x64,0x63);
     $command = array_merge($command, $this->mac, $this->twenties, $this->zeroes, array(0x01));
@@ -45,7 +45,7 @@ class Milight
   
   public function off() {
    if ($this->subscribed === false) {
-      $this->subscribe()
+      $this->subscribe();
     }
     $command = array(0x68,0x64,0x00,0x17,0x64,0x63);
     $command = array_merge($command, $this->mac, $this->twenties, $this->zeroes, array(0x00));
