@@ -9,6 +9,7 @@ class Milight
   private $delay = 10000; //microseconds
   private $subscribed=false;
   private $twenties = array(0x20,0x20,0x20,0x20,0x20,0x20);
+  private $zeroes = array(0x00,0x00,0x00,0x00);
   
   public function __construct($host = '10.10.100.254', $port = 10000, $mac)
   {	 
@@ -30,6 +31,25 @@ class Milight
     $command = array_merge($command, $this->mac, $this->twenties, array_reverse($this->mac),
 			   $this->twenties);
     $this->sendCommand($command);
+    $this->subscribed=true;
+  }
+
+  public function on() {
+   if ($this->subscribed === false) {
+      $this->subscribe()
+    }
+    $command = array(0x68,0x64,0x00,0x17,0x64,0x63);
+    $command = array_merge($command, $this->mac, $this->twenties, $this->zeroes, array(0x01));
+    $this->sendCommand($command);    
+  }
+  
+  public function off() {
+   if ($this->subscribed === false) {
+      $this->subscribe()
+    }
+    $command = array(0x68,0x64,0x00,0x17,0x64,0x63);
+    $command = array_merge($command, $this->mac, $this->twenties, $this->zeroes, array(0x00));
+    $this->sendCommand($command);    
   }
   
   public function sendCommand(Array $command)
