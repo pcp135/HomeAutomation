@@ -123,7 +123,7 @@
 	  }
 	}
 	foreach (array("20","40","60","80","100") as &$brightness) {
-	  echo $brightness;
+	  echo "Brightness: ". $brightness."<BR>";
 //	  if (strpos($_GET["action"],$brightness) !== false) {
 //	    foreach ($rooms as &$room) {
 //	      $room->rgbwSetActiveGroup($group);
