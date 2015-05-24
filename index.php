@@ -88,7 +88,9 @@
     $items[] =  new Obj('halllights_', array($hallway), 4);
     
     foreach ($items as &$item) {
+      echo $item->trigger;
       if (strpos($_GET["action"],$item->trigger) !== false) {
+	echo $item->trigger;
 	$rooms = $item->controllers;
 	$group = $item->group;
       }
