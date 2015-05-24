@@ -252,7 +252,7 @@
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen",'Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
 	foreach ($rooms as &$room) {
-	  RoomBlockHTML($room);
+	  echo RoomBlockHTML($room);
 	}
 	?>
       </div>
