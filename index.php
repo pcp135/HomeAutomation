@@ -250,7 +250,15 @@
       </div>  
       <div class="well">
 	<?php
-	$rooms=array("All","Lounge","Hallway","Kitchen",'Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
+	$rooms=array("All","Lounge","Hallway","Kitchen");
+	foreach ($rooms as &$room) {
+	  echo RoomBlockHTML($room);
+	}
+	?>
+      </div>
+      <div class="well">
+	<?php
+	$individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
 	foreach ($rooms as &$room) {
 	  echo RoomBlockHTML($room);
 	}
