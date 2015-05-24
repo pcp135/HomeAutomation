@@ -89,22 +89,22 @@
       if (strpos($_GET["action"],$item->trigger) !== false) {
 	$rooms = $item->controllers;
 	$group = $item->group;
-	if (strpos($_GET["action"],"on") !== false) {
+	if (strpos($_GET["action"],"_on") !== false) {
 	  foreach ($rooms as &$room) {
 	    $room->sendOn($group);
 	  }
 	}
-	elseif (strpos($_GET["action"],"off") !== false) {
+	elseif (strpos($_GET["action"],"_off") !== false) {
 	  foreach ($rooms as &$room) {
 	    $room->sendOff($group);
 	  }
 	}
-	elseif (strpos($_GET["action"],"white") !== false) {
+	elseif (strpos($_GET["action"],"_white") !== false) {
 	  foreach ($rooms as &$room) {
 	    $room->setWhite($group);
 	  }
 	}
-	elseif (strpos($_GET["action"],"random") !== false) {
+	elseif (strpos($_GET["action"],"_random") !== false) {
 	  foreach ($rooms as &$room) {
 	    if ($group == 0) {
 	      for ($bulb=1; $bulb<5; $bulb++) {
