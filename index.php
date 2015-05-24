@@ -18,7 +18,7 @@
   </head>
   <body>
 
-    <?php function RoomBlockHTML ($replStr) { ob_start(); ?>
+    <?php function milightBlockHTML ($replStr) { ob_start(); ?>
     <h3><?php echo ($replStr) ?></h3>
     <?php $actions=array('On','White','Random','Off');
     foreach ($actions as &$action): ?>
@@ -171,15 +171,31 @@
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen");
 	foreach ($rooms as &$room) {
-	  echo RoomBlockHTML($room);
+	  echo milightBlockHTML($room);
 	}
 	?>
       </div>
       <div class="well">
 	<?php
-	$individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
+	$individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards');
 	foreach ($individual_lights as &$bulb) {
-	  echo RoomBlockHTML($bulb);
+	  echo milightBlockHTML($bulb);
+	}
+	?>
+      </div>
+      <div class="well">
+	<?php
+	$individual_lights=array('High Table','Dining Table', 'Sink', 'Fridge');
+	foreach ($individual_lights as &$bulb) {
+	  echo milightBlockHTML($bulb);
+	}
+	?>
+      </div>
+      <div class="well">
+	<?php
+	$individual_lights=array('Front Door','Picture Left','Picture Right','Hall Lights');
+	foreach ($individual_lights as &$bulb) {
+	  echo milightBlockHTML($bulb);
 	}
 	?>
       </div>
