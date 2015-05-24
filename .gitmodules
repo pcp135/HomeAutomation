@@ -1,0 +1,3 @@
+[submodule "Orvibo"]
+	path = Orvibo
+	url = git@raspberrypi:/home/git/Orvibo
