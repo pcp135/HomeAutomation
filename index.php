@@ -225,11 +225,13 @@
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen",'Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
 	foreach ($rooms as &$room): ?>
-	<h3><?php echo $room; ?></h3>
+
+	<?php function RoomBlockHTML ($replStr) { ob_start(); ?>
+	<h3><?php echo ($replStr) ?></h3>
 	<?php $actions=array('On','White','Random','Off');
 	foreach ($actions as &$action): ?>
         <a href="index.php?action=
-	  <?php echo str_replace(' ', '',strtolower($room)).'_'.strtolower($action) ?>"
+	  <?php echo str_replace(' ', '',strtolower($replStr)).'_'.strtolower($action) ?>"
 	   class="btn btn-primary"><?php echo $action ?></a>
 	<?php endforeach; ?>
         <div class="btn-group">
@@ -241,11 +243,15 @@
 	    <?php $levels=array('20','40','60','80', '100');
 	    foreach ($levels as &$level): ?>
 	    <li><a href="index.php?action=
-	      <?php echo str_replace(' ', '', strtolower($room)).'_'.$level ?>
+	      <?php echo str_replace(' ', '', strtolower($replStr)).'_'.$level ?>
 		   "><?php echo $level ?>%</a></li>
 	<?php endforeach; ?>
           </ul>
         </div>
+	<?php
+	return ob_get_clean();
+	} ?>
+	
 	<?php endforeach; ?>
       </div>
     </div>
