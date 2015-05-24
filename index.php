@@ -42,10 +42,20 @@
         </div>
 	<?php
 	return ob_get_clean();
-	} ?>
+	}
 	
-    
-    <?php
+	function orviboBlockHTML ($replStr) { ob_start(); ?>
+	<h3><?php echo ($replStr) ?></h3>
+	<?php $actions=array('On','Off');
+	foreach ($actions as &$action): ?>
+	<a href="index.php?action=
+	  <?php echo str_replace(' ', '',strtolower($replStr)).'_'.strtolower($action) ?>"
+	   class="btn btn-primary"><?php echo $action ?></a>
+	<?php endforeach; ?>
+	<?php
+	return ob_get_clean();
+	} 
+	
     require 'Controllable.php';
     
     $lounge = new Controllable("RGBWMilight",'192.168.1.7');
