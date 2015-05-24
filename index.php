@@ -100,13 +100,11 @@
 	}
 	elseif (strpos($_GET["action"],"white") !== false) {
 	  foreach ($rooms as &$room) {
-	    $room->sendOn($group);
 	    $room->setWhite($group);
 	  }
 	}
 	elseif (strpos($_GET["action"],"random") !== false) {
 	  foreach ($rooms as &$room) {
-	    $room->sendOn($group);
 	    if ($group == 0) {
 	      for ($bulb=1; $bulb<5; $bulb++) {
 		$room->setRandom($bulb);

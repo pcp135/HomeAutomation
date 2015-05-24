@@ -34,7 +34,7 @@ class Controllable {
     $this->sendOn($group);
     if ($this->type = "RGBWMilight") {
       $this->controller->rgbwSetActiveGroup($group);
-      $this->$controller->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+      $this->controller->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
     }
   }
   public function setBrightness($group, $percent) {
