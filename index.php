@@ -188,34 +188,26 @@
 	  <div id="rooms" class="tab-pane active">
 	    <?php
 	    $rooms=array("All","Lounge","Kitchen","Hallway");
-	    foreach ($rooms as &$room) {
-	      echo milightBlockHTML($room);
-	    }
+	    foreach ($rooms as &$room) echo milightBlockHTML($room);
 	    ?>
 	  </div>
 	  <div id="lounge" class="tab-pane">
 	    <?php
 	    $individual_lights=array("Lounge",'Sofa','Lounge Door','Desk','Side Cupboards');
-	    foreach ($individual_lights as &$bulb) {
-	      echo milightBlockHTML($bulb);
-	    }
+	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
 	    echo orviboBlockHTML("Balcony");
 	    ?>
 	  </div>
 	  <div id="kitchen" class="tab-pane">
 	    <?php
 	    $individual_lights=array("Kitchen",'High Table','Dining Table', 'Sink', 'Fridge');
-	    foreach ($individual_lights as &$bulb) {
-	      echo milightBlockHTML($bulb);
-	    }
+	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
 	    ?>
 	  </div>
 	  <div id="hallway" class="tab-pane">
 	    <?php
 	    $individual_lights=array("Hallway", 'Front Door','Picture Left','Picture Right','Hall Lights');
-	    foreach ($individual_lights as &$bulb) {
-	      echo milightBlockHTML($bulb);
-	    }
+	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
 	    ?>
 	  </div>
 	</div>
