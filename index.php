@@ -169,10 +169,10 @@
       </div>  
       <div class="well">
 	<ul class="nav nav-tabs">
-	  <li role="presentation" class="active"><a href="#rooms">Rooms</a></li>
-	  <li role="presentation"><a href="#lounge">Lounge</a></li>
-	  <li role="presentation"><a href="#kitchen">Kitchen</a></li>
-	  <li role="presentation"><a href="#hallway">Hallway</a></li>
+	  <li role="presentation" class="active"><a href="#rooms" data-toggle="tab">Rooms</a></li>
+	  <li role="presentation"><a href="#lounge" data-toggle="tab">Lounge</a></li>
+	  <li role="presentation"><a href="#kitchen" data-toggle="tab">Kitchen</a></li>
+	  <li role="presentation"><a href="#hallway" data-toggle="tab">Hallway</a></li>
 	</ul>
 	<div class="tab-content">
 	  <div id="rooms" class="tab-pane active">
