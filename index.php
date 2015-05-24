@@ -88,7 +88,7 @@
     $items[] =  new Obj('halllights_', array($hallway), 4);
     
     foreach ($items as &$item) {
-      print($item->trigger);
+      echo "Echoing item" . $item->trigger . "\n<br>";
       if (strpos($_GET["action"],$item->trigger) !== false) {
 	print($item->trigger);
 	$rooms = $item->controllers;
