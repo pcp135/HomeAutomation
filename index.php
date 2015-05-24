@@ -259,8 +259,8 @@
       <div class="well">
 	<?php
 	$individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
-	foreach ($rooms as &$room) {
-	  echo RoomBlockHTML($room);
+	foreach ($individual_lights as &$bulb) {
+	  echo RoomBlockHTML($bulb);
 	}
 	?>
       </div>
