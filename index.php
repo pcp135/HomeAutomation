@@ -17,6 +17,33 @@
       <![endif]-->
   </head>
   <body>
+
+    <?php function RoomBlockHTML ($replStr) { ob_start(); ?>
+    <h3><?php echo ($replStr) ?></h3>
+    <?php $actions=array('On','White','Random','Off');
+    foreach ($actions as &$action): ?>
+    <a href="index.php?action=
+      <?php echo str_replace(' ', '',strtolower($replStr)).'_'.strtolower($action) ?>"
+       class="btn btn-primary"><?php echo $action ?></a>
+	<?php endforeach; ?>
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle"
+		  data-toggle="dropdown" aria-expanded="false">
+	    Brightness <span class="caret"></span>
+          </button> 
+          <ul class="dropdown-menu" role="menu">
+	    <?php $levels=array('20','40','60','80', '100');
+	    foreach ($levels as &$level): ?>
+	    <li><a href="index.php?action=
+	      <?php echo str_replace(' ', '', strtolower($replStr)).'_'.$level ?>
+		   "><?php echo $level ?>%</a></li>
+	<?php endforeach; ?>
+          </ul>
+        </div>
+	<?php
+	return ob_get_clean();
+	} ?>
+	
     
     <?php
     //to keep it simple using require
@@ -224,35 +251,10 @@
       <div class="well">
 	<?php
 	$rooms=array("All","Lounge","Hallway","Kitchen",'Sofa','Lounge Door','Desk','Side Cupboards','High Table','Dining Table', 'Sink', 'Fridge', 'Front Door','Picture Left','Picture Right','Hall Lights');
-	foreach ($rooms as &$room): ?>
-
-	<?php function RoomBlockHTML ($replStr) { ob_start(); ?>
-	<h3><?php echo ($replStr) ?></h3>
-	<?php $actions=array('On','White','Random','Off');
-	foreach ($actions as &$action): ?>
-        <a href="index.php?action=
-	  <?php echo str_replace(' ', '',strtolower($replStr)).'_'.strtolower($action) ?>"
-	   class="btn btn-primary"><?php echo $action ?></a>
-	<?php endforeach; ?>
-        <div class="btn-group">
-          <button type="button" class="btn btn-primary dropdown-toggle"
-		  data-toggle="dropdown" aria-expanded="false">
-	    Brightness <span class="caret"></span>
-          </button> 
-          <ul class="dropdown-menu" role="menu">
-	    <?php $levels=array('20','40','60','80', '100');
-	    foreach ($levels as &$level): ?>
-	    <li><a href="index.php?action=
-	      <?php echo str_replace(' ', '', strtolower($replStr)).'_'.$level ?>
-		   "><?php echo $level ?>%</a></li>
-	<?php endforeach; ?>
-          </ul>
-        </div>
-	<?php
-	return ob_get_clean();
-	} ?>
-	
-	<?php endforeach; ?>
+	foreach ($rooms as &$room) {
+	  RoomBlockHTML($room);
+	}
+	?>
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
