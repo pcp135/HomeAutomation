@@ -168,36 +168,46 @@
         <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
       </div>  
       <div class="well">
-	<?php
-	$rooms=array("All","Lounge","Hallway","Kitchen");
-	foreach ($rooms as &$room) {
-	  echo milightBlockHTML($room);
-	}
-	?>
-      </div>
-      <div class="well">
-	<?php
-	$individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards');
-	foreach ($individual_lights as &$bulb) {
-	  echo milightBlockHTML($bulb);
-	}
-	?>
-      </div>
-      <div class="well">
-	<?php
-	$individual_lights=array('High Table','Dining Table', 'Sink', 'Fridge');
-	foreach ($individual_lights as &$bulb) {
-	  echo milightBlockHTML($bulb);
-	}
-	?>
-      </div>
-      <div class="well">
-	<?php
-	$individual_lights=array('Front Door','Picture Left','Picture Right','Hall Lights');
-	foreach ($individual_lights as &$bulb) {
-	  echo milightBlockHTML($bulb);
-	}
-	?>
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href="#rooms">Rooms</a></li>
+	  <li role="presentation"><a href="#lounge">Lounge</a></li>
+	  <li role="presentation"><a href="#kitchen">Kitchen</a></li>
+	  <li role="presentation"><a href="#hallway">Hallway</a></li>
+	</ul>
+	<div class="tab-content">
+	  <div id="rooms" class="tab-pane active">
+	    <?php
+	    $rooms=array("All","Lounge","Hallway","Kitchen");
+	    foreach ($rooms as &$room) {
+	      echo milightBlockHTML($room);
+	    }
+	    ?>
+	  </div>
+	  <div id="lounge" class="tab-pane">
+	    <?php
+	    $individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards');
+	    foreach ($individual_lights as &$bulb) {
+	      echo milightBlockHTML($bulb);
+	    }
+	    ?>
+	  </div>
+	  <div id="kitchen" class="tab-pane">
+	    <?php
+	    $individual_lights=array('High Table','Dining Table', 'Sink', 'Fridge');
+	    foreach ($individual_lights as &$bulb) {
+	      echo milightBlockHTML($bulb);
+	    }
+	    ?>
+	  </div>
+	  <div id="hallway" class="tab-pane">
+	    <?php
+	    $individual_lights=array('Front Door','Picture Left','Picture Right','Hall Lights');
+	    foreach ($individual_lights as &$bulb) {
+	      echo milightBlockHTML($bulb);
+	    }
+	    ?>
+	  </div>
+	</div>
       </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
