@@ -122,15 +122,15 @@
 	    } 
 	  }
 	}
-	foreach (array("20","40","60","80","100") as &$brightness) {
-	  echo $brightness;
-	  if (strpos($_GET["action"],$brightness) !== false) {
-	    foreach ($rooms as &$room) {
-	      $room->rgbwSetActiveGroup($group);
-	      $room->rgbwBrightnessPercent((int)$brightness);
-	    }
-	  }
-	}
+//	foreach (array("20","40","60","80","100") as &$brightness) {
+//	  echo $brightness;
+//	  if (strpos($_GET["action"],$brightness) !== false) {
+//	    foreach ($rooms as &$room) {
+//	      $room->rgbwSetActiveGroup($group);
+//	      $room->rgbwBrightnessPercent((int)$brightness);
+//	    }
+//	  }
+//	}
       }
     }
     
