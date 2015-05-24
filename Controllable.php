@@ -1,7 +1,7 @@
 <?php
 
 require 'Milight.php';
-require 'Orvibo.php';
+require 'Orvibo/Orvibo.php';
     
 class Controllable {
   
