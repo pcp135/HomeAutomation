@@ -122,7 +122,8 @@
 	    } 
 	  }
 	}
-	foreach (array("20","40","60","80","100") as &$brightness) {
+	$brightnesses=array("20","40","60","80","100");
+	foreach ($brightnesses as &$brightness) {
 	  echo "Brightness: ". $brightness."<BR>";
 //	  if (strpos($_GET["action"],$brightness) !== false) {
 //	    foreach ($rooms as &$room) {
