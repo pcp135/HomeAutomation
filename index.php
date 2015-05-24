@@ -177,7 +177,7 @@
 	<div class="tab-content">
 	  <div id="rooms" class="tab-pane active">
 	    <?php
-	    $rooms=array("All","Lounge","Hallway","Kitchen");
+	    $rooms=array("All","Lounge","Kitchen","Hallway");
 	    foreach ($rooms as &$room) {
 	      echo milightBlockHTML($room);
 	    }
@@ -185,7 +185,7 @@
 	  </div>
 	  <div id="lounge" class="tab-pane">
 	    <?php
-	    $individual_lights=array('Sofa','Lounge Door','Desk','Side Cupboards');
+	    $individual_lights=array("Lounge",'Sofa','Lounge Door','Desk','Side Cupboards');
 	    foreach ($individual_lights as &$bulb) {
 	      echo milightBlockHTML($bulb);
 	    }
@@ -193,7 +193,7 @@
 	  </div>
 	  <div id="kitchen" class="tab-pane">
 	    <?php
-	    $individual_lights=array('High Table','Dining Table', 'Sink', 'Fridge');
+	    $individual_lights=array("Kitchen",'High Table','Dining Table', 'Sink', 'Fridge');
 	    foreach ($individual_lights as &$bulb) {
 	      echo milightBlockHTML($bulb);
 	    }
@@ -201,7 +201,7 @@
 	  </div>
 	  <div id="hallway" class="tab-pane">
 	    <?php
-	    $individual_lights=array('Front Door','Picture Left','Picture Right','Hall Lights');
+	    $individual_lights=array("Hallway", 'Front Door','Picture Left','Picture Right','Hall Lights');
 	    foreach ($individual_lights as &$bulb) {
 	      echo milightBlockHTML($bulb);
 	    }
