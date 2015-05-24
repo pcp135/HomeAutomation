@@ -103,11 +103,13 @@
 	}
 	elseif (strpos($_GET["action"],"white") !== false) {
 	  foreach ($rooms as &$room) {
+	    $room->rgbwSendOnToGroup($group);
 	    $room->rgbwSetGroupToWhite($group);
 	  }
 	}
 	elseif (strpos($_GET["action"],"random") !== false) {
 	  foreach ($rooms as &$room) {
+	    $room->rgbwSendOnToGroup($group);
 	    if ($group == 0) {
 	      for ($bulb=1; $bulb<5; $bulb++) {
 		$room->rgbwSetActiveGroup($bulb);
@@ -120,34 +122,12 @@
 	    } 
 	  }
 	}
-	elseif (strpos($_GET["action"],"20") !== false) {
-	  foreach ($rooms as &$room) {
-	    $room->rgbwSetActiveGroup($group);
-	    $room->rgbwBrightnessPercent(20);
-	  }
-	}
-	elseif (strpos($_GET["action"],"40") !== false) {
-	  foreach ($rooms as &$room) {
-	    $room->rgbwSetActiveGroup($group);
-	    $room->rgbwBrightnessPercent(40);
-	  }
-	}
-	elseif (strpos($_GET["action"],"60") !== false) {
-	  foreach ($rooms as &$room) {
-	    $room->rgbwSetActiveGroup($group);
-	    $room->rgbwBrightnessPercent(60);
-	  }
-	}
-	elseif (strpos($_GET["action"],"80") !== false) {
-	  foreach ($rooms as &$room) {
-	    $room->rgbwSetActiveGroup($group);
-	    $room->rgbwBrightnessPercent(80);
-	  }
-	}
-	elseif (strpos($_GET["action"],"100") !== false) {
-	  foreach ($rooms as &$room) {
-	    $room->rgbwSetActiveGroup($group);
-	    $room->rgbwBrightnessPercent(100);
+	foreach (array("20","40","60","80","100") as &$brightness) {
+	  if (strpos($_GET["action"],$brightness) !== false) {
+	    foreach ($rooms as &$room) {
+	      $room->rgbwSetActiveGroup($group);
+	      $room->rgbwBrightnessPercent((int)$brightness);
+	    }
 	  }
 	}
       }
