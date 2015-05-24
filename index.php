@@ -85,7 +85,7 @@
 		   Obj('frontdoor_', array($hallway), 1),
 		   Obj('pictureright_', array($hallway), 2),
 		   Obj('pictureleft_', array($hallway), 3),
-		   Obj('halllights_', array($hallway), 4))
+		   Obj('halllights_', array($hallway), 4));
     
     foreach ($items as &$item) {
       if (strpos($_GET["action"],$item->$trigger) !== false) {
