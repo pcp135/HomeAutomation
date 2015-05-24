@@ -56,6 +56,103 @@
     $balcony = new Orvibo('192.168.1.10','10000',array(0xAC,0xCF,0x23,0x4F,0x09,0x0C));   
     $allrooms = array($lounge, $hallway, $kitchen);
 
+    class Obj {
+      public $trigger;
+      public $type;
+      public $controllers;
+      public $group;
+
+      public function __construct($trigger, $controllers, $group, $type='Milight') {
+	$this->$trigger = $trigger;
+	$this->$controllers = $controllers;
+	$this->$group = $group;
+	$this->$type = $type;
+      }
+    }
+
+    $items = array(Obj('all_', $allrooms, 0),
+		   Obj('kitchen_', array($kitchen), 0),
+		   Obj('hightable_', array($kitchen), 1),
+		   Obj('diningtable_', array($kitchen), 2),
+		   Obj('sink_', array($kitchen), 3),
+		   Obj('fridge_', array($kitchen), 4),
+		   Obj('lounge_', array($lounge), 0),
+		   Obj('sofa_', array($lounge), 1),
+		   Obj('loungedoor_', array($lounge), 2),
+		   Obj('desk_', array($lounge), 3),
+		   Obj('sidecupboards_', array($lounge), 4),
+		   Obj('hallway_', array($hallway), 0),
+		   Obj('frontdoor_', array($hallway), 1),
+		   Obj('pictureright_', array($hallway), 2),
+		   Obj('pictureleft_', array($hallway), 3),
+		   Obj('halllights_', array($hallway), 4))
+    
+    foreach ($items as &$item) {
+      if (strpos($_GET["action"],$item->$trigger) !== false) {
+	$rooms = $item->$controllers;
+	$group = $item->$group;
+      }
+      if (strpos($_GET["action"],"on") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSendOnToGroup($group);
+	}
+      }
+      elseif (strpos($_GET["action"],"off") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSendOffToGroup($group);
+	}
+      }
+      elseif (strpos($_GET["action"],"white") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSetGroupToWhite($group);
+	}
+      }
+      elseif (strpos($_GET["action"],"random") !== false) {
+	foreach ($rooms as &$room) {
+	  if ($group == 0) {
+	    for ($bulb=1; $bulb<5; $bulb++) {
+	      $room->rgbwSetActiveGroup($bulb);
+	      $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	    }
+	  }
+	  else {
+	    $room->rgbwSetActiveGroup($group);
+	    $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	  } 
+	}
+      }
+      elseif (strpos($_GET["action"],"20") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSetActiveGroup($group);
+	  $room->rgbwBrightnessPercent(20);
+	}
+      }
+      elseif (strpos($_GET["action"],"40") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSetActiveGroup($group);
+	  $room->rgbwBrightnessPercent(40);
+	}
+      }
+      elseif (strpos($_GET["action"],"60") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSetActiveGroup($group);
+	  $room->rgbwBrightnessPercent(60);
+	}
+      }
+      elseif (strpos($_GET["action"],"80") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSetActiveGroup($group);
+	  $room->rgbwBrightnessPercent(80);
+	}
+      }
+      elseif (strpos($_GET["action"],"100") !== false) {
+	foreach ($rooms as &$room) {
+	  $room->rgbwSetActiveGroup($group);
+	  $room->rgbwBrightnessPercent(100);
+	}
+      }
+    }
+    
     if ($_GET["action"] == "balconyon") {
       $balcony->on();
     }
@@ -64,181 +161,50 @@
       $balcony->off();
     }
 
-    if (strpos($_GET["action"],'hallway') !== false) {
-      $rooms = array($hallway);
-      $group = 0;
+    if ($_GET["action"] == "disco") {
+      foreach ($allrooms as &$room) {
+	$room->rgbwSetActiveGroup(0);
+	$room->rgbwDiscoMode();
+      }
     }
-    elseif (strpos($_GET["action"],'all') !== false) {
-      $rooms = $allrooms;
-      $group = 0;
-    }
-    elseif (strpos($_GET["action"],'loungedoor') !== false) {
-      $rooms = array($lounge);
-      $group = 2;
-    }
-    elseif (strpos($_GET["action"],'lounge') !== false) {
-      $rooms = array($lounge);
-      $group = 0;
-    }
-    elseif (strpos($_GET["action"],'kitchen') !== false) {
-      $rooms = array($kitchen);
-      $group = 0;
-    }
-
-    elseif (strpos($_GET["action"],'hightable') !== false) {
-      $rooms = array($kitchen);
-      $group = 1;
-    }
-    elseif (strpos($_GET["action"],'diningtable') !== false) {
-      $rooms = array($kitchen);
-      $group = 2;
-    }
-    elseif (strpos($_GET["action"],'sink') !== false) {
-      $rooms = array($kitchen);
-      $group = 3;
-    }
-    elseif (strpos($_GET["action"],'fridge') !== false) {
-      $rooms = array($kitchen);
-      $group = 4;
-    }
-
-    elseif (strpos($_GET["action"],'frontdoor') !== false) {
-      $rooms = array($hallway);
-      $group = 1;
-    }
-    elseif (strpos($_GET["action"],'pictureright') !== false) {
-      $rooms = array($hallway);
-      $group = 2;
-    }
-    elseif (strpos($_GET["action"],'pictureleft') !== false) {
-      $rooms = array($hallway);
-      $group = 3;
-    }
-    elseif (strpos($_GET["action"],'halllights') !== false) {
-      $rooms = array($hallway);
-      $group = 4;
-    }
-
-    elseif (strpos($_GET["action"],'sofa') !== false) {
-      $rooms = array($lounge);
-      $group = 1;
-    }
-    elseif (strpos($_GET["action"],'desk') !== false) {
-      $rooms = array($lounge);
-      $group = 3;
-    }
-    elseif (strpos($_GET["action"],'sidecupboards') !== false) {
-      $rooms = array($lounge);
-      $group = 4;
-    }
-
-    else {
-      
-      if ($_GET["action"] == "disco") {
-	foreach ($allrooms as &$room) {
-	  $room->rgbwSetActiveGroup(0);
-	  $room->rgbwDiscoMode();
+    if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
+      if ($_GET["action"] == "tv") {
+	for ($bulb=1; $bulb<5; $bulb++) {
+	  $lounge->rgbwSetActiveGroup($bulb);
+	  $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	  $lounge->rgbwBrightnessPercent(50);
 	}
+	$hallway->rgbwAllOff();
+	$hallway->rgbwAllOff();
+	$hallway->rgbwSetActiveGroup(1);
+	$hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	$hallway->rgbwBrightnessPercent(25);
+	$kitchen->rgbwAllOff();
+	$kitchen->rgbwAllOff();
+	$kitchen->rgbwGroup1SetToWhite();
+	$kitchen->rgbwSetActiveGroup(1);
+	$kitchen->rgbwBrightnessPercent(25);
+	$balcony->on();
       }
-      if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
-	if ($_GET["action"] == "tv") {
-	  for ($bulb=1; $bulb<5; $bulb++) {
-	    $lounge->rgbwSetActiveGroup($bulb);
-	    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	    $lounge->rgbwBrightnessPercent(50);
-	  }
-	  $hallway->rgbwAllOff();
-	  $hallway->rgbwAllOff();
-	  $hallway->rgbwSetActiveGroup(1);
-	  $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	  $hallway->rgbwBrightnessPercent(25);
-	  $kitchen->rgbwAllOff();
-	  $kitchen->rgbwAllOff();
-	  $kitchen->rgbwGroup1SetToWhite();
-	  $kitchen->rgbwSetActiveGroup(1);
-	  $kitchen->rgbwBrightnessPercent(25);
-	  $balcony->on();
+      if ($_GET["action"] == "cooking") {
+	$kitchen->rgbwAllOn();
+	$kitchen->rgbwAllSetToWhite();
+	$kitchen->rgbwSetActiveGroup(0);
+	$kitchen->rgbwBrightnessPercent(100);
+	for ($bulb=1; $bulb<5; $bulb++) {
+	  $lounge->rgbwSetActiveGroup($bulb);
+	  $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	  $lounge->rgbwBrightnessPercent(50);
 	}
-	if ($_GET["action"] == "cooking") {
-	  $kitchen->rgbwAllOn();
-	  $kitchen->rgbwAllSetToWhite();
-	  $kitchen->rgbwSetActiveGroup(0);
-	  $kitchen->rgbwBrightnessPercent(100);
-	  for ($bulb=1; $bulb<5; $bulb++) {
-	    $lounge->rgbwSetActiveGroup($bulb);
-	    $lounge->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	    $lounge->rgbwBrightnessPercent(50);
-	  }
-	  $hallway->rgbwAllOff();
-	  $hallway->rgbwAllOff();
-	  $hallway->rgbwSetActiveGroup(1);
-	  $hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	  $hallway->rgbwBrightnessPercent(25);
-	  $balcony->on();
-	}
-      }
-    }
-    if (strpos($_GET["action"],"on") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSendOnToGroup($group);
-      }
-    }
-    elseif (strpos($_GET["action"],"off") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSendOffToGroup($group);
-      }
-    }
-    elseif (strpos($_GET["action"],"white") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSetGroupToWhite($group);
-      }
-    }
-    elseif (strpos($_GET["action"],"random") !== false) {
-      foreach ($rooms as &$room) {
-	if ($group == 0) {
-	  for ($bulb=1; $bulb<5; $bulb++) {
-	    $room->rgbwSetActiveGroup($bulb);
-	    $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	  }
-	}
-	else {
-	  $room->rgbwSetActiveGroup($group);
-	  $room->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
-	} 
-      }
-    }
-    elseif (strpos($_GET["action"],"20") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(20);
-      }
-    }
-    elseif (strpos($_GET["action"],"40") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(40);
-      }
-    }
-    elseif (strpos($_GET["action"],"60") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(60);
-      }
-    }
-    elseif (strpos($_GET["action"],"80") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(80);
-      }
-    }
-    elseif (strpos($_GET["action"],"100") !== false) {
-      foreach ($rooms as &$room) {
-	$room->rgbwSetActiveGroup($group);
-	$room->rgbwBrightnessPercent(100);
+	$hallway->rgbwAllOff();
+	$hallway->rgbwAllOff();
+	$hallway->rgbwSetActiveGroup(1);
+	$hallway->rgbwSetColorHexString(sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+	$hallway->rgbwBrightnessPercent(25);
+	$balcony->on();
       }
     }
 
-    
     ?>
     <div class="container">
       <div class="well">
