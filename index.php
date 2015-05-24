@@ -51,7 +51,8 @@
     $lounge = new Controllable("RGBWMilight",'192.168.1.7');
     $hallway = new Controllable("RGBWMilight",'192.168.1.8');
     $kitchen = new Controllable("RGBWMilight",'192.168.1.9');
-    $balcony = new Controllable("Orvibo", '192.168.1.10','10000',array(0xAC,0xCF,0x23,0x4F,0x09,0x0C));   
+    $balcony = new Controllable("Orvibo", '192.168.1.10','10000',
+				array(0xAC,0xCF,0x23,0x4F,0x09,0x0C));   
     $allrooms = array($lounge, $hallway, $kitchen, $balcony);
 
     class Obj {
@@ -86,6 +87,7 @@
     
     foreach ($items as &$item) {
       if (strpos($_GET["action"],$item->trigger) !== false) {
+	echo "Trigger: ". $item->trigger . "<br>";
 	$rooms = $item->controllers;
 	$group = $item->group;
 	if (strpos($_GET["action"],"on") !== false) {
