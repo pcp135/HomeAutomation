@@ -86,9 +86,9 @@
     $items[] =  new Obj('pictureright_', array($hallway), 2);
     $items[] =  new Obj('pictureleft_', array($hallway), 3);
     $items[] =  new Obj('halllights_', array($hallway), 4);
-    print_r($items);
     
     foreach ($items as &$item) {
+      print_r($item);
       if (strpos($_GET["action"],$item->$trigger) !== false) {
 	$rooms = $item->$controllers;
 	$group = $item->$group;
