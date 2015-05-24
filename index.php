@@ -199,6 +199,7 @@
 	    foreach ($individual_lights as &$bulb) {
 	      echo milightBlockHTML($bulb);
 	    }
+	    echo orviboBlockHTML("Balcony");
 	    ?>
 	  </div>
 	  <div id="kitchen" class="tab-pane">
