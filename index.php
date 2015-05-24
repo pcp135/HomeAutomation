@@ -87,7 +87,6 @@
     
     foreach ($items as &$item) {
       if (strpos($_GET["action"],$item->trigger) !== false) {
-	echo "Trigger: ". $item->trigger . "<br>";
 	$rooms = $item->controllers;
 	$group = $item->group;
 	if (strpos($_GET["action"],"on") !== false) {
