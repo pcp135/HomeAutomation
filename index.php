@@ -70,23 +70,23 @@
       }
     }
 
-    $items = array(Obj('all_', $allrooms, 0),
-		   Obj('kitchen_', array($kitchen), 0),
-		   Obj('hightable_', array($kitchen), 1),
-		   Obj('diningtable_', array($kitchen), 2),
-		   Obj('sink_', array($kitchen), 3),
-		   Obj('fridge_', array($kitchen), 4),
-		   Obj('lounge_', array($lounge), 0),
-		   Obj('sofa_', array($lounge), 1),
-		   Obj('loungedoor_', array($lounge), 2),
-		   Obj('desk_', array($lounge), 3),
-		   Obj('sidecupboards_', array($lounge), 4),
-		   Obj('hallway_', array($hallway), 0),
-		   Obj('frontdoor_', array($hallway), 1),
-		   Obj('pictureright_', array($hallway), 2),
-		   Obj('pictureleft_', array($hallway), 3),
-		   Obj('halllights_', array($hallway), 4));
-    echo $items;
+    $items[] =  new Obj('all_', $allrooms, 0);
+    $items[] =  new Obj('kitchen_', array($kitchen), 0);
+    $items[] =  new Obj('hightable_', array($kitchen), 1);
+    $items[] =  new Obj('diningtable_', array($kitchen), 2);
+    $items[] =  new Obj('sink_', array($kitchen), 3);
+    $items[] =  new Obj('fridge_', array($kitchen), 4);
+    $items[] =  new Obj('lounge_', array($lounge), 0);
+    $items[] =  new Obj('sofa_', array($lounge), 1);
+    $items[] =  new Obj('loungedoor_', array($lounge), 2);
+    $items[] =  new Obj('desk_', array($lounge), 3);
+    $items[] =  new Obj('sidecupboards_', array($lounge), 4);
+    $items[] =  new Obj('hallway_', array($hallway), 0);
+    $items[] =  new Obj('frontdoor_', array($hallway), 1);
+    $items[] =  new Obj('pictureright_', array($hallway), 2);
+    $items[] =  new Obj('pictureleft_', array($hallway), 3);
+    $items[] =  new Obj('halllights_', array($hallway), 4);
+    print_r($items);
     
     foreach ($items as &$item) {
       if (strpos($_GET["action"],$item->$trigger) !== false) {
