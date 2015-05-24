@@ -63,10 +63,10 @@
       public $group;
 
       public function __construct($trigger, $controllers, $group, $type='Milight') {
-	$this->$trigger = $trigger;
-	$this->$controllers = $controllers;
-	$this->$group = $group;
-	$this->$type = $type;
+	$this->trigger = $trigger;
+	$this->controllers = $controllers;
+	$this->group = $group;
+	$this->type = $type;
       }
     }
 
