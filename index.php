@@ -57,7 +57,6 @@
 	} 
 	
     require 'Controllable.php';
-require 'test.php';
 	
     $lounge = new Controllable("RGBWMilight",'192.168.1.7');
     $hallway = new Controllable("RGBWMilight",'192.168.1.8');
@@ -141,7 +140,7 @@ require 'test.php';
 	$room->discoMode(0);
       }
     }
-    if (time()>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
+    if ((time()+60*60)>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
       if ($_GET["action"] == "tv") {
 	for ($bulb=1; $bulb<5; $bulb++) {
 	  $lounge->setRandom($bulb);
