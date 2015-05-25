@@ -57,7 +57,8 @@
 	} 
 	
     require 'Controllable.php';
-    
+require 'test.php';
+	
     $lounge = new Controllable("RGBWMilight",'192.168.1.7');
     $hallway = new Controllable("RGBWMilight",'192.168.1.8');
     $kitchen = new Controllable("RGBWMilight",'192.168.1.9');
