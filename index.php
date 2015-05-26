@@ -224,20 +224,25 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script>
-      $(function() { 
-      //for bootstrap 3 use 'shown.bs.tab' instead of 'shown' in the next line
-      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      //save the latest tab; use cookies if you like 'em better:
-      localStorage.setItem('lastTab', $(e.target).attr('id'));
-      });
+     $('#myTab a').click(function (e) {
+       e.preventDefault()
+       $(this).tab('show')
+     })
+
+     $(function() { 
+       //for bootstrap 3 use 'shown.bs.tab' instead of 'shown' in the next line
+       $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	 //save the latest tab; use cookies if you like 'em better:
+	      localStorage.setItem('lastTab', $(e.target).attr('id'));
+       });
       
       //go to the latest tab, if it exists:
-      var lastTab = localStorage.getItem('lastTab');
-      if (lastTab) {
-      $('#'+lastTab).tab('show');
-      }
-      });
-      </script>
+       var lastTab = localStorage.getItem('lastTab');
+       if (lastTab) {
+	 $('#'+lastTab).tab('show');
+       }
+     });
+    </script>
 
   </body>
 </html>
