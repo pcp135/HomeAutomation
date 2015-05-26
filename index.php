@@ -63,7 +63,9 @@
     $kitchen = new Controllable("RGBWMilight",'192.168.1.9');
     $balcony = new Controllable("Orvibo", '192.168.1.10','10000',
 				array(0xAC,0xCF,0x23,0x4F,0x09,0x0C));   
-    $allrooms = array($lounge, $hallway, $kitchen, $balcony);
+    $kitchenfairy = new Controllable("Orvibo", '192.168.1.11','10000',
+				array(0xAC,0xCF,0x23,0x4B,0xB5,0xBA));   
+    $allrooms = array($lounge, $hallway, $kitchen, $balcony, $kitchenfairy);
 
     class Obj {
       public $trigger;
@@ -78,7 +80,8 @@
     }
 
     $items[] =  new Obj('all_', $allrooms, 0);
-    $items[] =  new Obj('kitchen_', array($kitchen), 0);
+    $items[] =  new Obj('kitchen_', array($kitchen, $kitchenfairy), 0);
+    $items[] =  new Obj('kitchenfairy_', array($kitchenfairy), 0);
     $items[] =  new Obj('hightable_', array($kitchen), 1);
     $items[] =  new Obj('diningtable_', array($kitchen), 2);
     $items[] =  new Obj('sink_', array($kitchen), 3);
@@ -145,14 +148,15 @@
 	for ($bulb=1; $bulb<5; $bulb++) {
 	  $lounge->setRandom($bulb);
 	}
-	$lounge->setBrightness(0, 50);
+	$lounge->setBrightness(0, 60);
 	$hallway->sendOff(0);
 	$hallway->setRandom(1);
-	$hallway->setBrightness(1,25);
+	$hallway->setBrightness(1,40);
 	$kitchen->sendOff(0);
-	$kitchen->setWhite(1);
-	$kitchen->setBrightness(1,25);
+	$kitchen->setWhite(3);
+	$kitchen->setBrightness(3,25);
 	$balcony->sendOn(0);
+	$kitchenfairy->sendOn(0);
       }
       if ($_GET["action"] == "cooking") {
 	$kitchen->setWhite(0);
@@ -160,11 +164,12 @@
 	for ($bulb=1; $bulb<5; $bulb++) {
 	  $lounge->setRandom($bulb);
 	}
-	$lounge->setBrightness(0, 50);
+	$lounge->setBrightness(0, 60);
 	$hallway->sendOff(0);
 	$hallway->setRandom(1);
-	$hallway->setBrightness(1,25);
+	$hallway->setBrightness(1,40);
 	$balcony->sendOn(0);
+	$kitchenfairy->sendOn(0);
       }
     }
 
@@ -202,6 +207,7 @@
 	    <?php
 	    $individual_lights=array("Kitchen",'High Table','Dining Table', 'Sink', 'Fridge');
 	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
+	    echo orviboBlockHTML("Kitchen Fairy");
 	    ?>
 	  </div>
 	  <div id="hallway" class="tab-pane">
