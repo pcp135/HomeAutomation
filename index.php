@@ -184,7 +184,7 @@
       </div>  
       <div class="well">
 	<ul class="nav nav-tabs">
-	  <li role="presentation" class="active"><a href="#rooms" data-toggle="tab">Rooms</a></li>
+	  <li role="presentation"><a href="#rooms" data-toggle="tab">Rooms</a></li>
 	  <li role="presentation"><a href="#lounge" data-toggle="tab">Lounge</a></li>
 	  <li role="presentation"><a href="#kitchen" data-toggle="tab">Kitchen</a></li>
 	  <li role="presentation"><a href="#hallway" data-toggle="tab">Hallway</a></li>
