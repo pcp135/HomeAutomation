@@ -428,10 +428,10 @@ class Milight {
     return $rgb;
   }
 
-  public function rgbToHsl($r, $g, $b) {
-    $r = $r / 255;
-    $g = $g / 255;
-    $b = $b / 255;
+  public function rgbToHsl(Array $rgb) {
+    $r = $rgb[0] / 255;
+    $g = $rgb[1] / 255;
+    $b = $rgb[2] / 255;
     $max = max($r, $g, $b);
     $min = min($r, $g, $b);
     $l = ($max + $min) / 2;
