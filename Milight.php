@@ -446,7 +446,7 @@ class Milight {
         $h = 60 * (($r - $g) / $d + 4);
         break;
     }
-    return array($h, $s, $l);
+    return array($h,0,0);
   }
 
   public function hslToMilightColor($hsl)
