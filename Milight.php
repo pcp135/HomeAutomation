@@ -433,29 +433,19 @@ class Milight {
     $max = max($rgb);
     $min = min($rgb);
     list($r,$g,$b)=$rgb;
-    echo $max . $r . $g . $b;
-    $h = $s = $l = ($max + $min) / 2;
-    echo $h . $s . $l;
     $d = $max - $min;
-    if ($d == 0) {
-      $h = $s = 0;
+    switch ($max) {
+      case $r:
+        $h = 60 * fmod((($g - $b) / $d), 6);
+        if ($b > $g) $h += 360;
+        break;
+      case $g:
+        $h = 60 * (($b - $r) / $d + 2);
+        break;
+      case $b:
+        $h = 60 * (($r - $g) / $d + 4);
+        break;
     }
-    else {
-      $s = $d / (1 - abs(2 * $l - 1));
-      switch ($max) {
-	case $r:
-          $h = 60 * fmod((($g - $b) / $d), 6);
-          if ($b > $g) $h += 360;
-          break;
-        case $g:
-          $h = 60 * (($b - $r) / $d + 2);
-          break;
-        case $b:
-          $h = 60 * (($r - $g) / $d + 4);
-          break;
-      }
-    }
-    echo '<br>' . $h . ' ' . $s . ' ' . $l;
     return array($h, $s, $l);
   }
 
