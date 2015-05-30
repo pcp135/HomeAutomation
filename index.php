@@ -32,7 +32,7 @@
 	    Brightness <span class="caret"></span>
           </button> 
           <ul class="dropdown-menu" role="menu">
-	    <?php $levels=array('00','10','20','30','40','50','60','70','80','90','100');
+	    <?php $levels=array('0','10','20','30','40','50','60','70','80','90','100');
 	       foreach ($levels as &$level): ?>
 	    <li><a href="index.php?action=
 	    <?php echo str_replace(' ', '', strtolower($replStr)).'_'.$level ?>
@@ -127,7 +127,7 @@
 	    else $room->setRandom($group);
 	  }
 	}
-	$levels=array('00','10','20','30','40','50','60','70','80','90','100');
+	$levels=array('_0','_10','_20','_30','_40','_50','_60','_70','_80','_90','_100');
 	foreach ($levels as &$brightness) {
 	  if (strpos($_GET["action"],$brightness) !== false) {
 	    foreach ($rooms as &$room) {
