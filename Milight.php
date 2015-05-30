@@ -201,13 +201,9 @@ class Milight {
       throw new \Exception('Brightness percent must be between 0 and 100');
     }
     $this->rgbwSendOnToActiveGroup();
-    $levels = array(0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a,
-		    0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13,
-		    0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b);
-    
-        $this->sendCommand(array(0x4e, $brightness));
-
-    }
+    $brightness = round(2+(($brightnessPercent/100)*25));
+    $this->sendCommand(array(0x4e, $brightness));
+  }
 
 
     public function rgbwDiscoMode()
