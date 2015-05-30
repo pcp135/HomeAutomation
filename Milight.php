@@ -441,7 +441,7 @@ class Milight {
       $h = $s = 0;
     }
     else {
-      $s = ($l > 0.5) ? $d / (2 - $max - $min) : $d / ($max + $min);
+      $s = $d / (1 - abs(2 * $l - 1));
       switch ($max) {
 	case $r:
 	  $h = ($g - $b) / $d + (($g < $b) ? 6 : 0);
