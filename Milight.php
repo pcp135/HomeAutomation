@@ -177,15 +177,17 @@ class Milight {
     $this->rgbwSetGroupToWhite($this->getRgbwActiveGroup());
   }
 
-//  public function rgbwBrightnessMax($group=$this->getRgbwActiveGroup()) {
-//    $this->rgbwSendOnToGroup($group);
-//    $this->command('rgbwBrightnessMax');
-//  }
+  public function rgbwBrightnessMax($group=null) {
+    $group = isset($group) ? $group : $this->getRgbwActiveGroup();
+    $this->rgbwSendOnToGroup($group);
+    $this->command('rgbwBrightnessMax');
+  }
 
-//  public function rgbwBrightnessMin($group=$this->getRgbwActiveGroup()) {
-//    $this->rgbwSendOnToGroup($group);
-//    $this->command('rgbwBrightnessMin');
-//  }
+  public function rgbwBrightnessMin($group=null) {
+    $group = isset($group) ? $group : $this->getRgbwActiveGroup();
+    $this->rgbwSendOnToGroup($group);
+    $this->command('rgbwBrightnessMin');
+  }
 
   public function rgbwAllBrightnessMin() {
     $this->setRgbwBrightnessMin(0);
