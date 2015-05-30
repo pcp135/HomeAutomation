@@ -4,6 +4,7 @@
  * The MIT License (MIT)
  *
  * Copyright (c) 2014 Yashar Rashedi <info@rashedi.com>
+ * Copyright (c) 2015 Phil Parsons <phil@parsons.uk.com>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,143 +25,100 @@
  * THE SOFTWARE.
 */
 
-class Milight
-{
+class Milight {
+  
+  private $host;
+  private $port;
+  private $delay = 10000; //microseconds
+  private $rgbwActiveGroup = 0; // 0 means all
+  private $whiteActiveGroup = 0; // 0 means all
+  private $commandCodes = array(
 
-    private $host;
-    private $port;
-    private $delay = 10000; //microseconds
-    private $rgbwActiveGroup = 0; // 0 means all
-    private $whiteActiveGroup = 0; // 0 means all
-    private $commandCodes = array(
-        //RGBW Bulb commands
-        'rgbwAllOn' => array(0x42, 0x00),
-        'rgbwAllOff' => array(0x41, 0x00),
-        'rgbwGroup1On' => array(0x45, 0x00),
-        'rgbwGroup2On' => array(0x47, 0x00),
-        'rgbwGroup3On' => array(0x49, 0x00),
-        'rgbwGroup4On' => array(0x4B, 0x00),
-        'rgbwGroup1Off' => array(0x46, 0x00),
-        'rgbwGroup2Off' => array(0x48, 0x00),
-        'rgbwGroup3Off' => array(0x4a, 0x00),
-        'rgbwGroup4Off' => array(0x4c, 0x00),
-        'rgbwBrightnessMax' => array(0x4e, 0x1b),
-        'rgbwBrightnessMin' => array(0x4e, 0x02),
-        'rgbwDiscoMode' => array(0x4d, 0x00),
-        'rgbwDiscoSlower' => array(0x43, 0x00),
-        'rgbwDiscoFaster' => array(0x44, 0x00),
-        'rgbwAllSetToWhite' => array(0xc2, 0x00),
-        'rgbwGroup1SetToWhite' => array(0xc5, 0x00),
-        'rgbwGroup2SetToWhite' => array(0xc7, 0x00),
-        'rgbwGroup3SetToWhite' => array(0xc9, 0x00),
-        'rgbwGroup4SetToWhite' => array(0xcb, 0x00),
-        'rgbwSetColorToViolet' => array(0x40, 0x00),
-        'rgbwSetColorToRoyalBlue' => array(0x40, 0x10),
-        'rgbwSetColorToBabyBlue' => array(0x40, 0x20),
-        'rgbwSetColorToAqua' => array(0x40, 0x30),
-        'rgbwSetColorToRoyalMint' => array(0x40, 0x40),
-        'rgbwSetColorToSeafoamGreen' => array(0x40, 0x50),
-        'rgbwSetColorToGreen' => array(0x40, 0x60),
-        'rgbwSetColorToLimeGreen' => array(0x40, 0x70),
-        'rgbwSetColorToYellow' => array(0x40, 0x80),
-        'rgbwSetColorToYellowOrange' => array(0x40, 0x90),
-        'rgbwSetColorToOrange' => array(0x40, 0xa0),
-        'rgbwSetColorToRed' => array(0x40, 0xb0),
-        'rgbwSetColorToPink' => array(0x40, 0xc0),
-        'rgbwSetColorToFusia' => array(0x40, 0xd0),
-        'rgbwSetColorToLilac' => array(0x40, 0xe0),
-        'rgbwSetColorToLavendar' => array(0x40, 0xf0),
+    //RGBW Bulb commands
+    'rgbwAllOn' => array(0x42, 0x00),
+    'rgbwAllOff' => array(0x41, 0x00),
+    'rgbwGroup0On' => array(0x42, 0x00),
+    'rgbwGroup0Off' => array(0x41, 0x00),
+    'rgbwGroup1On' => array(0x45, 0x00),
+    'rgbwGroup2On' => array(0x47, 0x00),
+    'rgbwGroup3On' => array(0x49, 0x00),
+    'rgbwGroup4On' => array(0x4B, 0x00),
+    'rgbwGroup1Off' => array(0x46, 0x00),
+    'rgbwGroup2Off' => array(0x48, 0x00),
+    'rgbwGroup3Off' => array(0x4a, 0x00),
+    'rgbwGroup4Off' => array(0x4c, 0x00),
+    'rgbwBrightnessMax' => array(0x4e, 0x1b),
+    'rgbwBrightnessMin' => array(0x4e, 0x02),
+    'rgbwDiscoMode' => array(0x4d, 0x00),
+    'rgbwDiscoSlower' => array(0x43, 0x00),
+    'rgbwDiscoFaster' => array(0x44, 0x00),
+    'rgbwAllSetToWhite' => array(0xc2, 0x00),
+    'rgbwGroup0SetToWhite' => array(0xc2, 0x00),
+    'rgbwGroup1SetToWhite' => array(0xc5, 0x00),
+    'rgbwGroup2SetToWhite' => array(0xc7, 0x00),
+    'rgbwGroup3SetToWhite' => array(0xc9, 0x00),
+    'rgbwGroup4SetToWhite' => array(0xcb, 0x00),
 
+    // White Bulb commands
+    'whiteAllOn' => array(0x35, 0x00),
+    'whiteAllOff' => array(0x39, 0x00),
+    'whiteGroup0On' => array(0x35, 0x00),
+    'whiteGroup0Off' => array(0x39, 0x00),
+    'whiteBrightnessUp' => array(0x3c, 0x00),
+    'whiteBrightnessDown' => array(0x34, 0x00),
+    'whiteAllBrightnessMax' => array(0xb5, 0x00),
+    'whiteAllNightMode' => array(0xbb, 0x00),
+    'whiteGroup0BrightnessMax' => array(0xb5, 0x00),
+    'whiteGroup0NightMode' => array(0xbb, 0x00),
+    'whiteWarmIncrease' => array(0x3e, 0x00),
+    'whiteCoolIncrease' => array(0x3f, 0x00),
+    'whiteGroup1On' => array(0x38, 0x00),
+    'whiteGroup1Off' => array(0x3b, 0x00),
+    'whiteGroup2On' => array(0x3d, 0x00),
+    'whiteGroup2Off' => array(0x33, 0x00),
+    'whiteGroup3On' => array(0x3a, 0x00),
+    'whiteGroup3Off' => array(0x32, 0x00),
+    'whiteGroup4On' => array(0x32, 0x00),
+    'whiteGroup4Off' => array(0x36, 0x00),
+    'whiteGroup1BrightnessMax' => array(0xb8, 0x00),
+    'whiteGroup2BrightnessMax' => array(0xbd, 0x00),
+    'whiteGroup3BrightnessMax' => array(0xb7, 0x00),
+    'whiteGroup4BrightnessMax' => array(0xb2, 0x00),
+    'whiteGroup1NightMode' => array(0xbb, 0x00),
+    'whiteGroup2NightMode' => array(0xb3, 0x00),
+    'whiteGroup3NightMode' => array(0xba, 0x00),
+    'whiteGroup4NightMode' => array(0xb6, 0x00),
+  );
 
-        // White Bulb commands
-        'whiteAllOn' => array(0x35, 0x00),
-        'whiteAllOff' => array(0x39, 0x00),
-        'whiteBrightnessUp' => array(0x3c, 0x00),
-        'whiteBrightnessDown' => array(0x34, 0x00),
-        'whiteAllBrightnessMax' => array(0xb5, 0x00),
-        'whiteAllNightMode' => array(0xbb, 0x00),
-        'whiteWarmIncrease' => array(0x3e, 0x00),
-        'whiteCoolIncrease' => array(0x3f, 0x00),
-        'whiteGroup1On' => array(0x38, 0x00),
-        'whiteGroup1Off' => array(0x3b, 0x00),
-        'whiteGroup2On' => array(0x3d, 0x00),
-        'whiteGroup2Off' => array(0x33, 0x00),
-        'whiteGroup3On' => array(0x3a, 0x00),
-        'whiteGroup3Off' => array(0x32, 0x00),
-        'whiteGroup4On' => array(0x32, 0x00),
-        'whiteGroup4Off' => array(0x36, 0x00),
-        'whiteGroup1BrightnessMax' => array(0xb8, 0x00),
-        'whiteGroup2BrightnessMax' => array(0xbd, 0x00),
-        'whiteGroup3BrightnessMax' => array(0xb7, 0x00),
-        'whiteGroup4BrightnessMax' => array(0xb2, 0x00),
-        'whiteGroup1NightMode' => array(0xbb, 0x00),
-        'whiteGroup2NightMode' => array(0xb3, 0x00),
-        'whiteGroup3NightMode' => array(0xba, 0x00),
-        'whiteGroup4NightMode' => array(0xb6, 0x00),
+  public function setDelay($delay) {
+    $this->delay = $delay;
+  }
 
-    );
+  public function getDelay() {
+    return $this->delay;
+  }
 
-    /**
-     * @param int $delay
-     */
-    public function setDelay($delay)
-    {
-        $this->delay = $delay;
+  public function setRgbwActiveGroup($rgbwActiveGroup) {
+    if ($rgbwActiveGroup < 0 || $rgbwActiveGroup > 4) {
+      throw new \Exception('Active RGBW group must be between 0 and 4. 0 means all groups');
     }
+    $this->rgbwActiveGroup = $rgbwActiveGroup;
+  }
 
-    /**
-     * @return int
-     */
-    public function getDelay()
-    {
-        return $this->delay;
+  public function rgbwSetActiveGroup($rgbwActiveGroup) {
+    $this->setRgbwActiveGroup($rgbwActiveGroup);
+  }
+
+  public function getRgbwActiveGroup() {
+    return $this->rgbwActiveGroup;
+  }
+
+  public function setWhiteActiveGroup($whiteActiveGroup) {
+    if ($whiteActiveGroup < 0 || $whiteActiveGroup > 4) {
+      throw new \Exception('Active White Group must be between or equal 0 to 4, note: 0 means all groups');
     }
-
-
-    /**
-     * @param int $rgbwActiveGroup
-     * @throws Exception
-     */
-    public function setRgbwActiveGroup($rgbwActiveGroup)
-    {
-        if ($rgbwActiveGroup < 0 || $rgbwActiveGroup > 4) {
-            throw new \Exception('Active RGBW group must be between 0 and 4. 0 means all groups');
-        }
-        $this->rgbwActiveGroup = $rgbwActiveGroup;
-    }
-
-
-    // Same as setRgbwActiveGroup. Exists just to make method invocation easier according to the convention
-    /**
-    * @param int $rgbwActiveGroup
-    * @throws Exception
-    */
-    public function rgbwSetActiveGroup($rgbwActiveGroup)
-    {
-        $this->setRgbwActiveGroup($rgbwActiveGroup);
-    }
-
-    /**
-     * @throws Exception
-     * @return int
-     */
-    public function getRgbwActiveGroup()
-    {
-        return $this->rgbwActiveGroup;
-    }
-
-
-    /**
-     * @param int $whiteActiveGroup
-     * @throws Exception
-     */
-    public function setWhiteActiveGroup($whiteActiveGroup)
-    {
-        if ($whiteActiveGroup < 0 || $whiteActiveGroup > 4) {
-            throw new \Exception('Active White Group must be between or equal 0 to 4, note: 0 means all groups');
-        }
-        $this->whiteActiveGroup = $whiteActiveGroup;
-    }
+    $this->whiteActiveGroup = $whiteActiveGroup;
+  }
 
     // Same as setWhiteActiveGroup. Exists just to make method invocation easier according to the convention
     /**
