@@ -201,17 +201,15 @@ class Milight {
     if ($brightnessPercent < 0 || $brightnessPercent > 100) {
       throw new \Exception('Brightness percent must be between 0 and 100');
     }
+    $brightnessPercent = round(2+(($brightnessPercent/100)*25));
     $this->rgbwSendOnToActiveGroup();
-    $brightness = round(2+(($brightnessPercent/100)*25));
-    $this->sendCommand(array(0x4e, $brightness));
+    $this->sendCommand(array(0x4e, $brightnessPercent));
   }
 
-
-    public function rgbwDiscoMode()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwDiscoMode');
-    }
+  public function rgbwDiscoMode() {
+    $this->rgbwSendOnToActiveGroup();
+    $this->command('rgbwDiscoMode');
+  }
 
     public function rgbwDiscoSlower()
     {
