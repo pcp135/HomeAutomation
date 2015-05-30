@@ -127,9 +127,9 @@
 	    else $room->setRandom($group);
 	  }
 	}
-	$levels=array('_0','_10','_20','_30','_40','_50','_60','_70','_80','_90','_100');
+	$levels=array('0','10','20','30','40','50','60','70','80','90','100');
 	foreach ($levels as &$brightness) {
-	  if (strpos($_GET["action"],$brightness) !== false) {
+	  if (strpos($_GET["action"],'_'.$brightness) !== false) {
 	    foreach ($rooms as &$room) {
 	      $room->setBrightness($group, (int)$brightness);
 	    }
