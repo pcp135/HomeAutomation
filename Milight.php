@@ -100,7 +100,7 @@ class Milight {
 
   public function setRgbwActiveGroup($rgbwActiveGroup) {
     if ($rgbwActiveGroup < 0 || $rgbwActiveGroup > 4) {
-      throw new \Exception('Active RGBW group must be between 0 and 4. 0 means all groups');
+      throw new \Exception('Active group must be between 0 and 4. 0 means all groups');
     }
     $this->rgbwActiveGroup = $rgbwActiveGroup;
   }
@@ -115,42 +115,29 @@ class Milight {
 
   public function setWhiteActiveGroup($whiteActiveGroup) {
     if ($whiteActiveGroup < 0 || $whiteActiveGroup > 4) {
-      throw new \Exception('Active White Group must be between or equal 0 to 4, note: 0 means all groups');
+      throw new \Exception('Active group must be between 0 and 4. 0 means all groups');
     }
     $this->whiteActiveGroup = $whiteActiveGroup;
   }
 
-    // Same as setWhiteActiveGroup. Exists just to make method invocation easier according to the convention
-    /**
-    * @param int $whiteActiveGroup
-    * @throws Exception
-    */
-    public function whiteSetActiveGroup($whiteActiveGroup)
-    {
-        $this->setWhiteActiveGroup($whiteActiveGroup);
-    }
+  public function whiteSetActiveGroup($whiteActiveGroup) {
+    $this->setWhiteActiveGroup($whiteActiveGroup);
+  }
+  
+  public function getWhiteActiveGroup() {
+    return $this->whiteActiveGroup;
+  }
 
-    /**
-     * @throws Exception
-     * @return int
-     */
-    public function getWhiteActiveGroup()
-    {
-        return $this->whiteActiveGroup;
-    }
-
-  public function __construct($host = '10.10.100.254', $port = 8899)
-  {
+  public function __construct($host = '10.10.100.254', $port = 8899) {
     $this->host = $host;
     $this->port = $port;
   }
-
   
   public function sendCommand(Array $command)
   {
     $command[] = 0x55; // last byte is always 0x55, will be appended to all commands
     $message = vsprintf(str_repeat('%c', count($command)), $command);
-    for ($try=0;$try<5;$try++) {
+    for ($try=0;$try<10;$try++) {
       if ($socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP)) {
         socket_sendto($socket, $message, strlen($message), 0, $this->host, $this->port);
         socket_close($socket);
@@ -159,125 +146,36 @@ class Milight {
     }
   }
 
-    public function command($commandName)
-    {
-        $this->sendCommand($this->commandCodes[$commandName]);
-    }
-
-    public function rgbwSendOnToActiveGroup()
-    {
-        if ($this->getRgbwActiveGroup() > 0) {
-            $activeGroupOnCommand = 'rgbwGroup' . $this->getRgbwActiveGroup() . 'On';
-            $this->command($activeGroupOnCommand);
-            return true;
-        }
-        $this->rgbwAllOn();
-        return true;
-    }
-    public function rgbwSendOnToGroup($group)
-    {
-        if ($group > 0) {
-            $activeGroupOnCommand = 'rgbwGroup' . $group . 'On';
-            $this->command($activeGroupOnCommand);
-            return true;
-        }
-        $this->rgbwAllOn();
-        return true;
-    }
-    public function rgbwSendOffToGroup($group)
-    {
-        if ($group > 0) {
-            $activeGroupOffCommand = 'rgbwGroup' . $group . 'Off';
-            $this->command($activeGroupOffCommand);
-            return true;
-        }
-        $this->rgbwAllOff();
-        return true;
-    }
-
-  public function rgbwSetGroupToWhite($group)
-  {
-    if ($group > 0) {
-      $activeCommand = 'rgbwGroup' . $group . 'SetToWhite';
-      $this->command($activeCommand);
-      return true;
-    }
-    $this->rgbwAllSetToWhite();
-    return true;
+  public function command($commandName) {
+    $this->sendCommand($this->commandCodes[$commandName]);
   }
 
-    public function rgbwSendOffToActiveGroup()
-    {
-        if ($this->getRgbwActiveGroup() > 0) {
-            $activeGroupOffCommand = 'rgbwGroup' . $this->getRgbwActiveGroup() . 'Off';
-            $this->command($activeGroupOffCommand);
-            return true;
-        }
-        $this->rgbwAllOff();
-        return true;
-    }
+  public function rgbwSendOnToActiveGroup() {
+    $this->rgbwSendOnToGroup($this->getRgbwActiveGroup());
+  }
 
-    public function whiteSendOnToActiveGroup()
-    {
-        if ($this->getWhiteActiveGroup() > 0) {
-            $activeGroupOnCommand = 'whiteGroup' . $this->getWhiteActiveGroup() . 'On';
-            $this->command($activeGroupOnCommand);
-            return true;
-        }
-        $this->whiteAllOn();
-        return true;
-    }
+  public function rgbwSendOnToGroup($group) {
+    $activeGroupOnCommand = 'rgbwGroup' . $group . 'On';
+    $this->command($activeGroupOnCommand);
+  }
 
+  public function rgbwSendOffToGroup($group) {
+    $activeGroupOffCommand = 'rgbwGroup' . $group . 'Off';
+    $this->command($activeGroupOffCommand);
+  }
 
-    public function rgbwAllOn()
-    {
-        $this->command('rgbwAllOn');
-    }
+  public function rgbwSetGroupToWhite($group) {
+    $activeCommand = 'rgbwGroup' . $group . 'SetToWhite';
+    $this->command($activeCommand);
+  }
 
-    public function rgbwAllOff()
-    {
-        $this->command('rgbwAllOff');
-    }
+  public function rgbwSendOffToActiveGroup() {
+    $this->rgbwSendOffToGroup($this->getRgbwActiveGroup());
+  }
 
-    public function rgbwGroup1On()
-    {
-        $this->command('rgbwGroup1On');
-    }
-
-    public function rgbwGroup2On()
-    {
-        $this->command('rgbwGroup2On');
-    }
-
-    public function rgbwGroup3On()
-    {
-        $this->command('rgbwGroup3On');
-    }
-
-    public function rgbwGroup4On()
-    {
-        $this->command('rgbwGroup4On');
-    }
-
-    public function rgbwGroup1Off()
-    {
-        $this->command('rgbwGroup1Off');
-    }
-
-    public function rgbwGroup2Off()
-    {
-        $this->command('rgbwGroup2Off');
-    }
-
-    public function rgbwGroup3Off()
-    {
-        $this->command('rgbwGroup3Off');
-    }
-
-    public function rgbwGroup4Off()
-    {
-        $this->command('rgbwGroup4Off');
-    }
+  public function whiteSendOnToActiveGroup() {
+    $this->rgbwSetGroupToWhite($this->getRgbwActiveGroup());
+  }
 
     public function rgbwBrightnessMax()
     {
