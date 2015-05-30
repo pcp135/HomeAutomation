@@ -173,16 +173,12 @@ class Milight {
     $this->rgbwSendOffToGroup($this->getRgbwActiveGroup());
   }
 
-  public function whiteSendOnToActiveGroup() {
-    $this->rgbwSetGroupToWhite($this->getRgbwActiveGroup());
-  }
-
   public function rgbwBrightnessMax($group=null) {
-    $this->setRgbwBrightnessMin(1000,$group);
+    $this->setRgbwBrightnessPercent(100,$group);
   }
 
   public function rgbwBrightnessMin($group=null) {
-    $this->setRgbwBrightnessMin(0,$group);
+    $this->setRgbwBrightnessPercent(0,$group);
   }
 
   public function rgbwAllBrightnessMin() {
@@ -222,176 +218,71 @@ class Milight {
     $this->command('rgbwAllSetToWhite');
   }
 
-    public function whiteAllOn()
-    {
-        $this->command('whiteAllOn');
+  public function whiteAllOn() {
+    $this->command('whiteAllOn');
+  }
+
+  public function whiteAllOff() {
+    $this->command('whiteAllOff');
+  }
+  
+  public function whiteBrightnessUp() {
+    $this->command('whiteBrightnessUp');
+  }
+
+  public function whiteBrightnessDown() {
+    $this->command('whiteBrightnessDown');
+  }
+
+  public function whiteAllBrightnessMax() {
+    $this->command('whiteAllBrightnessMax');
+  }
+
+  public function whiteAllBrightnessMin() {
+    $this->whiteSendBrightnessMinToGroup(0);
+  }
+  
+  public function whiteAllNightMode() {
+    $this->command('whiteAllNightMode');
+  }
+
+  public function whiteWarmIncrease() {
+    $this->whiteSendOnToGroup($this->getWhiteActiveGroup());
+    $this->command('whiteWarmIncrease');
+  }
+
+  public function whiteCoolIncrease() {
+    $this->whiteSendOnToGroup($this->getWhiteActiveGroup());
+    $this->command('whiteCoolIncrease');
+  }
+
+  public function whiteSendOnToGroup($group) {
+    $activeGroupOnCommand = 'whiteGroup' . $group . 'On';
+    $this->command($activeGroupOnCommand);
+  }
+
+  public function whiteSendOffToGroup($group) {
+    $activeGroupOffCommand = 'whiteGroup' . $group . 'Off';
+    $this->command($activeGroupOffCommand);
+  }
+
+  public function whiteSendBrightnessMaxToGroup($group) {
+    $this->whiteSendOnToGroup($group);
+    $activeGroupOnCommand = 'whiteGroup' . $group . 'BrightnessMax';
+    $this->command($activeGroupOnCommand);
+  }
+
+  public function whiteSendBrightnessMinToGroup($group) {
+    $this->whiteSendOnToGroup($group);
+    for ($i = 0; $i < 10; $i++) {
+      $this->command('whiteBrightnessDown');
     }
+  }
 
-    public function whiteAllOff()
-    {
-        $this->command('whiteAllOff');
-    }
-
-    public function whiteBrightnessUp()
-    {
-        $this->whiteSendOnToActiveGroup();
-        $this->command('whiteBrightnessUp');
-    }
-
-    public function whiteBrightnessDown()
-    {
-        $this->whiteSendOnToActiveGroup();
-        $this->command('whiteBrightnessDown');
-    }
-
-    public function whiteAllBrightnessMax()
-    {
-        $this->command('whiteAllBrightnessMax');
-    }
-
-    public function whiteAllBrightnessMin()
-    {
-        $this->setWhiteActiveGroup(0);
-        $this->whiteSendOnToActiveGroup();
-        for ($i = 0; $i < 10; $i++) {
-            $this->command('whiteBrightnessDown');
-        }
-
-    }
-
-    public function whiteAllNightMode()
-    {
-        $this->command('whiteAllNightMode');
-    }
-
-
-    public function whiteWarmIncrease()
-    {
-        $this->whiteSendOnToActiveGroup();
-        $this->command('whiteWarmIncrease');
-    }
-
-    public function whiteCoolIncrease()
-    {
-        $this->whiteSendOnToActiveGroup();
-        $this->command('whiteCoolIncrease');
-    }
-
-    public function whiteGroup1On()
-    {
-        $this->command('whiteGroup1On');
-    }
-
-    public function whiteGroup1Off()
-    {
-        $this->command('whiteGroup1Off');
-    }
-
-    public function whiteGroup2On()
-    {
-        $this->command('whiteGroup2On');
-    }
-
-    public function whiteGroup2Off()
-    {
-        $this->command('whiteGroup2Off');
-    }
-
-    public function whiteGroup3On()
-    {
-        $this->command('whiteGroup3On');
-    }
-
-    public function whiteGroup3Off()
-    {
-        $this->command('whiteGroup3Off');
-    }
-
-    public function whiteGroup4On()
-    {
-        $this->command('whiteGroup4On');
-    }
-
-    public function whiteGroup4Off()
-    {
-        $this->command('whiteGroup4Off');
-    }
-
-    public function whiteGroup1BrightnessMax()
-    {
-        $this->command('whiteGroup1BrightnessMax');
-    }
-
-    public function whiteGroup2BrightnessMax()
-    {
-        $this->command('whiteGroup2BrightnessMax');
-    }
-
-    public function whiteGroup3BrightnessMax()
-    {
-        $this->command('whiteGroup3BrightnessMax');
-    }
-
-    public function whiteGroup4BrightnessMax()
-    {
-        $this->command('whiteGroup4BrightnessMax');
-    }
-
-    public function whiteGroup1BrightnessMin()
-    {
-        $this->setWhiteActiveGroup(1);
-        $this->whiteSendOnToActiveGroup();
-        for ($i = 0; $i < 10; $i++) {
-            $this->command('whiteBrightnessDown');
-        }
-    }
-
-    public function whiteGroup2BrightnessMin()
-    {
-        $this->setWhiteActiveGroup(2);
-        $this->whiteSendOnToActiveGroup();
-        for ($i = 0; $i < 10; $i++) {
-            $this->command('whiteBrightnessDown');
-        }
-    }
-
-    public function whiteGroup3BrightnessMin()
-    {
-        $this->setWhiteActiveGroup(3);
-        $this->whiteSendOnToActiveGroup();
-        for ($i = 0; $i < 10; $i++) {
-            $this->command('whiteBrightnessDown');
-        }
-    }
-
-    public function whiteGroup4BrightnessMin()
-    {
-        $this->setWhiteActiveGroup(4);
-        $this->whiteSendOnToActiveGroup();
-        for ($i = 0; $i < 10; $i++) {
-            $this->command('whiteBrightnessDown');
-        }
-    }
-
-    public function whiteGroup1NightMode()
-    {
-        $this->command('whiteGroup1NightMode');
-    }
-
-    public function whiteGroup2NightMode()
-    {
-        $this->command('whiteGroup2NightMode');
-    }
-
-    public function whiteGroup3NightMode()
-    {
-        $this->command('whiteGroup3NightMode');
-    }
-
-    public function whiteGroup4NightMode()
-    {
-        $this->command('whiteGroup4NightMode');
-    }
+  public function whiteSendNightModeToGroup($group) {
+    $activeGroupOnCommand = 'whiteGroup' . $group . 'NightMode';
+    $this->command($activeGroupOnCommand);
+  }
 
   public function rgbwSetColorHsv(Array $hsvColor) {
     $milightColor = $this->hslToMilightColor($hsvColor);
