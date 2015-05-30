@@ -460,7 +460,7 @@ class Milight {
 
   public function hslToMilightColor($hsl)
   {
-    $color = (256 + 176 - (int)($hsl[0] / 360.0 * 255.0)) % 256;
+    $color = (256 + 176 - (int)($hsl[0] / 60.0 * 255.0)) % 256;
     return $color + 0xfa;
   }
   
