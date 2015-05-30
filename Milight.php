@@ -444,14 +444,15 @@ class Milight {
       $s = $d / (1 - abs(2 * $l - 1));
       switch ($max) {
 	case $r:
-	  $h = ($g - $b) / $d + (($g < $b) ? 6 : 0);
-	  break;
+          $h = 60 * fmod((($g - $b) / $d), 6);
+          if ($b > $g) $h += 360;
+          break;
         case $g:
-	  $h = ($b - $r) / $d + 2;
-	  break;
+          $h = 60 * (($b - $r) / $d + 2);
+          break;
         case $b:
-	  $h = ($r - $g) / $d + 4;
-	  break;
+          $h = 60 * (($r - $g) / $d + 4);
+          break;
       }
     }
     echo '<br>' . $h . ' ' . $s . ' ' . $l;
@@ -460,7 +461,7 @@ class Milight {
 
   public function hslToMilightColor($hsl)
   {
-    $color = (256 + 176 - (int)($hsl[0] / 60.0 * 255.0)) % 256;
+    $color = (256 + 176 - (int)($hsl[0] / 360.0 * 255.0)) % 256;
     return $color + 0xfa;
   }
   
