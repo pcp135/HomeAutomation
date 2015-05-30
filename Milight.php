@@ -434,7 +434,8 @@ class Milight {
     $min = min($rgb);
     list($r,$g,$b)=$rgb;
     echo $r . $g . $b;
-    $s = $l = ($max + $min) / 2;
+    $h = $s = $l = ($max + $min) / 2;
+    echo $h . $s . $l;
     $d = $max - $min;
     if ($d == 0) {
       $h = $s = 0;
