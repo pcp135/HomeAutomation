@@ -412,33 +412,21 @@ class Milight {
     }
 
 
-    public function rgbHexToIntArray($hexColor)
-    {
-        $hexColor = ltrim($hexColor, '#');
-
-        $hexColorLenghth = strlen($hexColor);
-        if ($hexColorLenghth != 8 && $hexColorLenghth != 6) {
-            throw new \Exception('Color hex code must match 8 or 6 characters');
-        }
-        if ($hexColorLenghth == 8) {
-            $r = hexdec(substr($hexColor, 2, 2));
-            $g = hexdec(substr($hexColor, 4, 2));
-            $b = hexdec(substr($hexColor, 6, 2));
-            if (($r == 0 && $g == 0 && $b == 0) || ($r == 255 && $g == 255 && $b == 255)) {
-                throw new \Exception('Color cannot be black or white');
-            }
-            return array($r, $g, $b);
-        }
-
-        $r = hexdec(substr($hexColor, 0, 2));
-        $g = hexdec(substr($hexColor, 2, 2));
-        $b = hexdec(substr($hexColor, 4, 2));
-        if (($r == 0 && $g == 0 && $b == 0) || ($r == 255 && $g == 255 && $b == 255)) {
-            throw new \Exception('Color cannot be black or white');
-        }
-        return array($r, $g, $b);
+  public function rgbHexToIntArray($hexColor) {
+    $hexColorLength = strlen($hexColor);
+    if ($hexColorLength != 9 && $hexColorLength != 7) {
+      throw new \Exception('Color hex code must match 8 or 6 characters');
     }
-
+    if ($hexColorLength == 9) $start=3;
+    else $start=1;
+    for ($x=$start;$x<$start+6;$x+=2) {
+      $rgb[] = hexdec(substr($hexColor, $x, 2));
+    }
+    if ((array_sum($rgb) == 0) || (array_sum($rgb) == 255*3)) {
+      throw new \Exception('Color cannot be black or white');
+    }
+    return $rgb;
+  }
 
     public function rgbToHsl($r, $g, $b)
     {
