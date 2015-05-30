@@ -432,30 +432,18 @@ class Milight {
     $rgb = array($rgb[0] / 255, $rgb[1] / 255, $rgb[2] / 255);
     $max = max($rgb);
     $min = min($rgb);
-    $l = ($max + $min) / 2;
+    list($r,$g,$b)=$rgb;
+    $h = $s = $l = ($max + $min) / 2;
     $d = $max - $min;
-    $h = '';
-
     if ($d == 0) {
       $h = $s = 0;
-    } else {
-      $s = $d / (1 - abs(2 * $l - 1));
-      
+    }
+    else {
+      $s = $l > 0.5 ? $d/(2-$d) : $d/(2*$l);
       switch ($max) {
-        case $rgb[0]:
-          $h = 60 * fmod((($rgb[1] - $rgb[2]) / $d), 6);
-          if ($rgb[2] > $rgb[1]) {
-            $h += 360;
-          }
-          break;
-	
-        case $rgb[1]:
-          $h = 60 * (($rgb[2] - $rgb[0]) / $d + 2);
-          break;
-	
-        case $rgb[2]:
-          $h = 60 * (($rgb[0] - $rgb[1]) / $d + 4);
-          break;
+	case $r: $h = ($g - $b) / $d + ($g < $b ? 6 : 0); break;
+        case $g: $h = ($b - $r) / $d + 2; break;
+        case $b: $h = ($r - $g) / $d + 4; break;
       }
     }
     return array($h, $s, $l);
