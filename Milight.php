@@ -433,14 +433,14 @@ class Milight {
     $max = max($rgb);
     $min = min($rgb);
     list($r,$g,$b)=$rgb;
-    $h = $s = $l = ($max + $min) / 2;
+    echo $r . $g . $b;
+    $s = $l = ($max + $min) / 2;
     $d = $max - $min;
-    $h='';
     if ($d == 0) {
       $h = $s = 0;
     }
     else {
-      $s = $l > 0.5 ? $d/(2-$d) : $d/(2*$l);
+      $s = $l > 0.5 ? $d / (2 - $max - $min) : $d / ($max + $min);
       switch ($max) {
 	case $r: $h = ($g - $b) / $d + ($g < $b ? 6 : 0); break;
         case $g: $h = ($b - $r) / $d + 2; break;
