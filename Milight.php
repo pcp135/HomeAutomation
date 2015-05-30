@@ -35,23 +35,23 @@ class Milight {
   private $commandCodes = array(
 
     //RGBW Bulb commands
-    'rgbwAllOn' => array(0x42, 0x00),
     'rgbwAllOff' => array(0x41, 0x00),
-    'rgbwGroup0On' => array(0x42, 0x00),
+    'rgbwAllOn' => array(0x42, 0x00),
     'rgbwGroup0Off' => array(0x41, 0x00),
-    'rgbwGroup1On' => array(0x45, 0x00),
-    'rgbwGroup2On' => array(0x47, 0x00),
-    'rgbwGroup3On' => array(0x49, 0x00),
-    'rgbwGroup4On' => array(0x4B, 0x00),
-    'rgbwGroup1Off' => array(0x46, 0x00),
-    'rgbwGroup2Off' => array(0x48, 0x00),
-    'rgbwGroup3Off' => array(0x4a, 0x00),
-    'rgbwGroup4Off' => array(0x4c, 0x00),
-    'rgbwBrightnessMax' => array(0x4e, 0x1b),
-    'rgbwBrightnessMin' => array(0x4e, 0x02),
-    'rgbwDiscoMode' => array(0x4d, 0x00),
+    'rgbwGroup0On' => array(0x42, 0x00),
     'rgbwDiscoSlower' => array(0x43, 0x00),
     'rgbwDiscoFaster' => array(0x44, 0x00),
+    'rgbwGroup1On' => array(0x45, 0x00),
+    'rgbwGroup1Off' => array(0x46, 0x00),
+    'rgbwGroup2On' => array(0x47, 0x00),
+    'rgbwGroup2Off' => array(0x48, 0x00),
+    'rgbwGroup3On' => array(0x49, 0x00),
+    'rgbwGroup3Off' => array(0x4a, 0x00),
+    'rgbwGroup4On' => array(0x4B, 0x00),
+    'rgbwGroup4Off' => array(0x4c, 0x00),
+    'rgbwDiscoMode' => array(0x4d, 0x00),
+    'rgbwBrightnessMax' => array(0x4e, 0x1b),
+    'rgbwBrightnessMin' => array(0x4e, 0x02),
     'rgbwAllSetToWhite' => array(0xc2, 0x00),
     'rgbwGroup0SetToWhite' => array(0xc2, 0x00),
     'rgbwGroup1SetToWhite' => array(0xc5, 0x00),
@@ -178,31 +178,28 @@ class Milight {
   }
 
   public function rgbwBrightnessMax($group=null) {
-    $group = isset($group) ? $group : $this->getRgbwActiveGroup();
-    $this->rgbwSendOnToGroup($group);
-    $this->command('rgbwBrightnessMax');
+    $this->setRgbwBrightnessMin(1000,$group);
   }
 
   public function rgbwBrightnessMin($group=null) {
-    $group = isset($group) ? $group : $this->getRgbwActiveGroup();
-    $this->rgbwSendOnToGroup($group);
-    $this->command('rgbwBrightnessMin');
+    $this->setRgbwBrightnessMin(0,$group);
   }
 
   public function rgbwAllBrightnessMin() {
-    $this->setRgbwBrightnessMin(0);
+    $this->rgbwBrightnessPercent(0,0);
   }
 
   public function rgbwAllBrightnessMax() {
-    $this->setRgbwBrightnessMax(0);
+    $this->rgbwBrightnessPercent(100,0);
   }
 
-  public function rgbwBrightnessPercent($brightnessPercent) {
+  public function rgbwBrightnessPercent($brightnessPercent,$group=null) {
     if ($brightnessPercent < 0 || $brightnessPercent > 100) {
       throw new \Exception('Brightness percent must be between 0 and 100');
     }
-    $brightnessPercent = round(2+(($brightnessPercent/100)*24));
-    $this->rgbwSendOnToActiveGroup();
+    $brightnessPercent = round(2+(($brightnessPercent/100)*25));
+    $group = isset($group) ? $group : $this->getRgbwActiveGroup();
+    $this->rgbwSendOnToGroup($group);
     $this->sendCommand(array(0x4e, $brightnessPercent));
   }
 
@@ -211,51 +208,19 @@ class Milight {
     $this->command('rgbwDiscoMode');
   }
 
-    public function rgbwDiscoSlower()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwDiscoSlower');
-    }
+  public function rgbwDiscoSlower() {
+    $this->rgbwSendOnToActiveGroup();
+    $this->command('rgbwDiscoSlower');
+  }
 
-    public function rgbwDiscoFaster()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwDiscoFaster');
-    }
+  public function rgbwDiscoFaster() {
+    $this->rgbwSendOnToActiveGroup();
+    $this->command('rgbwDiscoFaster');
+  }
 
-    public function rgbwAllSetToWhite()
-    {
-        $this->command('rgbwAllSetToWhite');
-    }
-
-    public function rgbwGroup1SetToWhite()
-    {
-        $this->command('rgbwGroup1SetToWhite');
-    }
-
-    public function rgbwGroup2SetToWhite()
-    {
-        $this->command('rgbwGroup2SetToWhite');
-    }
-
-    public function rgbwGroup3SetToWhite()
-    {
-        $this->command('rgbwGroup3SetToWhite');
-    }
-
-    public function rgbwGroup4SetToWhite()
-    {
-        $this->command('rgbwGroup4SetToWhite');
-    }
-
-    public function rgbwSetColorToWhite()
-    {
-        if ($this->getActiveGroup() == 0) {
-            $this->rgbwAllSetToWhite();
-            return;
-        }
-        $this->command('rgbwGroup'.strval($this->getActiveGroup()).'SetToWhite');
-    }
+  public function rgbwAllSetToWhite() {
+    $this->command('rgbwAllSetToWhite');
+  }
 
     public function whiteAllOn()
     {
