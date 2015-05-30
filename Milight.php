@@ -201,7 +201,7 @@ class Milight {
     if ($brightnessPercent < 0 || $brightnessPercent > 100) {
       throw new \Exception('Brightness percent must be between 0 and 100');
     }
-    $brightnessPercent = round(2+(($brightnessPercent/100)*25));
+    $brightnessPercent = round(2+(($brightnessPercent/100)*24));
     $this->rgbwSendOnToActiveGroup();
     $this->sendCommand(array(0x4e, $brightnessPercent));
   }
