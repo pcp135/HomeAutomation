@@ -393,24 +393,19 @@ class Milight {
         $this->command('whiteGroup4NightMode');
     }
 
-    public function rgbwSetColorHsv(Array $hsvColor)
-    {
-        $milightColor = $this->hslToMilightColor($hsvColor);
-        $activeGroupOnCommand = 'rgbwGroup' . $this->getRgbwActiveGroup() . 'On';
-        $this->command($activeGroupOnCommand);
-        $this->sendCommand(array(0x40, $milightColor));
-    }
+  public function rgbwSetColorHsv(Array $hsvColor) {
+    $milightColor = $this->hslToMilightColor($hsvColor);
+    $this->rgbwSendOnToActiveGroup();
+    $this->sendCommand(array(0x40, $milightColor));
+  }
 
-
-    public function rgbwSetColorHexString($color)
-    {
-        $rgb = $this->rgbHexToIntArray($color);
-        $hsl = $this->rgbToHsl($rgb);
-        $milightColor = $this->hslToMilightColor($hsl);
-        $this->rgbwSendOnToActiveGroup();
-        $this->sendCommand(array(0x40, $milightColor));
-    }
-
+  public function rgbwSetColorHexString($color) {
+    $rgb = $this->rgbHexToIntArray($color);
+    $hsl = $this->rgbToHsl($rgb);
+    $milightColor = $this->hslToMilightColor($hsl);
+    $this->rgbwSendOnToActiveGroup();
+    $this->sendCommand(array(0x40, $milightColor));
+  }
 
   public function rgbHexToIntArray($hexColor) {
     $hexColorLength = strlen($hexColor);
@@ -449,8 +444,7 @@ class Milight {
     return array($h,0,0);
   }
 
-  public function hslToMilightColor($hsl)
-  {
+  public function hslToMilightColor($hsl) {
     $color = (256 + 176 - (int)($hsl[0] / 360.0 * 255.0)) % 256;
     return $color + 0xfa;
   }
