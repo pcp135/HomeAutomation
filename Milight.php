@@ -188,160 +188,23 @@ class Milight {
   }
 
   public function rgbwAllBrightnessMin() {
-    $this->setRgbwActiveGroup(0);
-    $this->rgbwSendOnToActiveGroup();
-    $this->command('rgbwBrightnessMin');
+    $this->setRgbwBrightnessMin(0);
   }
 
   public function rgbwAllBrightnessMax() {
-    $this->setRgbwActiveGroup(0);
-    $this->rgbwSendOnToActiveGroup();
-    $this->command('rgbwBrightnessMax');
+    $this->setRgbwBrightnessMax(0);
   }
 
-    public function rgbwGroup1BrightnessMax()
-    {
-        $this->setRgbwActiveGroup(1);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMax');
+  public function rgbwBrightnessPercent($brightnessPercent)
+  {
+    if ($brightnessPercent < 0 || $brightnessPercent > 100) {
+      throw new \Exception('Brightness percent must be between 0 and 100');
     }
-
-    public function rgbwGroup2BrightnessMax()
-    {
-        $this->setRgbwActiveGroup(2);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMax');
-    }
-
-    public function rgbwGroup3BrightnessMax()
-    {
-        $this->setRgbwActiveGroup(3);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMax');
-    }
-
-    public function rgbwGroup4BrightnessMax()
-    {
-        $this->setRgbwActiveGroup(4);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMax');
-    }
-
-    public function rgbwGroup1BrightnessMin()
-    {
-        $this->setRgbwActiveGroup(1);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMin');
-    }
-
-    public function rgbwGroup2BrightnessMin()
-    {
-        $this->setRgbwActiveGroup(2);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMin');
-    }
-
-    public function rgbwGroup3BrightnessMin()
-    {
-        $this->setRgbwActiveGroup(3);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMin');
-    }
-
-    public function rgbwGroup4BrightnessMin()
-    {
-        $this->setRgbwActiveGroup(4);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMin');
-    }
-
-
-    public function rgbwBrightnessPercent($brightnessPercent)
-    {
-        if ($brightnessPercent < 0 || $brightnessPercent > 100) {
-            throw new \Exception('Brightness percent must be between 0 and 100');
-        }
-        $brightness = 0x02;
-        $this->rgbwSendOnToActiveGroup();
-        if ($brightnessPercent < 14) {
-            $brightness = 0x02;
-        }
-        if ($brightnessPercent >= 14 && $brightnessPercent < 17) {
-            $brightness = 0x03;
-        }
-        if ($brightnessPercent >= 17 && $brightnessPercent < 21) {
-            $brightness = 0x04;
-        }
-        if ($brightnessPercent >= 21 && $brightnessPercent < 24) {
-            $brightness = 0x05;
-        }
-        if ($brightnessPercent >= 24 && $brightnessPercent < 28) {
-            $brightness = 0x06;
-        }
-        if ($brightnessPercent >= 28 && $brightnessPercent < 32) {
-            $brightness = 0x07;
-        }
-        if ($brightnessPercent >= 32 && $brightnessPercent < 35) {
-            $brightness = 0x08;
-        }
-        if ($brightnessPercent >= 35 && $brightnessPercent < 39) {
-            $brightness = 0x09;
-        }
-        if ($brightnessPercent >= 39 && $brightnessPercent < 42) {
-            $brightness = 0xa0;
-        }
-        if ($brightnessPercent >= 42 && $brightnessPercent < 46) {
-            $brightness = 0xb0;
-        }
-        if ($brightnessPercent >= 46 && $brightnessPercent < 50) {
-            $brightness = 0xc0;
-        }
-        if ($brightnessPercent >= 50 && $brightnessPercent < 53) {
-            $brightness = 0xd0;
-        }
-        if ($brightnessPercent >= 53 && $brightnessPercent < 57) {
-            $brightness = 0xe0;
-        }
-        if ($brightnessPercent >= 57 && $brightnessPercent < 60) {
-            $brightness = 0xf0;
-        }
-        if ($brightnessPercent >= 60 && $brightnessPercent < 64) {
-            $brightness = 0x10;
-        }
-        if ($brightnessPercent >= 64 && $brightnessPercent < 68) {
-            $brightness = 0x11;
-        }
-        if ($brightnessPercent >= 68 && $brightnessPercent < 71) {
-            $brightness = 0x12;
-        }
-        if ($brightnessPercent >= 71 && $brightnessPercent < 75) {
-            $brightness = 0x13;
-        }
-        if ($brightnessPercent >= 75 && $brightnessPercent < 78) {
-            $brightness = 0x14;
-        }
-        if ($brightnessPercent >= 78 && $brightnessPercent < 82) {
-            $brightness = 0x15;
-        }
-        if ($brightnessPercent >= 82 && $brightnessPercent < 86) {
-            $brightness = 0x16;
-        }
-        if ($brightnessPercent >= 86 && $brightnessPercent < 89) {
-            $brightness = 0x17;
-        }
-        if ($brightnessPercent >= 89 && $brightnessPercent < 93) {
-            $brightness = 0x18;
-        }
-        if ($brightnessPercent >= 93 && $brightnessPercent < 96) {
-            $brightness = 0x19;
-        }
-        if ($brightnessPercent >= 96 && $brightnessPercent < 100) {
-            $brightness = 0x1a;
-        }
-        if ($brightnessPercent >= 96 && $brightnessPercent <= 100) {
-            $brightness = 0x1b;
-        }
-
+    $this->rgbwSendOnToActiveGroup();
+    $levels = array(0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a,
+		    0x0b, 0x0c, 0x0d, 0x0e, 0x0f, 0x10, 0x11, 0x12, 0x13,
+		    0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b);
+    
         $this->sendCommand(array(0x4e, $brightness));
 
     }
