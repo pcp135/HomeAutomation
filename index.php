@@ -18,9 +18,7 @@
   </head>
   <body>
 
-    <?php
-       $levels=array('10','20','30','40','50','60','70','80','90','100');
-       function milightBlockHTML ($replStr) { ob_start(); ?>
+    <?php function milightBlockHTML ($replStr) { ob_start(); ?>
     <h3><?php echo ($replStr) ?></h3>
     <?php $actions=array('On','White','Random','Off');
     foreach ($actions as &$action): ?>
@@ -34,7 +32,8 @@
 	    Brightness <span class="caret"></span>
           </button> 
           <ul class="dropdown-menu" role="menu">
-	    <?php foreach ($levels as &$level): ?>
+	    <?php $levels=array('10','20','30','40','50','60','70','80','90','100');
+	       foreach ($levels as &$level): ?>
 	    <li><a href="index.php?action=
 	    <?php echo str_replace(' ', '', strtolower($replStr)).'_'.$level ?>
 		   "><?php echo $level ?>%</a></li>
@@ -128,6 +127,7 @@
 	    else $room->setRandom($group);
 	  }
 	}
+	$levels=array('10','20','30','40','50','60','70','80','90','100');
 	foreach ($levels as &$brightness) {
 	  if (strpos($_GET["action"],$brightness) !== false) {
 	    foreach ($rooms as &$room) {
