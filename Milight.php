@@ -454,7 +454,7 @@ class Milight {
 	  break;
       }
     }
-    echo $h . $s . $l;
+    echo '<br' . $h . $s . $l;
     return array($h, $s, $l);
   }
 
