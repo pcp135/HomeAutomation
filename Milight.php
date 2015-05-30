@@ -99,10 +99,7 @@ class Milight {
   }
 
   public function setRgbwActiveGroup($rgbwActiveGroup) {
-    if ($rgbwActiveGroup < 0 || $rgbwActiveGroup > 4) {
-      throw new \Exception('Active group must be between 0 and 4. 0 means all groups');
-    }
-    $this->rgbwActiveGroup = $rgbwActiveGroup;
+    $this->rgbwActiveGroup = $this->setActiveGroup($rgbwActiveGroup);
   }
 
   public function rgbwSetActiveGroup($rgbwActiveGroup) {
@@ -114,10 +111,14 @@ class Milight {
   }
 
   public function setWhiteActiveGroup($whiteActiveGroup) {
-    if ($whiteActiveGroup < 0 || $whiteActiveGroup > 4) {
+    $this->whiteActiveGroup = $this->setActiveGroup($whiteActiveGroup);
+  }
+
+  public function setActiveGroup($Group) {
+    if ($Group < 0 || $Group > 4) {
       throw new \Exception('Active group must be between 0 and 4. 0 means all groups');
     }
-    $this->whiteActiveGroup = $whiteActiveGroup;
+    return $Group;
   }
 
   public function whiteSetActiveGroup($whiteActiveGroup) {
@@ -133,15 +134,14 @@ class Milight {
     $this->port = $port;
   }
   
-  public function sendCommand(Array $command)
-  {
+  public function sendCommand(Array $command) {
     $command[] = 0x55; // last byte is always 0x55, will be appended to all commands
     $message = vsprintf(str_repeat('%c', count($command)), $command);
     for ($try=0;$try<10;$try++) {
       if ($socket = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP)) {
         socket_sendto($socket, $message, strlen($message), 0, $this->host, $this->port);
         socket_close($socket);
-        usleep($this->getDelay()); //wait 100ms before sending next command
+        usleep($this->getDelay()); //wait 10ms before sending next command
       }
     }
   }
@@ -177,31 +177,27 @@ class Milight {
     $this->rgbwSetGroupToWhite($this->getRgbwActiveGroup());
   }
 
-    public function rgbwBrightnessMax()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMax');
-    }
+  public function rgbwBrightnessMax($group=$this->getRgbwActiveGroup()) {
+    $this->rgbwSendOnToGroup($group);
+    $this->command('rgbwBrightnessMax');
+  }
 
-    public function rgbwBrightnessMin()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMin');
-    }
+  public function rgbwBrightnessMin($group=$this->getRgbwActiveGroup()) {
+    $this->rgbwSendOnToGroup($group);
+    $this->command('rgbwBrightnessMin');
+  }
 
-    public function rgbwAllBrightnessMin()
-    {
-        $this->setRgbwActiveGroup(0);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMin');
-    }
+  public function rgbwAllBrightnessMin() {
+    $this->setRgbwActiveGroup(0);
+    $this->rgbwSendOnToActiveGroup();
+    $this->command('rgbwBrightnessMin');
+  }
 
-    public function rgbwAllBrightnessMax()
-    {
-        $this->setRgbwActiveGroup(0);
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwBrightnessMax');
-    }
+  public function rgbwAllBrightnessMax() {
+    $this->setRgbwActiveGroup(0);
+    $this->rgbwSendOnToActiveGroup();
+    $this->command('rgbwBrightnessMax');
+  }
 
     public function rgbwGroup1BrightnessMax()
     {
