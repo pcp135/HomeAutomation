@@ -58,7 +58,8 @@ class Milight {
     'rgbwGroup2SetToWhite' => array(0xc7, 0x00),
     'rgbwGroup3SetToWhite' => array(0xc9, 0x00),
     'rgbwGroup4SetToWhite' => array(0xcb, 0x00),
-
+    'rgbwGroup0NightMode' => array(0xc6, 0x00),
+    
     // White Bulb commands
     'whiteAllOn' => array(0x35, 0x00),
     'whiteAllOff' => array(0x39, 0x00),
@@ -162,6 +163,12 @@ class Milight {
   public function rgbwSendOffToGroup($group) {
     $activeGroupOffCommand = 'rgbwGroup' . $group . 'Off';
     $this->command($activeGroupOffCommand);
+  }
+
+  public function rgbwSendNightModeToGroup($group) {
+    $this->rgbwSendOffToGroup($group);
+    $activeGroupCommand = 'rgbwGroup' . $group . 'NightMode';
+    $this->command($activeGroupCommand);
   }
 
   public function rgbwSetGroupToWhite($group) {
