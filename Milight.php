@@ -87,7 +87,7 @@ class Milight {
     'whiteGroup1NightMode' => array(0xbb, 0x00),
     'whiteGroup2NightMode' => array(0xb3, 0x00),
     'whiteGroup3NightMode' => array(0xba, 0x00),
-    'whiteGroup4NightMode' => array(0xb6, 0x00),
+    'whiteGroup4NightMode' => array(0xb6, 0x00)
   );
 
   public function setDelay($delay) {
@@ -177,15 +177,15 @@ class Milight {
     $this->rgbwSetGroupToWhite($this->getRgbwActiveGroup());
   }
 
-  public function rgbwBrightnessMax($group=$this->getRgbwActiveGroup()) {
-    $this->rgbwSendOnToGroup($group);
-    $this->command('rgbwBrightnessMax');
-  }
+//  public function rgbwBrightnessMax($group=$this->getRgbwActiveGroup()) {
+//    $this->rgbwSendOnToGroup($group);
+//    $this->command('rgbwBrightnessMax');
+//  }
 
-  public function rgbwBrightnessMin($group=$this->getRgbwActiveGroup()) {
-    $this->rgbwSendOnToGroup($group);
-    $this->command('rgbwBrightnessMin');
-  }
+//  public function rgbwBrightnessMin($group=$this->getRgbwActiveGroup()) {
+//    $this->rgbwSendOnToGroup($group);
+//    $this->command('rgbwBrightnessMin');
+//  }
 
   public function rgbwAllBrightnessMin() {
     $this->setRgbwBrightnessMin(0);
