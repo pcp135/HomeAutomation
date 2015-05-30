@@ -26,10 +26,6 @@ class Controllable {
     if ($this->type === "RGBWMilight") $this->controller->rgbwSendOffToGroup($group);
     elseif ($this->type === "Orvibo") $this->controller->off();
   }
-  public function sendNight($group) {
-    if ($this->type === "RGBWMilight") $this->controller->rgbwSendNightModeToGroup($group);
-    elseif ($this->type === "Orvibo") $this->controller->off();
-  }
   public function setWhite($group) {
     $this->sendOn($group);
     if ($this->type === "RGBWMilight") $this->controller->rgbwSetGroupToWhite($group);
