@@ -496,27 +496,6 @@ class Milight {
         $this->command('rgbwGroup4SetToWhite');
     }
 
-    public function rgbwSetColorToViolet()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToViolet');
-    }
-
-    public function rgbwSetColorToRoyalBlue()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToRoyalBlue');
-    }
-
-    public function rgbwSetColorToBabyBlue()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToBabyBlue');
-    }
-
-    /**
-    * Sets color of the currently active group to white.
-    */
     public function rgbwSetColorToWhite()
     {
         if ($this->getActiveGroup() == 0) {
@@ -524,84 +503,6 @@ class Milight {
             return;
         }
         $this->command('rgbwGroup'.strval($this->getActiveGroup()).'SetToWhite');
-    }
-
-    public function rgbwSetColorToAqua()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToAqua');
-    }
-
-    public function rgbwSetColorToRoyalMint()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToRoyalMint');
-    }
-
-    public function rgbwSetColorToSeafoamGreen()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToSeafoamGreen');
-    }
-
-    public function rgbwSetColorToGreen()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToGreen');
-    }
-
-    public function rgbwSetColorToLimeGreen()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToLimeGreen');
-    }
-
-    public function rgbwSetColorToYellow()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToYellow');
-    }
-
-    public function rgbwSetColorToYellowOrange()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToYellowOrange');
-    }
-
-    public function rgbwSetColorToOrange()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToOrange');
-    }
-
-    public function rgbwSetColorToRed()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToRed');
-    }
-
-    public function rgbwSetColorToPink()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToPink');
-    }
-
-    public function rgbwSetColorToFusia()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToFusia');
-    }
-
-    public function rgbwSetColorToLilac()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToLilac');
-    }
-
-    public function rgbwSetColorToLavendar()
-    {
-        $this->rgbwSendOnToActiveGroup();
-        $this->command('rgbwSetColorToLavendar');
     }
 
     public function whiteAllOn()
