@@ -405,7 +405,7 @@ class Milight {
     public function rgbwSetColorHexString($color)
     {
         $rgb = $this->rgbHexToIntArray($color);
-        $hsl = $this->rgbToHsl($rgb[0], $rgb[1], $rgb[2]);
+        $hsl = $this->rgbToHsl($rgb);
         $milightColor = $this->hslToMilightColor($hsl);
         $this->rgbwSendOnToActiveGroup();
         $this->sendCommand(array(0x40, $milightColor));
@@ -428,41 +428,40 @@ class Milight {
     return $rgb;
   }
 
-    public function rgbToHsl($r, $g, $b)
-    {
-        $r = $r / 255;
-        $g = $g / 255;
-        $b = $b / 255;
-        $max = max($r, $g, $b);
-        $min = min($r, $g, $b);
-        $l = ($max + $min) / 2;
-        $d = $max - $min;
-        $h = '';
+  public function rgbToHsl($r, $g, $b) {
+    $r = $r / 255;
+    $g = $g / 255;
+    $b = $b / 255;
+    $max = max($r, $g, $b);
+    $min = min($r, $g, $b);
+    $l = ($max + $min) / 2;
+    $d = $max - $min;
+    $h = '';
 
-        if ($d == 0) {
-            $h = $s = 0;
-        } else {
-            $s = $d / (1 - abs(2 * $l - 1));
-
-            switch ($max) {
-                case $r:
-                    $h = 60 * fmod((($g - $b) / $d), 6);
-                    if ($b > $g) {
-                        $h += 360;
-                    }
-                    break;
-
-                case $g:
-                    $h = 60 * (($b - $r) / $d + 2);
-                    break;
-
-                case $b:
-                    $h = 60 * (($r - $g) / $d + 4);
-                    break;
-            }
-        }
-        return array($h, $s, $l);
+    if ($d == 0) {
+      $h = $s = 0;
+    } else {
+      $s = $d / (1 - abs(2 * $l - 1));
+      
+      switch ($max) {
+        case $r:
+          $h = 60 * fmod((($g - $b) / $d), 6);
+          if ($b > $g) {
+            $h += 360;
+          }
+          break;
+	
+        case $g:
+          $h = 60 * (($b - $r) / $d + 2);
+          break;
+	
+        case $b:
+          $h = 60 * (($r - $g) / $d + 4);
+          break;
+      }
     }
+    return array($h, $s, $l);
+  }
 
   public function hslToMilightColor($hsl)
   {
