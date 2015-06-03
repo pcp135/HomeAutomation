@@ -1,13 +1,13 @@
 <?php
 
-require 'Milight.php';
+require './LimitlessLED/Milight.php';
 require './Orvibo/Orvibo.php';
     
 class Controllable {
   
   private $controller;
   private $type;
-
+  
   public function __construct($type, $host, $port = 8899, $mac = null) {
     $this->type=$type;
     if ($this->type === "RGBWMilight") {
