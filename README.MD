@@ -1,59 +1,10 @@
-Milight/LimitlessLED/EasyBulb Complete PHP API
-==============
+Home Automation
+=============
 
-The complete API of Milight/LimitlessLED/EasyBulb written in PHP.
-This code has been tested on Wifi Bridge V.4 and is working pretty well.
-Any help and bugfixes are welcome.
+This code base started as a project to control some [LimitlessLED Smart-Lights](http://limitlessled.com) bulbs through a web interface hosted on a Raspberrypi.  The initial starting point for this was the [complete PHP API](https://github.com/yasharrashedi/LimitlessLED) for these bulbs produced by Yashar Rashedi.
 
+Over time my project expanded to include also some Orvibo smart sockets for which I couldn't find any existing PHP API so wrote my own using the reverse engineered data available from various sources.
 
-Note (1): There are two different channels for white and RGBW on Wifi Bridge so you can't mix white bulbs with RGBW bulbs on the same group.
+Then to better generalise the commands for these two different APIs I added a master Controllable class to generalise the commands I was using against both of these APIs and switched both of those sub-APIs to be submodules of this master project so that development could happen more independently.
 
-Note (2): Brightness (dimming) values for RGBW bulbs are different for white and RGB modes and brightness value is saved in bulbs separately either mode.
-
-Note (3): RGBW bulbs can't mix RGB and white colors, these bulbs only can operate in white or RGB mode so you can't set saturation. Only brightness can be set in RGB mode.
-
-~~Note (4): Since Wifi Bridge V.4 the web interface for Wifi Bridge configuration has been removed and static IP can be set only from mobile app or using AT commands (currently we are working on adding PHP API for configuration and auto bridge discovery)~~
-
-Note (4): Web interface is back in new firmware update. You can update the firmware and use web-based interface (by typing IP in browser) to set static IP address.
-
-here's the link to the firmware update file:
-
-[http://www.limitlessled.com/download/LIMITLESSLED_FIRMWARE_UPGRADE_V4_BRIDGE_27Nov2014.bin](http://www.limitlessled.com/download/LIMITLESSLED_FIRMWARE_UPGRADE_V4_BRIDGE_27Nov2014.bin)
-
-Warning: I have updated my Wifi bridge V.4 successfully to this firmware version, but you use this update with your own responsibility.
-
-There are two methods for setting active group one for RGBW bulbs (setRgbwActiveGroup or rgbwSetActiveGroup) and for white bulbs (setWhiteActiveGroup or whiteSetActiveGroup). After setting active channel you will be able to send commands to chosen bulb group.
-
-Bulbs only support 256 colors (not 16 millions) but there is a method for setting RGB hex strings (for example, #FF1254). This is then configured to nearest supported color. It is also possible to provide HSV colors.
-
-Example:
-
-```php
-<?php
-require 'Milight.php';
-
-$milight = new Milight('192.168.0.54');
-
-$milight->rgbwAllOn();
-$milight->rgbwAllSetToWhite();
-$milight->rgbwAllBrightnessMax();
-sleep(2);
-$milight->setRgbwActiveGroup(1);
-$milight->rgbwBrightnessPercent(50);
-sleep(2);
-$milight->setRgbwActiveGroup(2);
-$milight->rgbwSetColorHexString('FF1254'); // or #FF1254
-$milight->rgbwBrightnessPercent(90);
-sleep(2);
-$milight->whiteAllOn();
-$milight->whiteAllBrightnessMax();
-sleep(2);
-$milight->whiteGroup1NightMode();
-sleep(2);
-$milight->setWhiteActiveGroup(2);
-$milight->whiteWarmIncrease();
-$milight->whiteWarmIncrease();
-$milight->whiteWarmIncrease();
-```
-
-Have fun!
+Please feel free to include this code in your own projects and further develop and expand to support more of the features of the products or add other items.
