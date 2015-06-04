@@ -1,6 +1,6 @@
 [submodule "Orvibo"]
 	path = Orvibo
-	url = git@raspberrypi:/home/git/Orvibo
+	url = git@github.com:pcp135/Orvibo.git
 [submodule "LimitlessLED"]
 	path = LimitlessLED
 	url = git@github.com:pcp135/LimitlessLED.git
