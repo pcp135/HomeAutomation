@@ -61,11 +61,12 @@
     $lounge = new Controllable("RGBWMilight",'192.168.1.7');
     $hallway = new Controllable("RGBWMilight",'192.168.1.8');
     $kitchen = new Controllable("RGBWMilight",'192.168.1.9');
+    $babyroom = new Controllable("RGBWMilight",'192.168.1.12');
     $balcony = new Controllable("Orvibo", '192.168.1.10','10000',
 				array(0xAC,0xCF,0x23,0x4F,0x09,0x0C));   
     $kitchenfairy = new Controllable("Orvibo", '192.168.1.11','10000',
 				array(0xAC,0xCF,0x23,0x4B,0xB5,0xBA));   
-    $allrooms = array($lounge, $hallway, $kitchen, $balcony, $kitchenfairy);
+    $allrooms = array($lounge, $hallway, $kitchen, $balcony, $kitchenfairy, $babyroom);
 
     class Obj {
       public $trigger;
@@ -97,6 +98,11 @@
     $items[] =  new Obj('pictureright_', array($hallway), 2);
     $items[] =  new Obj('pictureleft_', array($hallway), 3);
     $items[] =  new Obj('halllights_', array($hallway), 4);
+    $items[] =  new Obj('kidsroom_', array($babyroom), 0);
+    $items[] =  new Obj('overhead1_', array($babyroom), 1);
+    $items[] =  new Obj('overhead2_', array($babyroom), 2);
+    $items[] =  new Obj('window_', array($babyroom), 3);
+    $items[] =  new Obj('corner_', array($babyroom), 4);
     
     foreach ($items as &$item) {
       if (strpos($_GET["action"],$item->trigger) !== false) {
@@ -188,11 +194,12 @@
 	  <li role="presentation"><a href="#lounge" data-toggle="tab">Lounge</a></li>
 	  <li role="presentation"><a href="#kitchen" data-toggle="tab">Kitchen</a></li>
 	  <li role="presentation"><a href="#hallway" data-toggle="tab">Hallway</a></li>
+	  <li role="presentation"><a href="#babyroom" data-toggle="tab">Baby Room</a></li>
 	</ul>
 	<div class="tab-content">
 	  <div id="rooms" class="tab-pane active">
 	    <?php
-	    $rooms=array("All","Lounge","Kitchen","Hallway");
+	    $rooms=array("All","Lounge","Kitchen","Hallway","Baby Room");
 	    foreach ($rooms as &$room) echo milightBlockHTML($room);
 	    ?>
 	  </div>
@@ -213,6 +220,12 @@
 	  <div id="hallway" class="tab-pane">
 	    <?php
 	    $individual_lights=array("Hallway", 'Front Door','Picture Left','Picture Right','Hall Lights');
+	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
+	    ?>
+	  </div>
+	  <div id="babyroom" class="tab-pane">
+	    <?php
+	    $individual_lights=array("Baby Room", 'Overhead 1','Overhead 2','Window','Corner');
 	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
 	    ?>
 	  </div>
