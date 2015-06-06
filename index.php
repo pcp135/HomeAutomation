@@ -20,7 +20,7 @@
 
     <?php function milightBlockHTML ($replStr) { ob_start(); ?>
     <h3><?php echo ($replStr) ?></h3>
-    <?php $actions=array('On','White','Random','Off');
+    <?php $actions=array('On','White','Random','Off','Night Mode');
     foreach ($actions as &$action): ?>
     <a href="index.php?action=
       <?php echo str_replace(' ', '',strtolower($replStr)).'_'.strtolower($action) ?>"
@@ -121,6 +121,11 @@
 	elseif (strpos($_GET["action"],"_white") !== false) {
 	  foreach ($rooms as &$room) {
 	    $room->setWhite($group);
+	  }
+	}
+	elseif (strpos($_GET["action"],"_nightmode") !== false) {
+	  foreach ($rooms as &$room) {
+	    $room->setNightMode($group);
 	  }
 	}
 	elseif (strpos($_GET["action"],"_random") !== false) {

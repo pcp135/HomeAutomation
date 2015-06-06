@@ -30,6 +30,9 @@ class Controllable {
     $this->sendOn($group);
     if ($this->type === "RGBWMilight") $this->controller->rgbwSetGroupToWhite($group);
   }
+  public function setNightMode($group) {
+    if ($this->type === "RGBWMilight") $this->controller->rgbwSetGroupToNightMode($group);
+  }
   public function setRandom($group) {
     $this->sendOn($group);
     if ($this->type === "RGBWMilight") {
