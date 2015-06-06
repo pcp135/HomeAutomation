@@ -188,7 +188,6 @@
         <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
         <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
       </div>  
-      <div class="well">
 	<ul class="nav nav-tabs">
 	  <li role="presentation"><a href="#rooms" data-toggle="tab">Rooms</a></li>
 	  <li role="presentation"><a href="#lounge" data-toggle="tab">Lounge</a></li>
@@ -231,7 +230,7 @@
 	  </div>
 	</div>
       </div>
-    </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
