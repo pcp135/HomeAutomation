@@ -98,7 +98,7 @@
     $items[] =  new Obj('pictureright_', array($hallway), 2);
     $items[] =  new Obj('pictureleft_', array($hallway), 3);
     $items[] =  new Obj('halllights_', array($hallway), 4);
-    $items[] =  new Obj('kidsroom_', array($babyroom), 0);
+    $items[] =  new Obj('babyroom_', array($babyroom), 0);
     $items[] =  new Obj('overhead1_', array($babyroom), 1);
     $items[] =  new Obj('overhead2_', array($babyroom), 2);
     $items[] =  new Obj('window_', array($babyroom), 3);
