@@ -154,6 +154,13 @@
 	$room->discoMode(0);
       }
     }
+    if ($_GET["action"] == "nightmode") {
+      foreach ($allrooms as &$room) {
+	$room->sendOff(0);
+      }
+      $hallway->setNightMode(4);
+      $babyroom->setNightMode(3);
+    }
     if ((time()+60*60)>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
       if ($_GET["action"] == "tv") {
 	for ($bulb=1; $bulb<5; $bulb++) {
@@ -191,6 +198,7 @@
         <a href="index.php?action=tv" class="btn btn-primary">TV</a>
         <a href="index.php?action=cooking" class="btn btn-primary">Cooking</a>
         <a href="index.php?action=disco" class="btn btn-primary">Disco</a>
+        <a href="index.php?action=nightmode" class="btn btn-primary">Night Mode</a>
         <a href="index.php?action=all_off" class="btn btn-primary">Off</a>
       </div>  
 	<ul class="nav nav-tabs">
