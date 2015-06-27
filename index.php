@@ -158,7 +158,7 @@
       foreach ($allrooms as &$room) {
 	$room->sendOff(0);
       }
-      $hallway->setNightMode(4);
+      $hallway->setNightMode(1);
       $babyroom->setNightMode(3);
     }
     if ((time()+60*60)>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
@@ -168,7 +168,7 @@
 	}
 	$lounge->setBrightness(0, 60);
 	$hallway->sendOff(0);
-	$hallway->setRandom(1);
+	$hallway->setWhite(1);
 	$hallway->setBrightness(1,40);
 	$kitchen->sendOff(0);
 	$kitchen->setWhite(3);
@@ -184,7 +184,7 @@
 	}
 	$lounge->setBrightness(0, 60);
 	$hallway->sendOff(0);
-	$hallway->setRandom(1);
+	$hallway->setWhite(1);
 	$hallway->setBrightness(1,40);
 	$balcony->sendOn(0);
 	$kitchenfairy->sendOn(0);
