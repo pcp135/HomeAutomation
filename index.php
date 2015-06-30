@@ -169,7 +169,7 @@
 	$lounge->setBrightness(0, 60);
 	$hallway->sendOff(0);
 	$hallway->setWhite(1);
-	$hallway->setBrightness(1,40);
+	$hallway->setBrightness(1,15);
 	$kitchen->sendOff(0);
 	$kitchen->setWhite(3);
 	$kitchen->setBrightness(3,25);
