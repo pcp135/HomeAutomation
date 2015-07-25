@@ -22,8 +22,9 @@
     <h3><?php echo ($replStr) ?></h3>
     <?php $actions=array('On','White','Random','Off','Night Mode');
     foreach ($actions as &$action): ?>
-    <a href="index.php?action=
-      <?php echo str_replace(' ', '',strtolower($replStr).'_'.strtolower($action)) ?>"
+    <a href="index.php?action=<?php
+             echo str_replace(' ', '',strtolower($replStr).'_'.strtolower($action))
+			      ?>"
        class="btn btn-primary"><?php echo $action ?></a>
 	<?php endforeach; ?>
         <div class="btn-group">
