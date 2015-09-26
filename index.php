@@ -71,7 +71,7 @@
     $kitchencounter = new Controllable("Orvibo", '192.168.1.14','10000',
 				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
     $kitchenextractor = new Controllable("Orvibo", '192.168.1.15','10000',
-				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
+				       array(0xAC,0xCF,0x23,0x53,0x30,0x42));
     $christmastree = new Controllable("Orvibo", '192.168.1.16','10000',
 				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
     $allrooms = array($lounge, $hallway, $kitchen, $balcony, $kitchenfairy, $babyroom,
