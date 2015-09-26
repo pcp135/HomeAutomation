@@ -72,8 +72,10 @@
 				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
     $kitchenextractor = new Controllable("Orvibo", '192.168.1.15','10000',
 				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
+    $christmastree = new Controllable("Orvibo", '192.168.1.16','10000',
+				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
     $allrooms = array($lounge, $hallway, $kitchen, $balcony, $kitchenfairy, $babyroom,
-		      $bedroom, $kitchencounter, $kitchenextractor);
+		      $bedroom, $kitchencounter, $kitchenextractor, $christmastree);
 
     class Obj {
       public $trigger;
@@ -97,8 +99,9 @@
     $items[] =  new Obj('diningtable_', array($kitchen), 2);
     $items[] =  new Obj('sink_', array($kitchen), 3);
     $items[] =  new Obj('fridge_', array($kitchen), 4);
-    $items[] =  new Obj('lounge_', array($lounge, $balcony), 0);
+    $items[] =  new Obj('lounge_', array($lounge, $balcony,$christmastree), 0);
     $items[] =  new Obj('balcony_', array($balcony), 0);
+    $items[] =  new Obj('christmastree_', array($christmastree), 0);
     $items[] =  new Obj('sofa_', array($lounge), 1);
     $items[] =  new Obj('loungedoor_', array($lounge), 2);
     $items[] =  new Obj('desk_', array($lounge), 3);
@@ -178,9 +181,10 @@
     }
     if ((time()+60*60)>date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, 48, 11, 90, 1)) {
       if ($_GET["action"] == "tv") {
-	for ($bulb=1; $bulb<5; $bulb++) {
+	for ($bulb=2; $bulb<5; $bulb++) {
 	  $lounge->setRandom($bulb);
 	}
+	$lounge->setWhite(1);
 	$lounge->setBrightness(0, 60);
 	$hallway->sendOff(0);
 	$hallway->setWhite(1);
@@ -190,6 +194,9 @@
 	$kitchen->setBrightness(3,25);
 	$balcony->sendOn(0);
 	$kitchenfairy->sendOn(0);
+	$kitchenextractor->sendOff(0);
+	$kitchencounter->sendOn(0);
+	$christmastree->sendOn(0);
       }
       if ($_GET["action"] == "cooking") {
 	$kitchen->setWhite(0);
@@ -203,6 +210,10 @@
 	$hallway->setBrightness(1,40);
 	$balcony->sendOn(0);
 	$kitchenfairy->sendOn(0);
+	$kitchenfairy->sendOn(0);
+	$kitchenextractor->sendOn(0);
+	$kitchencounter->sendOn(0);
+	$christmastree->sendOn(0);
       }
     }
 
@@ -236,6 +247,7 @@
 	    $individual_lights=array("Lounge",'Sofa','Lounge Door','Desk','Side Cupboards');
 	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
 	    echo orviboBlockHTML("Balcony");
+	    echo orviboBlockHTML("Christmas Tree");
 	    ?>
 	  </div>
 	  <div id="kitchen" class="tab-pane">
