@@ -70,8 +70,10 @@
 				array(0xAC,0xCF,0x23,0x4B,0xB5,0xBA));   
     $kitchencounter = new Controllable("Orvibo", '192.168.1.14','10000',
 				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
+    $kitchenextractor = new Controllable("Orvibo", '192.168.1.15','10000',
+				       array(0xAC,0xCF,0x23,0x53,0x64,0x36));
     $allrooms = array($lounge, $hallway, $kitchen, $balcony, $kitchenfairy, $babyroom,
-		      $bedroom, $kitchencounter);
+		      $bedroom, $kitchencounter, $kitchenextractor);
 
     class Obj {
       public $trigger;
@@ -86,9 +88,11 @@
     }
 
     $items[] =  new Obj('all_', $allrooms, 0);
-    $items[] =  new Obj('kitchen_', array($kitchen, $kitchenfairy), 0);
+    $items[] =  new Obj('kitchen_', array($kitchen, $kitchenfairy, $kitchencounter,
+					  $kitchenextractor), 0);
     $items[] =  new Obj('kitchenfairy_', array($kitchenfairy), 0);
     $items[] =  new Obj('kitchencounter_', array($kitchencounter), 0);
+    $items[] =  new Obj('kitchenextractor_', array($kitchenextractor), 0);
     $items[] =  new Obj('hightable_', array($kitchen), 1);
     $items[] =  new Obj('diningtable_', array($kitchen), 2);
     $items[] =  new Obj('sink_', array($kitchen), 3);
@@ -240,6 +244,7 @@
 	    foreach ($individual_lights as &$bulb) echo milightBlockHTML($bulb);
 	    echo orviboBlockHTML("Kitchen Fairy");
 	    echo orviboBlockHTML("Kitchen Counter");
+	    echo orviboBlockHTML("Kitchen Extractor");
 	    ?>
 	  </div>
 	  <div id="hallway" class="tab-pane">
